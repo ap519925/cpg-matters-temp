@@ -1,0 +1,9 @@
+uuid: e1e587e7-3e58-43f7-a8e7-891a9a53307d
+langcode: en
+status: true
+dependencies: {  }
+name: Expertise
+vid: expertise
+description: 'Expertise areas for directory listings (e.g. Consumer Goods, Beverages).'
+weight: 0
+new_revision: false

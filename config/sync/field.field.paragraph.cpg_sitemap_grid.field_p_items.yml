@@ -1,0 +1,26 @@
+uuid: ced46b09-a0de-4796-9cfa-0021553604bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_sitemap_grid
+    - paragraphs.paragraphs_type.cpg_sitemap_section
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_sitemap_grid.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_sitemap_grid
+label: Sections
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_sitemap_section: cpg_sitemap_section
+field_type: entity_reference_revisions

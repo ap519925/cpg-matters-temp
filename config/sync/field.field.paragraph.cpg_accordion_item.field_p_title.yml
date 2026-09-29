@@ -1,0 +1,19 @@
+uuid: d7e816eb-318d-48a0-ac08-066cc61e5be7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_accordion_item
+id: paragraph.cpg_accordion_item.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_accordion_item
+label: Question
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

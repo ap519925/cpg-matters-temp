@@ -1,0 +1,189 @@
+// ================================================================
+// DRUPAL SYSTEM OVERRIDES & UTILITIES
+// ================================================================
+@use 'variables' as *;
+
+// ── Hide page title on frontpage ──
+.cpg-front-page .block-page-title-block {
+    display: none;
+}
+
+// ── Status messages ──
+.messages {
+    padding: $gap-md $gap-lg;
+    margin-bottom: $gap-md;
+    border-radius: $radius;
+    font-size: 0.9rem;
+
+    &--status {
+        background: #ECFDF5;
+        border: 1px solid #6EE7B7;
+        color: #065F46;
+    }
+
+    &--error {
+        background: #FEF2F2;
+        border: 1px solid #FECACA;
+        color: #991B1B;
+    }
+
+    &--warning {
+        background: #FFFBEB;
+        border: 1px solid #FDE68A;
+        color: #92400E;
+    }
+}
+
+// ── Form elements ──
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid $cpg-border;
+    border-radius: $radius;
+    transition: border-color $transition;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: $cpg-blue;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+// ── Pager ──
+.pager {
+    margin: $gap-xl 0;
+    
+    .pager__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: $gap-sm;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .pager__item {
+        margin: 0;
+        
+        a, span:not(.visually-hidden) {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 0.75rem;
+            border: 1px solid $cpg-border;
+            border-radius: $radius;
+            color: $cpg-text;
+            font-family: $font-body;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: $cpg-bg-white;
+            text-decoration: none;
+            transition: all $transition;
+
+            &:hover {
+                background: #F3F4F6;
+                color: $cpg-text;
+                border-color: #D1D5DB;
+                transform: translateY(-1px);
+                box-shadow: $shadow-sm;
+            }
+        }
+
+        &--active a,
+        &--active span:not(.visually-hidden),
+        &.is-active a,
+        &.is-active span:not(.visually-hidden) {
+            background: $cpg-red;
+            color: $cpg-text-light;
+            border-color: $cpg-red;
+            box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+
+            &:hover {
+                background: $cpg-red-dark;
+                border-color: $cpg-red-dark;
+                color: $cpg-text-light;
+                transform: none;
+                box-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+            }
+        }
+        
+        &--previous a,
+        &--next a,
+        &--first a,
+        &--last a {
+            border-color: transparent;
+            background: transparent;
+            color: $cpg-text-secondary;
+            
+            &:hover {
+                background: #E5E7EB;
+                color: $cpg-text;
+                border-color: #E5E7EB;
+            }
+        }
+        
+        &--ellipsis span {
+            border-color: transparent;
+            background: transparent;
+            padding: 0;
+            min-width: auto;
+            color: $cpg-text-secondary;
+            
+            &:hover {
+                background: transparent;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// ── Breadcrumbs ──
+.block-system-breadcrumb-block {
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    margin-bottom: $gap-md;
+}
+
+// ── Contextual links ──
+.contextual-region {
+    position: relative;
+}
+
+// ── Views / listing overrides ──
+.view-content,
+.item-list ul,
+.node-listing {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.node__title {
+    font-family: $font-heading;
+}
+
+.view-header,
+.view-footer {
+    margin-bottom: $gap-lg;
+}
+
+.views-exposed-form {
+    margin-bottom: $gap-xl;
+
+    .form-item {
+        margin-right: $gap-md;
+    }
+}

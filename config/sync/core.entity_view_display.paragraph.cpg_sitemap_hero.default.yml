@@ -1,0 +1,31 @@
+uuid: 780ed51f-69ac-4bd1-b58e-ddc9eb7bb983
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_sitemap_hero.field_p_body
+    - field.field.paragraph.cpg_sitemap_hero.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_hero
+  module:
+    - text
+id: paragraph.cpg_sitemap_hero.default
+targetEntityType: paragraph
+bundle: cpg_sitemap_hero
+mode: default
+content:
+  field_p_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

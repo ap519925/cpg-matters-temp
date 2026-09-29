@@ -1,0 +1,100 @@
+{#
+/**
+ * @file
+ * Page template for the About Us page — full-width, no sidebars.
+ *
+ * This overrides page.html.twig specifically for the /about-us path
+ * to render a full-width layout matching the about mockup.
+ */
+#}
+<div class="cpg-layout">
+
+  {# ===== HEADER ===== #}
+  {% if page.header or page.header_search or page.primary_menu %}
+    <header class="cpg-layout__header" role="banner">
+      <div class="cpg-container header-inner">
+
+        {# Branding #}
+        <div class="header-branding">
+          <a href="/" class="site-branding-link">
+            {% if site_logo %}
+              <img src="{{ site_logo }}" alt="{{ site_name }}" class="site-logo-img" style="max-height: 40px; width: auto; display: block; margin-bottom: 4px;" />
+            {% else %}
+              <h1 class="site-title">{{ site_name|default('CPG Matters') }}</h1>
+            {% endif %}
+            {% if site_slogan %}
+            <div class="site-slogan">{{ site_slogan }}</div>
+          {% endif %}
+          </a>
+        </div>
+
+        {# Navigation #}
+        <div class="header-nav">
+          {{ page.primary_menu }}
+        </div>
+
+        {# Actions (Subscribe + Search) #}
+        <div class="header-actions">
+          {# Mobile-only hamburger for main nav #}
+          <button class="mobile-nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+            <span class="mobile-nav-hamburger__bar"></span>
+            <span class="mobile-nav-hamburger__bar"></span>
+            <span class="mobile-nav-hamburger__bar"></span>
+          </button>
+          {% if page.header_actions %}{{ page.header_actions }}{% endif %}
+        </div>
+
+      </div>
+    </header>
+
+    {# ===== FLOATING TOPIC ICON SIDEBAR ===== #}
+    {# ===== FLOATING TOPIC ICON SIDEBAR (Dynamically rendered from block) ===== #}
+    {% if page.mobile_topics %}
+      {{ page.mobile_topics }}
+    {% endif %}
+
+    {# ===== MOBILE NAV DRAWER ===== #}
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-drawer" aria-label="Mobile navigation">
+      <div class="mobile-nav-drawer__header">
+        <span class="mobile-nav-drawer__title">{{ 'Navigation'|t }}</span>
+        <button class="mobile-nav-drawer__close" aria-label="Close navigation">&times;</button>
+      </div>
+      {% if page.mobile_nav %}
+        {{ page.primary_menu }}
+      {% endif %}
+    </nav>
+  {% endif %}
+
+  {# ===== NO hero, NO top banner, NO sidebars ===== #}
+
+  <main role="main" class="cpg-layout__main">
+    {% if page.breadcrumb %}
+      <div class="cpg-container">
+        {{ page.breadcrumb }}
+      </div>
+    {% endif %}
+
+    {# Full-width content — no column system #}
+    {{ page.content }}
+  </main>
+
+  <footer class="cpg-layout__footer" role="contentinfo">
+    <div class="cpg-container footer-columns">
+      <div class="footer-col">{{ page.footer_first }}</div>
+      <div class="footer-col">{{ page.footer_second }}</div>
+      <div class="footer-col">{{ page.footer_third }}</div>
+      <div class="footer-col">{{ page.footer_fourth }}</div>
+    </div>
+
+    {% if page.footer_bottom %}
+      <div class="footer-bottom">
+        <div class="cpg-container">
+          {{ page.footer_bottom }}
+        </div>
+      </div>
+    {% endif %}
+  </footer>
+</div>
+
+

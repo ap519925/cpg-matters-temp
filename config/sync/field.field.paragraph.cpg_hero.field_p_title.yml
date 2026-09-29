@@ -1,0 +1,19 @@
+uuid: cccfe2f6-fcc9-45ed-8552-282ae7be9807
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_hero
+id: paragraph.cpg_hero.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_hero
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

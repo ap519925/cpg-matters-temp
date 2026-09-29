@@ -1,0 +1,344 @@
+// ================================================================
+// ABOUT PAGE STYLES
+// Matches the about.html mockup with hero, story, values, stats,
+// team, CTA banner, and coverage sections.
+// ================================================================
+@use 'variables' as *;
+
+// ── About Container ──
+.cpg-about {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(2rem, 5vw, 5rem);
+}
+
+// Hide default Drupal page title block if it appears above our custom hero
+.node-type-page h1.page-title,
+.path-about-us h1.page-title {
+    display: none !important;
+}
+
+// ── Hero Section ──
+.cpg-about__hero {
+    text-align: center;
+    padding: $gap-2xl 0 $gap-xl;
+    border-bottom: 1px solid $cpg-border;
+    margin-bottom: $gap-2xl;
+}
+
+.cpg-about__title {
+    font-family: $font-heading;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: $cpg-text;
+    margin: 0 0 $gap-md;
+    line-height: 1.15;
+}
+
+.cpg-about__subtitle {
+    font-size: 1.1rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+// ── Generic Text Section (Our Story, What We Do, What We Cover) ──
+.cpg-about__section {
+    margin-bottom: $gap-2xl;
+}
+
+.cpg-about__section-title {
+    font-family: $font-heading;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 900;
+    color: $cpg-text;
+    margin: 0 0 $gap-lg;
+    line-height: 1.2;
+}
+
+.cpg-about__text {
+    font-size: 1rem;
+    color: $cpg-text-secondary;
+    line-height: 1.8;
+
+    p {
+        margin: 0 0 $gap-lg;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ── Blockquote / Mission Statement ──
+.cpg-about__quote {
+    border-left: 4px solid $cpg-red;
+    padding: $gap-lg $gap-xl $gap-lg $gap-md;
+    margin: $gap-xl 0;
+    background: #FAFBFC;
+    border-radius: 0 $radius $radius 0;
+
+    p {
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: $cpg-text;
+        line-height: 1.7;
+        margin: 0;
+    }
+}
+
+// ── Our Values — 3-column cards ──
+.cpg-about__values {
+    margin-bottom: $gap-2xl;
+}
+
+.cpg-about__values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $gap-xl;
+    margin-top: $gap-xl;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cpg-about__value-card {
+    background: $cpg-bg-white;
+    border: 1px solid $cpg-border;
+    border-radius: $radius;
+    padding: $gap-xl $gap-lg;
+    text-align: center;
+    transition: box-shadow $transition, transform $transition;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+    }
+}
+
+.cpg-about__value-icon {
+    font-size: 2.5rem;
+    margin-bottom: $gap-md;
+    line-height: 1;
+}
+
+.cpg-about__value-title {
+    font-family: $font-heading;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin: 0 0 $gap-sm;
+}
+
+.cpg-about__value-desc {
+    font-size: 0.92rem;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+    margin: 0;
+}
+
+// ── Stats Bar ──
+.cpg-about__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap-xl;
+    padding: $gap-2xl 0;
+    margin-bottom: $gap-2xl;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cpg-about__stat-number {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: $cpg-red;
+    line-height: 1.1;
+    margin-bottom: $gap-xs;
+}
+
+.cpg-about__stat-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: $cpg-text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+// ── Our Team Section ──
+.cpg-about__team {
+    background: #F5F5F5;
+    border-radius: $radius;
+    padding: $gap-2xl clamp(2rem, 5vw, 4rem);
+    margin-bottom: $gap-2xl;
+    text-align: center;
+}
+
+.cpg-about__team-title {
+    font-family: $font-heading;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 900;
+    color: $cpg-text;
+    margin: 0 0 $gap-md;
+}
+
+.cpg-about__team-intro {
+    font-size: 1rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto $gap-xl;
+}
+
+.cpg-about__team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap-xl;
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cpg-about__team-member {
+    text-align: center;
+}
+
+.cpg-about__team-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: $cpg-red;
+    color: $cpg-text-light;
+    font-family: $font-heading;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto $gap-md;
+    letter-spacing: 0.05em;
+}
+
+.cpg-about__team-name {
+    font-family: $font-heading;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin: 0 0 $gap-xs;
+}
+
+.cpg-about__team-role {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: $cpg-red;
+    margin-bottom: $gap-sm;
+}
+
+.cpg-about__team-bio {
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    line-height: 1.55;
+}
+
+// ── Community CTA Banner ──
+.cpg-about__cta {
+    background: $cpg-red;
+    border-radius: $radius;
+    padding: $gap-2xl clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: $gap-2xl;
+}
+
+.cpg-about__cta-title {
+    font-family: $font-heading;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 900;
+    color: $cpg-text-light;
+    margin: 0 0 $gap-sm;
+}
+
+.cpg-about__cta-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto $gap-xl;
+}
+
+.cpg-about__cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: $gap-lg;
+    flex-wrap: wrap;
+}
+
+.cpg-about__cta-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    border-radius: $radius;
+    font-family: $font-body;
+    transition: all $transition;
+    cursor: pointer;
+    border: 2px solid $cpg-text-light;
+
+    &--primary {
+        background: $cpg-text-light;
+        color: $cpg-red;
+
+        &:hover {
+            background: transparent;
+            color: $cpg-text-light;
+        }
+    }
+
+    &--secondary {
+        background: transparent;
+        color: $cpg-text-light;
+
+        &:hover {
+            background: $cpg-text-light;
+            color: $cpg-red;
+        }
+    }
+}
+
+// ── What We Cover — topic list ──
+.cpg-about__topics {
+    margin-top: $gap-lg;
+}
+
+.cpg-about__topic {
+    margin-bottom: $gap-lg;
+    font-size: 1rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.cpg-about__topic-name {
+    font-weight: 700;
+    color: $cpg-red;
+}

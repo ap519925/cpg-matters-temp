@@ -1,0 +1,10 @@
+uuid: 1506da30-cd0a-454c-b6aa-69b14099bf20
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_hero
+label: 'Sitemap Hero'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Hero'
+behavior_plugins: {  }

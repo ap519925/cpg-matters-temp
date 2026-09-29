@@ -1,0 +1,26 @@
+uuid: 8f4286c8-507c-490d-965d-b2eef9f7bc27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_image.field_p_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.cpg_image
+  module:
+    - image
+id: paragraph.cpg_image.default
+targetEntityType: paragraph
+bundle: cpg_image
+mode: default
+content:
+  field_p_image:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,22 @@
+uuid: 140aca70-6a9d-4f31-bd26-99aeb5a2feb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_stat_item
+  module:
+    - text
+id: paragraph.cpg_stat_item.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_stat_item
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,107 @@
+// ========== RESET & BASE ==========
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-body;
+    color: $cpg-text;
+    background: $cpg-bg;
+    line-height: 1.65;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: $cpg-text;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+        color: $cpg-red;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-heading;
+    line-height: 1.25;
+    margin: 0 0 $gap-sm;
+    color: $cpg-text;
+}
+
+h1 {
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    font-weight: 700; // Bold
+}
+
+h2 {
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 600; // Semibold
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 500; // Medium
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 400; // Regular
+}
+
+h5 {
+    font-size: 0.9rem;
+    font-weight: 500; // Medium
+}
+
+h6 {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0 0 $gap-md;
+    line-height: 1.8;
+}
+
+// ── Typography for Basic Pages and Articles ──
+.cpg-content-main {
+    font-size: 1.05rem;
+
+    h2, h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    // Limit text line-length for readability on basic pages (not the homepage grid)
+    .block-system-main-block {
+        max-width: 800px;
+        margin: 0 auto;
+        
+        // Let's add more spacious padding on desktop
+        @media (min-width: 768px) {
+            padding: 2rem;
+        }
+    }
+}

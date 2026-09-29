@@ -1,0 +1,16 @@
+global:
+  css:
+    theme:
+      dist/css/main.css: { minified: true }
+  js:
+    dist/js/main.js: { minified: true }
+  dependencies:
+    - core/drupal
+
+search-results:
+  js:
+    dist/js/search-results.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - cpg_theme/global
+

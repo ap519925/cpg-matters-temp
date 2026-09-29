@@ -1,0 +1,19 @@
+uuid: e926bedd-ac71-42f4-889d-ea82b5a5d4ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_accordion
+id: paragraph.cpg_accordion.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_accordion
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

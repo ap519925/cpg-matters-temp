@@ -1,0 +1,26 @@
+uuid: 0a332bbb-4af7-4d21-92c0-3df12d14d0b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_stat_item
+    - paragraphs.paragraphs_type.cpg_stats_bar
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_stats_bar.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_stats_bar
+label: Statistics
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_stat_item: cpg_stat_item
+field_type: entity_reference_revisions

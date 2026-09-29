@@ -1,0 +1,14 @@
+uuid: 123fba85-c711-4c6d-8065-6465e68c908a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ik_constant_contact
+_core:
+  default_config_hash: Cz2SxmD2vaJV6tDRLr_yNt2mQbJRL6KIhZpv8FKnCDw
+id: constant_contact_lists
+label: 'Constant Contact List(s)'
+category: General
+likert: false
+options: ''

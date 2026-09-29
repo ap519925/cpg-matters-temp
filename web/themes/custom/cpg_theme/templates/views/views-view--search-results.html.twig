@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * Template for the Search Results view (SERP page).
+ *
+ * Available variables:
+ * - title: The view title (editable via Views UI)
+ * - header: The optional header output (search summary text)
+ * - exposed: Exposed filter widgets (keywords, category, date range, author)
+ * - rows: The rendered search results
+ * - pager: The pager output
+ * - empty: Content to display if no results
+ * - view: The view object
+ *
+ * Data is pulled dynamically from Drupal Views — nothing is hardcoded.
+ * All filters, sort options, and display toggles are managed via the
+ * Drupal admin dashboard (Views UI).
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+
+<div class="cpg-serp">
+
+  {# ===== Page Title & Result Count ===== #}
+  <div class="cpg-serp__header">
+    {% if title %}
+      <h1 class="cpg-serp__title">{{ title }}</h1>
+    {% endif %}
+    {% if header %}
+      <div class="cpg-serp__result-count">
+        {{ header }}
+      </div>
+    {% endif %}
+  </div>
+
+  {# ===== Active Filter Badges — rendered by Views UI ===== #}
+  {# Active filters are rendered by the "active_filters" area in the view header #}
+
+  {# ===== Exposed Filters Drawer ===== #}
+  {% if exposed %}
+    <div class="cpg-serp__filters">
+      <div class="cpg-serp__filters-header" role="button" tabindex="0" aria-expanded="true" aria-controls="serp-filter-drawer">
+        <h2 class="cpg-serp__filters-title">{{ 'Filters'|t }}</h2>
+        <a href="#" class="cpg-serp__filters-clear">{{ 'Clear All'|t }}</a>
+      </div>
+      <div class="cpg-serp__filters-body" id="serp-filter-drawer">
+        {{ exposed }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# ===== View Toggle & Sort ===== #}
+  <div class="cpg-serp__toolbar">
+    <div class="cpg-serp__view-toggles">
+      <span class="cpg-serp__view-label">{{ 'View:'|t }}</span>
+      <button class="cpg-serp__view-btn cpg-serp__view-btn--active" data-view="table" aria-label="{{ 'Table view'|t }}">{{ 'Table'|t }}</button>
+      <button class="cpg-serp__view-btn" data-view="grid" aria-label="{{ 'Grid view'|t }}">{{ 'Grid'|t }}</button>
+      <button class="cpg-serp__view-btn" data-view="list" aria-label="{{ 'List view'|t }}">{{ 'List'|t }}</button>
+    </div>
+    {# Sort dropdown is part of exposed filters — rendered by Drupal Views #}
+  </div>
+
+  {# ===== Results ===== #}
+  {% if rows %}
+    <div class="cpg-serp__results cpg-serp__results--table">
+      {# Table header row #}
+      <div class="cpg-serp__table-header">
+        <div class="cpg-serp__th cpg-serp__th--title">{{ 'Title'|t }} <span class="cpg-sort-icon">▼</span></div>
+        <div class="cpg-serp__th cpg-serp__th--category">{{ 'Category'|t }} <span class="cpg-sort-icon">⇅</span></div>
+        <div class="cpg-serp__th cpg-serp__th--author">{{ 'Author'|t }} <span class="cpg-sort-icon">⇅</span></div>
+        <div class="cpg-serp__th cpg-serp__th--date">{{ 'Date'|t }} <span class="cpg-sort-icon">⇅</span></div>
+      </div>
+      {{ rows }}
+    </div>
+  {% elseif empty %}
+    <div class="cpg-serp__empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {# ===== Pager ===== #}
+  {% if pager %}
+    <div class="cpg-serp__pager">
+      {{ pager }}
+    </div>
+  {% endif %}
+
+</div>

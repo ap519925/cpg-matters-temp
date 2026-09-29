@@ -1,0 +1,8 @@
+uuid: 6fb4918d-26d3-46e9-92b3-f5e69405e2af
+langcode: en
+status: true
+dependencies: {  }
+id: newsletter
+label: 'Newsletter Signup'
+revision: false
+description: 'A newsletter subscription block for sidebar placement.'

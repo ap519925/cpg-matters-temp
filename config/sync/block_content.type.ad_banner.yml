@@ -1,0 +1,8 @@
+uuid: cd3fd6b1-df43-409a-845c-fdf95112db5e
+langcode: en
+status: true
+dependencies: {  }
+id: ad_banner
+label: 'Ad Banner'
+revision: false
+description: 'A configurable ad banner block (e.g. 728x90, 300x250, 160x600).'

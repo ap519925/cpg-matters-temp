@@ -1,0 +1,108 @@
+// ================================================================
+// 3-COLUMN LAYOUT — with red vertical dividers
+// ================================================================
+@use 'variables' as *;
+
+.cpg-layout__main {
+    flex: 1;
+}
+
+.cpg-columns {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    align-items: start;
+
+    &.has-both-sidebars {
+        grid-template-columns: 280px 1fr 280px;
+    }
+
+    &.has-sidebar-first {
+        grid-template-columns: 280px 1fr;
+    }
+
+    &.has-sidebar-second {
+        grid-template-columns: 1fr 280px;
+    }
+
+    &.no-sidebars {
+        display: block; // Fallback to a readable centered column for basic pages
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+    }
+}
+
+// ── Red vertical dividers between columns ──
+.cpg-sidebar--first {
+    border-right: 1.8px solid $cpg-red;
+    padding: $gap-lg $gap-lg $gap-lg 0;
+    min-height: 400px;
+}
+
+.cpg-content-main {
+    padding: $gap-lg $gap-xl;
+}
+
+.cpg-sidebar--second {
+    border-left: 1.8px solid $cpg-red;
+    padding: $gap-lg 0 $gap-lg $gap-lg;
+}
+
+.cpg-sidebar .block {
+    margin-bottom: $gap-xl;
+}
+
+// ── Responsive columns ──
+@media (max-width: 1200px) {
+    .cpg-columns.has-both-sidebars {
+        grid-template-columns: 1fr 300px;
+    }
+
+    .cpg-sidebar--first {
+        display: none; // Wait, maybe we want it visible below? Since we are doing responsive, better to just place it above content
+    }
+
+    .cpg-sidebar--second {
+        border-left: 1.8px solid $cpg-red;
+    }
+}
+
+@media (max-width: 768px) {
+    .cpg-columns {
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        min-width: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .cpg-sidebar--first, .cpg-sidebar--second, .cpg-content-main {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .cpg-sidebar--first {
+        display: block;
+        order: 1;
+        border-right: none;
+        border-top: 1.8px solid $cpg-red;
+        padding: $gap-lg 0;
+        min-height: auto;
+    }
+
+    .cpg-content-main {
+        order: -1;
+        padding: $gap-xl 0;
+    }
+
+    .cpg-sidebar--second {
+        display: block;
+        order: 2;
+        border-left: none;
+        border-top: 1.8px solid $cpg-red;
+        padding: $gap-lg 0;
+    }
+}

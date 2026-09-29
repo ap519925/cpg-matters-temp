@@ -1,0 +1,8 @@
+uuid: 84ac356d-d155-45dc-af07-749283087756
+langcode: en
+status: true
+dependencies: {  }
+id: footer-about
+label: 'About CPG Matters'
+description: 'Footer column: About links'
+locked: false

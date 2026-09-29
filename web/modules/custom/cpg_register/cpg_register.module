@@ -1,0 +1,93 @@
+<?php
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\RedirectCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_theme().
+ */
+function cpg_register_theme($existing, $type, $theme, $path) {
+  return [
+    'cpg_registration_complete' => [
+      'variables' => [
+        'email' => NULL,
+        'title' => NULL,
+        'subtitle' => NULL,
+      ],
+      'template' => 'cpg-registration-complete',
+    ],
+    'cpg_dictionary_page' => [
+      'variables' => [
+        'grouped_terms' => [],
+        'available_letters' => [],
+        'categories' => [],
+        'total_count' => 0,
+        'title' => NULL,
+        'subtitle' => NULL,
+      ],
+      'template' => 'cpg-dictionary-page',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_webform_submission_form_alter().
+ */
+function cpg_register_webform_submission_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'webform_submission_registration_') === 0) {
+    // Determine where finish_later is in the render array.
+    $finish_later_element = NULL;
+    if (isset($form['elements']['finish_later'])) {
+      $finish_later_element = &$form['elements']['finish_later'];
+    } elseif (isset($form['elements']['step_1']['finish_later'])) {
+      $finish_later_element = &$form['elements']['step_1']['finish_later'];
+    }
+
+    if ($finish_later_element) {
+      // Add custom submit handler for the Finish Later button.
+      $submit_handlers = isset($form['actions']['submit']['#submit']) ? $form['actions']['submit']['#submit'] : ['::submit'];
+      $submit_handlers[] = 'cpg_register_finish_later_submit';
+      $finish_later_element['#submit'] = $submit_handlers;
+      
+      // If we're triggering webformConfirmReload, it's because Ajax validation failed.
+      // We will provide a dummy callback to satisfy isCallableAjaxCallback
+      $finish_later_element['#ajax'] = [
+        'callback' => 'cpg_register_dummy_ajax_callback',
+        'event' => 'click',
+      ];
+    }
+  }
+}
+
+/**
+ * Dummy callback to satisfy webform's strict Ajax validation for custom buttons.
+ */
+function cpg_register_dummy_ajax_callback(array &$form, FormStateInterface $form_state) {
+  $response = new AjaxResponse();
+  $url = Url::fromRoute('cpg_register.registration_complete');
+  $response->addCommand(new RedirectCommand($url->toString()));
+  return $response;
+}
+
+/**
+ * Custom submit handler for the 'Finish Later' button.
+ */
+function cpg_register_finish_later_submit(array &$form, FormStateInterface $form_state) {
+  $triggering_element = $form_state->getTriggeringElement();
+  if (end($triggering_element['#parents']) === 'finish_later') {
+    /** @var \Drupal\webform\WebformSubmissionInterface $webform_submission */
+    $webform_submission = $form_state->getFormObject()->getEntity();
+    
+    // We want the Entity to be saved via normal form submit, then redirect.
+    // If it was already saved by ::submit, we can just alter the redirect.
+    $tempstore = \Drupal::service('tempstore.private')->get('cpg_register');
+    try {
+      $tempstore->set('step1_data', $webform_submission->getData());
+    } catch (\Exception $e) {}
+    
+    $url = Url::fromRoute('cpg_register.registration_complete');
+    $form_state->setRedirectUrl($url);
+  }
+}

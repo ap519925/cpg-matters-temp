@@ -1,0 +1,44 @@
+uuid: 56d5a8be-9a19-41b9-9cc4-4f79402c3fb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_media_text.field_p_body
+    - field.field.paragraph.cpg_media_text.field_p_image
+    - field.field.paragraph.cpg_media_text.field_p_title
+    - paragraphs.paragraphs_type.cpg_media_text
+  module:
+    - image
+    - text
+id: paragraph.cpg_media_text.default
+targetEntityType: paragraph
+bundle: cpg_media_text
+mode: default
+content:
+  field_p_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_p_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Paragraph template: Image (cpg_image)
+ * Fields: field_p_image
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-image',
+  ]
+%}
+{% block paragraph %}
+  <figure{{ attributes.addClass(classes) }}>
+    {{ content.field_p_image }}
+  </figure>
+{% endblock paragraph %}

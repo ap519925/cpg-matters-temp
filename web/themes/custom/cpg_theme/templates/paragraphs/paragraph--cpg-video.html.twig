@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Paragraph template: Video Embed (cpg_video)
+ * Fields: field_p_title, field_p_body (embed code or URL)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-video',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_p_title|render|striptags|trim %}
+      <h2 class="cpg-paragraph-video__title">{{ content.field_p_title }}</h2>
+    {% endif %}
+    <div class="cpg-paragraph-video__embed">
+      {{ content.field_p_body }}
+    </div>
+  </div>
+{% endblock paragraph %}

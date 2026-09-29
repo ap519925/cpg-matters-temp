@@ -1,0 +1,22 @@
+uuid: 96148132-3381-4a7c-bb80-84d179056409
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_column
+    - field.field.block_content.footer_column.body
+  module:
+    - text
+id: block_content.footer_column.default
+targetEntityType: block_content
+bundle: footer_column
+mode: default
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

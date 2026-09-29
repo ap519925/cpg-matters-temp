@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Paragraph template: Accordion / FAQ (cpg_accordion)
+ * Fields: field_p_title, field_p_items (nested cpg_accordion_item)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-accordion',
+  ]
+%}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }}>
+    {% if content.field_p_title|render|striptags|trim %}
+      <h2 class="cpg-paragraph-accordion__title">{{ content.field_p_title }}</h2>
+    {% endif %}
+    <div class="cpg-paragraph-accordion__list">
+      {{ content.field_p_items }}
+    </div>
+  </section>
+{% endblock paragraph %}

@@ -1,0 +1,10 @@
+uuid: 6188a305-61a6-4cd8-ac62-f1dc9efa23f7
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_stat_item
+label: 'Statistic Item'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Statistic Item'
+behavior_plugins: {  }

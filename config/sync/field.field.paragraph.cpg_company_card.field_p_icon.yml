@@ -1,0 +1,19 @@
+uuid: 44555085-4993-4ec6-83f7-257d4a66c508
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icon
+    - paragraphs.paragraphs_type.cpg_company_card
+id: paragraph.cpg_company_card.field_p_icon
+field_name: field_p_icon
+entity_type: paragraph
+bundle: cpg_company_card
+label: 'Industry Tag'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

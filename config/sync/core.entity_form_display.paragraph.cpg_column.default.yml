@@ -1,0 +1,29 @@
+uuid: 10266a33-badc-41d9-906a-13c82a4e0a4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_column.field_p_items
+    - paragraphs.paragraphs_type.cpg_column
+  module:
+    - paragraphs
+id: paragraph.cpg_column.default
+targetEntityType: paragraph
+bundle: cpg_column
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

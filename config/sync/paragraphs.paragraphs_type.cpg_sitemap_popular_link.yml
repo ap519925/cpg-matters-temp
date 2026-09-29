@@ -1,0 +1,10 @@
+uuid: 9dd1b51e-41a0-48f9-ac93-ca047648ded9
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_popular_link
+label: 'Sitemap Popular Link'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Popular Link'
+behavior_plugins: {  }

@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Template for footer_column block content type.
+ * Since body field hasn't been added yet, renders descriptive content 
+ * from the block label. Admin can replace via block editing once body field is added.
+ */
+#}
+{% set block_label = label|render|striptags|trim %}
+<div class="cpg-footer-col-block">
+  {% if block_label %}
+    <h4 class="cpg-footer-col-block__title">{{ block_label }}</h4>
+  {% endif %}
+
+  {# Render any available fields #}
+  {{ content }}
+
+</div>

@@ -1,0 +1,19 @@
+uuid: 85baf528-bde4-4103-9992-2eb6d334ced8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ad_banner
+    - field.storage.block_content.field_ad_size
+id: block_content.ad_banner.field_ad_size
+field_name: field_ad_size
+entity_type: block_content
+bundle: ad_banner
+label: 'Ad Size'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

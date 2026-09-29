@@ -1,0 +1,19 @@
+uuid: 8c8de47d-78b8-4d42-b0b3-a084cb94270a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_team_member
+id: paragraph.cpg_team_member.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_team_member
+label: Name
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

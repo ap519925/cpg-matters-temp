@@ -1,0 +1,73 @@
+uuid: 6a0080dc-cd5f-494b-ae2c-a27fb2d51db4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.directory_listing.field_contact_name
+    - field.field.node.directory_listing.field_cpg_paragraphs
+    - field.field.node.directory_listing.field_expertise
+    - field.field.node.directory_listing.field_website
+    - node.type.directory_listing
+  module:
+    - paragraphs
+    - path
+id: node.directory_listing.default
+targetEntityType: node
+bundle: directory_listing
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_cpg_paragraphs:
+    type: entity_reference_paragraphs
+    weight: 121
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_contact_name: true
+  field_expertise: true
+  field_website: true
+  promote: true
+  sticky: true

@@ -1,0 +1,297 @@
+uuid: ea48b89f-3676-443b-a0da-beee15c566b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_tags
+    - node.type.article
+  module:
+    - node
+    - text
+    - user
+id: search_results
+label: 'Search Results'
+module: views
+description: 'Article search results with filters.'
+tag: cpg
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Search Results'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+          type: string
+          settings:
+            link_to_entity: true
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          type: text_trimmed
+          settings:
+            trim_length: 200
+        field_tags:
+          id: field_tags
+          table: node__field_tags
+          field: field_tags
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+          element_type: ''
+          element_class: ''
+          element_label_colon: false
+          empty: ''
+          hide_empty: false
+          type: entity_reference_label
+          settings:
+            link: true
+          delta_limit: 0
+          delta_offset: 0
+          multi_type: separator
+          separator: ', '
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          plugin_id: field
+          label: ''
+          type: entity_reference_label
+          settings:
+            link: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: field
+          label: ''
+          type: timestamp
+          settings:
+            date_format: custom
+            custom_date_format: 'M j, Y'
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 20
+          total_pages: 0
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            offset: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          value:
+            article: article
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: string
+          operator: contains
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Keywords
+            identifier: keys
+            required: false
+            remember: false
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: uid
+          plugin_id: user_name
+          operator: in
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uid_op
+            label: Author
+            description: ''
+            use_operator: false
+            operator: uid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: author
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: offset
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Date Range'
+            description: ''
+            use_operator: false
+            operator: created_op
+            identifier: date
+            required: false
+            remember: false
+            multiple: false
+          is_grouped: true
+          group_info:
+            label: 'Date Range'
+            description: ''
+            identifier: date
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Past week'
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: '-1 week'
+                  type: offset
+              2:
+                title: 'Past month'
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: '-1 month'
+                  type: offset
+              3:
+                title: 'Past 6 months'
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: '-6 months'
+                  type: offset
+              4:
+                title: 'Past year'
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: '-1 year'
+                  type: offset
+      style:
+        type: default
+      row:
+        type: fields
+      use_more: false
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          plugin_id: result
+          content: 'Showing @start-@end of @total results'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_tags'
+  page_1:
+    id: page_1
+    display_title: 'Search Results Page'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: search-results
+      menu:
+        type: none
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_tags'

@@ -1,0 +1,76 @@
+uuid: d63fd049-58e6-4063-b777-0240497a7ff0
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - comment
+    - file
+    - filter
+    - help
+    - matomo
+    - media
+    - paragraphs_type_permissions
+    - search
+    - shortcut
+    - system
+    - taxonomy
+    - webform
+    - webform_node
+_core:
+  default_config_hash: hcfESiA8tr3D1muRk2KF7tbcun16ZJlG1R5SzKGed6g
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access help pages'
+  - 'access shortcuts'
+  - 'change own username'
+  - 'delete own files'
+  - 'edit own webform'
+  - 'opt-in or out of matomo tracking'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use advanced search'
+  - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view media'
+  - 'view own webform submission'
+  - 'view paragraph content cpg_accordion'
+  - 'view paragraph content cpg_accordion_item'
+  - 'view paragraph content cpg_card'
+  - 'view paragraph content cpg_card_grid'
+  - 'view paragraph content cpg_column'
+  - 'view paragraph content cpg_columns'
+  - 'view paragraph content cpg_company_card'
+  - 'view paragraph content cpg_cta'
+  - 'view paragraph content cpg_directory_grid'
+  - 'view paragraph content cpg_divider'
+  - 'view paragraph content cpg_feature_item'
+  - 'view paragraph content cpg_features'
+  - 'view paragraph content cpg_hero'
+  - 'view paragraph content cpg_image'
+  - 'view paragraph content cpg_media_text'
+  - 'view paragraph content cpg_quote'
+  - 'view paragraph content cpg_sitemap_grid'
+  - 'view paragraph content cpg_sitemap_hero'
+  - 'view paragraph content cpg_sitemap_link'
+  - 'view paragraph content cpg_sitemap_popular'
+  - 'view paragraph content cpg_sitemap_popular_link'
+  - 'view paragraph content cpg_sitemap_section'
+  - 'view paragraph content cpg_stat_item'
+  - 'view paragraph content cpg_stats_bar'
+  - 'view paragraph content cpg_team_grid'
+  - 'view paragraph content cpg_team_member'
+  - 'view paragraph content cpg_text'
+  - 'view paragraph content cpg_video'
+  - 'view the administration theme'
+  - 'view user email addresses'
+  - 'view vocabulary labels'
+  - 'view webform submissions own node'

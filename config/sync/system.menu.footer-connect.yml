@@ -1,0 +1,8 @@
+uuid: e7d64531-245c-4ffc-b798-44ec89407d36
+langcode: en
+status: true
+dependencies: {  }
+id: footer-connect
+label: Connect
+description: 'Footer column: Social & connect links'
+locked: false

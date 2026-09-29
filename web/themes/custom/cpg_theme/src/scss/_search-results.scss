@@ -1,0 +1,527 @@
+// ================================================================
+// SEARCH RESULTS (SERP) PAGE STYLES
+// Matches the serp-3.html mockup with filter drawer, view toggles,
+// tabular results, active filter badges, and pagination.
+// ================================================================
+@use 'variables' as *;
+
+// ── SERP Container ──
+.cpg-serp {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: $gap-xl clamp(2rem, 5vw, 5rem);
+}
+
+// ── Header (Title + Result Count) ──
+.cpg-serp__header {
+    margin-bottom: $gap-lg;
+    padding-bottom: $gap-lg;
+    border-bottom: 1px solid $cpg-border;
+}
+
+.cpg-serp__title {
+    font-family: $font-heading;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: $cpg-text;
+    margin: 0 0 $gap-xs;
+    line-height: 1.2;
+}
+
+.cpg-serp__result-count {
+    font-size: 0.9rem;
+    color: $cpg-text-secondary;
+
+    strong,
+    b {
+        color: $cpg-red;
+        font-weight: 700;
+    }
+}
+
+// ── Active Filter Badges ──
+.cpg-serp__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-sm;
+    margin-bottom: $gap-lg;
+}
+
+.cpg-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: $cpg-red;
+    color: $cpg-text-light;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background $transition;
+
+    &:hover {
+        background: $cpg-red-dark;
+        color: $cpg-text-light;
+    }
+
+    .cpg-filter-badge__remove {
+        font-size: 1rem;
+        line-height: 1;
+        cursor: pointer;
+        opacity: 0.85;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// ── Filters Drawer ──
+.cpg-serp__filters {
+    background: #F9FAFB;
+    border: 1px solid $cpg-border;
+    border-radius: $radius;
+    margin-bottom: $gap-xl;
+    overflow: hidden;
+}
+
+.cpg-serp__filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $gap-md $gap-lg;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid $cpg-border;
+}
+
+.cpg-serp__filters-title {
+    font-family: $font-heading;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin: 0;
+}
+
+.cpg-serp__filters-clear {
+    color: $cpg-red;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    &:hover {
+        text-decoration: underline;
+        color: $cpg-red-dark;
+    }
+}
+
+.cpg-serp__filters-body {
+    padding: $gap-lg;
+
+    // Style the exposed form elements in a 4-column grid
+    .views-exposed-form {
+        margin-bottom: 0;
+    }
+
+    .form--inline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: $gap-lg;
+        align-items: start;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 500px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .form-item {
+        margin: 0;
+
+        label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: $cpg-text;
+            margin-bottom: $gap-sm;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            font-size: 0.9rem;
+            border: 1px solid $cpg-border;
+            border-radius: $radius;
+            font-family: $font-body;
+            background: $cpg-bg-white;
+
+            &:focus {
+                border-color: $cpg-blue;
+                box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+                outline: none;
+            }
+        }
+
+        select {
+            appearance: auto;
+            cursor: pointer;
+        }
+    }
+
+    // Filter action buttons
+    .form-actions {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: flex-end;
+        gap: $gap-md;
+        padding-top: $gap-md;
+        border-top: 1px solid $cpg-border;
+        margin-top: $gap-md;
+
+        .form-submit,
+        button[type="submit"] {
+            background: $cpg-red;
+            color: $cpg-text-light;
+            border: none;
+            border-radius: $radius;
+            padding: 0.55rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: $font-body;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background $transition;
+
+            &:hover {
+                background: $cpg-red-dark;
+            }
+        }
+
+        // Reset button
+        .button--danger,
+        input[value="Reset"],
+        a.form-reset {
+            background: transparent;
+            color: $cpg-text;
+            border: 1px solid $cpg-border;
+            border-radius: $radius;
+            padding: 0.55rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transition: all $transition;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.4;
+
+            &:hover {
+                background: #F3F4F6;
+                color: $cpg-text;
+            }
+        }
+    }
+}
+
+// ── Toolbar (View Toggle + Sort) ──
+.cpg-serp__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $gap-lg;
+    padding-bottom: $gap-md;
+    border-bottom: 1px solid $cpg-border;
+}
+
+.cpg-serp__view-toggles {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.cpg-serp__view-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $cpg-text-secondary;
+    margin-right: $gap-sm;
+}
+
+.cpg-serp__view-btn {
+    background: $cpg-bg-white;
+    border: 1px solid $cpg-border;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $cpg-text;
+    cursor: pointer;
+    font-family: $font-body;
+    transition: all $transition;
+    line-height: 1.4;
+
+    &:first-of-type {
+        border-radius: $radius 0 0 $radius;
+    }
+
+    &:last-of-type {
+        border-radius: 0 $radius $radius 0;
+    }
+
+    &:not(:first-of-type) {
+        border-left: none;
+    }
+
+    &:hover {
+        background: #F3F4F6;
+    }
+
+    &--active {
+        background: $cpg-red;
+        color: $cpg-text-light;
+        border-color: $cpg-red;
+
+        &:hover {
+            background: $cpg-red-dark;
+        }
+    }
+}
+
+// ── Sort dropdown ──
+.cpg-serp__sort {
+    display: flex;
+    align-items: center;
+    gap: $gap-sm;
+
+    label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: $cpg-text-secondary;
+        white-space: nowrap;
+    }
+
+    select {
+        padding: 0.4rem 0.75rem;
+        border: 1px solid $cpg-border;
+        border-radius: $radius;
+        font-size: 0.85rem;
+        font-family: $font-body;
+        cursor: pointer;
+    }
+}
+
+// ── Table Header ──
+.cpg-serp__table-header {
+    display: grid;
+    grid-template-columns: 1fr 140px 140px 120px;
+    gap: $gap-md;
+    padding: $gap-md $gap-lg;
+    background: #F9FAFB;
+    border-bottom: 2px solid $cpg-border;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $cpg-text-secondary;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.cpg-sort-icon {
+    font-size: 0.65rem;
+    opacity: 0.5;
+    margin-left: 0.2rem;
+}
+
+// ── Result Rows ──
+.cpg-serp__row {
+    border-bottom: 1px solid $cpg-border;
+    transition: background $transition;
+
+    &:hover {
+        background: #FAFBFC;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.cpg-serp__row-inner {
+    display: grid;
+    grid-template-columns: 1fr 140px 140px 120px;
+    gap: $gap-md;
+    padding: $gap-lg;
+    align-items: start;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: $gap-sm;
+    }
+}
+
+// ── Cells ──
+.cpg-serp__cell--title {
+    .cpg-serp__article-title {
+        font-family: $font-heading;
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: $gap-xs;
+        line-height: 1.35;
+
+        a {
+            color: $cpg-blue;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color $transition, color $transition;
+
+            &:hover {
+                text-decoration-color: $cpg-blue;
+                color: #1E50C9;
+            }
+        }
+    }
+
+    .cpg-serp__article-excerpt {
+        font-size: 0.88rem;
+        color: $cpg-text-secondary;
+        line-height: 1.55;
+        margin-top: $gap-xs;
+    }
+}
+
+.cpg-serp__cell--category {
+    @media (max-width: 768px) {
+        order: -1;
+    }
+}
+
+.cpg-serp__category-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    line-height: 1.4;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+// Category tag color variants — color-coded taxonomy labels
+// These map to taxonomy terms configured in Drupal
+.cpg-serp__category-tag {
+    // Default
+    background: #E5E7EB;
+    color: $cpg-text;
+
+    // Technology
+    &[data-category="technology"],
+    &:has(a[href*="technology"]) {
+        background: #DBEAFE;
+        color: #1E40AF;
+    }
+
+    // Innovation
+    &[data-category="innovation"],
+    &:has(a[href*="innovation"]) {
+        background: #FCE7F3;
+        color: #9D174D;
+    }
+
+    // Sustainability
+    &[data-category="sustainability"],
+    &:has(a[href*="sustainability"]) {
+        background: #D1FAE5;
+        color: #065F46;
+    }
+
+    // E-Commerce
+    &[data-category="e-commerce"],
+    &:has(a[href*="e-commerce"]) {
+        background: #FEF3C7;
+        color: #92400E;
+    }
+}
+
+.cpg-serp__cell--author {
+    font-size: 0.88rem;
+    color: $cpg-text;
+    font-weight: 500;
+}
+
+.cpg-serp__cell--date {
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    white-space: nowrap;
+}
+
+// ── Mobile labels for responsive table ──
+@media (max-width: 768px) {
+    .cpg-serp__cell--author::before {
+        content: "Author: ";
+        font-weight: 700;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: $cpg-text-secondary;
+        margin-right: 0.3rem;
+    }
+
+    .cpg-serp__cell--date::before {
+        content: "Date: ";
+        font-weight: 700;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: $cpg-text-secondary;
+        margin-right: 0.3rem;
+    }
+}
+
+// ── Empty State ──
+.cpg-serp__empty {
+    text-align: center;
+    padding: $gap-2xl $gap-lg;
+    color: $cpg-text-secondary;
+    font-size: 1.1rem;
+
+    h3 {
+        font-family: $font-heading;
+        color: $cpg-text;
+        margin-bottom: $gap-md;
+    }
+}
+
+// ── SERP-specific pager styling ──
+.cpg-serp__pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: $gap-xl;
+    padding-top: $gap-xl;
+    border-top: 1px solid $cpg-border;
+
+    // Page count text (e.g., "Page 1 of 25")
+    .cpg-serp__page-info {
+        font-size: 0.85rem;
+        color: $cpg-text-secondary;
+        margin-left: $gap-md;
+    }
+}

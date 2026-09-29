@@ -1,0 +1,437 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for cpg_setup module.
+ */
+
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\block_content\Entity\BlockContentType;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\block\Entity\Block;
+use Drupal\node\Entity\NodeType;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_install().
+ */
+function cpg_setup_install() {
+  // --- 1. Create Article Categories Vocabulary ---
+  _cpg_setup_create_vocabulary();
+
+  // --- 2. Create Block Content Types ---
+  _cpg_setup_create_block_types();
+
+  // --- 3. Create Sample Block Content ---
+  _cpg_setup_create_sample_blocks();
+
+  // --- 4. Place Blocks in Regions ---
+  _cpg_setup_place_blocks();
+
+  // --- 5. Create Sample Article Content ---
+  _cpg_setup_create_sample_articles();
+
+  \Drupal::messenger()->addStatus(t('CPG Setup module installed. Sample blocks and content created.'));
+}
+
+/**
+ * Create the article_category vocabulary and terms.
+ */
+function _cpg_setup_create_vocabulary() {
+  if (!Vocabulary::load('article_category')) {
+    Vocabulary::create([
+      'vid' => 'article_category',
+      'name' => 'Article Category',
+      'description' => 'Categories for CPG articles.',
+    ])->save();
+  }
+
+  $terms = [
+    'Industry Trends',
+    'Sustainability',
+    'E-Commerce',
+    'Market Analysis',
+    'Innovation',
+    'M&A',
+    'Analytics',
+    'Strategy',
+    'Finance',
+    'Design',
+  ];
+
+  foreach ($terms as $term_name) {
+    Term::create([
+      'vid' => 'article_category',
+      'name' => $term_name,
+    ])->save();
+  }
+}
+
+/**
+ * Create custom block content types with fields.
+ */
+function _cpg_setup_create_block_types() {
+  // --- Newsletter Block Type ---
+  if (!BlockContentType::load('newsletter')) {
+    BlockContentType::create([
+      'id' => 'newsletter',
+      'label' => 'Newsletter Signup',
+      'description' => 'A newsletter subscription block for sidebar placement.',
+    ])->save();
+
+    // Add subtitle field.
+    _cpg_setup_add_field('block_content', 'newsletter', 'field_subtitle', 'Subtitle', 'string');
+  }
+
+  // --- Ad Banner Block Type ---
+  if (!BlockContentType::load('ad_banner')) {
+    BlockContentType::create([
+      'id' => 'ad_banner',
+      'label' => 'Ad Banner',
+      'description' => 'A configurable ad banner block (e.g. 728x90, 300x250, 160x600).',
+    ])->save();
+
+    _cpg_setup_add_field('block_content', 'ad_banner', 'field_ad_size', 'Ad Size', 'string');
+    _cpg_setup_add_field('block_content', 'ad_banner', 'field_ad_link', 'Ad Link', 'link');
+    _cpg_setup_add_field('block_content', 'ad_banner', 'field_ad_image', 'Ad Image', 'image');
+  }
+
+  // --- Footer Column Block Type ---
+  if (!BlockContentType::load('footer_column')) {
+    BlockContentType::create([
+      'id' => 'footer_column',
+      'label' => 'Footer Column',
+      'description' => 'A footer column block with a title and body for links.',
+    ])->save();
+  }
+}
+
+/**
+ * Helper to add a field to an entity bundle.
+ */
+function _cpg_setup_add_field($entity_type, $bundle, $field_name, $label, $type) {
+  $field_type_map = [
+    'string' => 'string',
+    'link' => 'link',
+    'image' => 'image',
+    'text_long' => 'text_long',
+  ];
+
+  if (!FieldStorageConfig::loadByName($entity_type, $field_name)) {
+    FieldStorageConfig::create([
+      'field_name' => $field_name,
+      'entity_type' => $entity_type,
+      'type' => $field_type_map[$type] ?? $type,
+      'cardinality' => 1,
+    ])->save();
+  }
+
+  if (!FieldConfig::loadByName($entity_type, $bundle, $field_name)) {
+    FieldConfig::create([
+      'field_name' => $field_name,
+      'entity_type' => $entity_type,
+      'bundle' => $bundle,
+      'label' => $label,
+    ])->save();
+  }
+}
+
+/**
+ * Create sample block content instances.
+ */
+function _cpg_setup_create_sample_blocks() {
+  // --- Newsletter Block ---
+  BlockContent::create([
+    'type' => 'newsletter',
+    'info' => 'Stay Informed Newsletter',
+    'body' => [
+      'value' => '<p>Get the latest CPG news delivered to your inbox.</p>',
+      'format' => 'basic_html',
+    ],
+    'field_subtitle' => 'Stay Informed',
+  ])->save();
+
+  // --- Ad Banners ---
+  BlockContent::create([
+    'type' => 'ad_banner',
+    'info' => 'Top Banner Ad (728x90)',
+    'field_ad_size' => '728x90',
+  ])->save();
+
+  BlockContent::create([
+    'type' => 'ad_banner',
+    'info' => 'Sidebar Skyscraper Ad (160x600)',
+    'field_ad_size' => '160x600',
+  ])->save();
+
+  BlockContent::create([
+    'type' => 'ad_banner',
+    'info' => 'Sidebar Rectangle Ad (300x250)',
+    'field_ad_size' => '300x250',
+  ])->save();
+
+  // --- Footer Columns ---
+  BlockContent::create([
+    'type' => 'footer_column',
+    'info' => 'Footer - About Us',
+    'body' => [
+      'value' => '<h4>About Us</h4><p>CPG Matters offers the latest news, research, and analysis for consumer packaged goods professionals.</p>',
+      'format' => 'basic_html',
+    ],
+  ])->save();
+
+  BlockContent::create([
+    'type' => 'footer_column',
+    'info' => 'Footer - Resources',
+    'body' => [
+      'value' => '<h4>Resources</h4><ul><li><a href="#">Whitepapers</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Webinars</a></li></ul>',
+      'format' => 'basic_html',
+    ],
+  ])->save();
+
+  BlockContent::create([
+    'type' => 'footer_column',
+    'info' => 'Footer - Topics',
+    'body' => [
+      'value' => '<h4>Topics</h4><ul><li><a href="#">Supply Chain</a></li><li><a href="#">Marketing</a></li><li><a href="#">E-Commerce</a></li></ul>',
+      'format' => 'basic_html',
+    ],
+  ])->save();
+
+  BlockContent::create([
+    'type' => 'footer_column',
+    'info' => 'Footer - Connect',
+    'body' => [
+      'value' => '<h4>Connect</h4><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Twitter</a></li><li><a href="#">Contact Us</a></li></ul>',
+      'format' => 'basic_html',
+    ],
+  ])->save();
+
+  // --- Copyright Block ---
+  BlockContent::create([
+    'type' => 'basic',
+    'info' => 'Footer Copyright',
+    'body' => [
+      'value' => '<p>&copy; 2026 CPG Matters. All rights reserved.</p>',
+      'format' => 'basic_html',
+    ],
+  ])->save();
+}
+
+/**
+ * Place blocks into the cpg_theme regions.
+ */
+function _cpg_setup_place_blocks() {
+  $theme = 'cpg_theme';
+
+  // Site branding in Header.
+  Block::create([
+    'id' => 'cpg_site_branding',
+    'plugin' => 'system_branding_block',
+    'region' => 'header',
+    'theme' => $theme,
+    'weight' => 0,
+    'settings' => [
+      'id' => 'system_branding_block',
+      'label' => 'Site branding',
+      'label_display' => '0',
+      'provider' => 'system',
+      'use_site_logo' => TRUE,
+      'use_site_name' => TRUE,
+      'use_site_slogan' => TRUE,
+    ],
+  ])->save();
+
+  // Main navigation in Primary Menu.
+  Block::create([
+    'id' => 'cpg_main_navigation',
+    'plugin' => 'system_menu_block:main',
+    'region' => 'primary_menu',
+    'theme' => $theme,
+    'weight' => 0,
+    'settings' => [
+      'id' => 'system_menu_block:main',
+      'label' => 'Main navigation',
+      'label_display' => '0',
+      'provider' => 'system',
+      'level' => 1,
+      'depth' => 1,
+      'expand_all_items' => FALSE,
+    ],
+  ])->save();
+
+  // Search form in Header Search.
+  if (\Drupal::moduleHandler()->moduleExists('search')) {
+    Block::create([
+      'id' => 'cpg_search_form',
+      'plugin' => 'search_form_block',
+      'region' => 'header_search',
+      'theme' => $theme,
+      'weight' => 0,
+      'settings' => [
+        'id' => 'search_form_block',
+        'label' => 'Search',
+        'label_display' => '0',
+        'provider' => 'search',
+      ],
+    ])->save();
+  }
+
+  // Place custom block content instances.
+  _cpg_setup_place_custom_block('top_banner_ad', 'Top Banner Ad (728x90)', 'top_banner', $theme, 0);
+  _cpg_setup_place_custom_block('sidebar_skyscraper_ad', 'Sidebar Skyscraper Ad (160x600)', 'sidebar_first', $theme, 0);
+  _cpg_setup_place_custom_block('newsletter_signup', 'Stay Informed Newsletter', 'sidebar_second', $theme, 0);
+  _cpg_setup_place_custom_block('sidebar_rectangle_ad', 'Sidebar Rectangle Ad (300x250)', 'sidebar_second', $theme, 1);
+  _cpg_setup_place_custom_block('footer_about', 'Footer - About Us', 'footer_first', $theme, 0);
+  _cpg_setup_place_custom_block('footer_resources', 'Footer - Resources', 'footer_second', $theme, 0);
+  _cpg_setup_place_custom_block('footer_topics', 'Footer - Topics', 'footer_third', $theme, 0);
+  _cpg_setup_place_custom_block('footer_connect', 'Footer - Connect', 'footer_fourth', $theme, 0);
+  _cpg_setup_place_custom_block('footer_copyright', 'Footer Copyright', 'footer_bottom', $theme, 0);
+
+  // Place the default content block (Views or default node listing) in content region.
+  Block::create([
+    'id' => 'cpg_page_title',
+    'plugin' => 'page_title_block',
+    'region' => 'content',
+    'theme' => $theme,
+    'weight' => -10,
+    'settings' => [
+      'id' => 'page_title_block',
+      'label' => 'Page title',
+      'label_display' => '0',
+      'provider' => 'core',
+    ],
+  ])->save();
+
+  Block::create([
+    'id' => 'cpg_system_main',
+    'plugin' => 'system_main_block',
+    'region' => 'content',
+    'theme' => $theme,
+    'weight' => 0,
+    'settings' => [
+      'id' => 'system_main_block',
+      'label' => 'Main page content',
+      'label_display' => '0',
+      'provider' => 'system',
+    ],
+  ])->save();
+
+  Block::create([
+    'id' => 'cpg_messages',
+    'plugin' => 'system_messages_block',
+    'region' => 'content',
+    'theme' => $theme,
+    'weight' => -20,
+    'settings' => [
+      'id' => 'system_messages_block',
+      'label' => 'Status messages',
+      'label_display' => '0',
+      'provider' => 'system',
+    ],
+  ])->save();
+}
+
+/**
+ * Helper to find a block_content entity by info and place it.
+ */
+function _cpg_setup_place_custom_block($block_id, $info, $region, $theme, $weight) {
+  $blocks = \Drupal::entityTypeManager()
+    ->getStorage('block_content')
+    ->loadByProperties(['info' => $info]);
+
+  if ($block = reset($blocks)) {
+    $uuid = $block->uuid();
+    Block::create([
+      'id' => 'cpg_' . $block_id,
+      'plugin' => 'block_content:' . $uuid,
+      'region' => $region,
+      'theme' => $theme,
+      'weight' => $weight,
+      'settings' => [
+        'id' => 'block_content:' . $uuid,
+        'label' => $info,
+        'label_display' => '0',
+        'provider' => 'block_content',
+        'status' => TRUE,
+        'view_mode' => 'full',
+      ],
+    ])->save();
+  }
+}
+
+/**
+ * Create sample article nodes to populate the front page.
+ */
+function _cpg_setup_create_sample_articles() {
+  $articles = [
+    [
+      'title' => 'The Future of CPG: How AI is Revolutionizing Supply Chain Management',
+      'body' => 'Leading consumer packaged goods companies are implementing artificial intelligence and machine learning to optimize inventory management, predict consumer demand, and streamline distribution networks. Industry experts predict this technology will reshape the sector over the next decade.',
+      'category' => 'Industry Trends',
+      'sticky' => TRUE,
+    ],
+    [
+      'title' => 'Major Brands Commit to Zero-Waste Packaging by 2030',
+      'body' => 'A coalition of leading CPG companies announces ambitious sustainability goals aimed at eliminating plastic waste and transitioning to fully recyclable materials.',
+      'category' => 'Sustainability',
+    ],
+    [
+      'title' => 'Direct-to-Consumer Sales Surge 45% in Q4',
+      'body' => 'New data reveals significant shift in consumer purchasing behavior as brands invest heavily in digital commerce infrastructure and personalized shopping experiences.',
+      'category' => 'E-Commerce',
+    ],
+    [
+      'title' => 'Private Label Products Gain Market Share',
+      'body' => 'Retailers report strong growth in store-brand offerings as consumers seek value without compromising quality, challenging traditional national brands.',
+      'category' => 'Market Analysis',
+    ],
+    [
+      'title' => 'Smart Packaging Technology Tracks Product Freshness',
+      'body' => 'New sensor technology embedded in packaging provides real-time data on product quality, reducing waste and improving supply chain efficiency.',
+      'category' => 'Innovation',
+    ],
+    [
+      'title' => 'Consolidation Continues as Major Acquisition Announced',
+      'body' => 'Industry consolidation accelerates with another significant merger, as companies seek scale and synergies in an increasingly competitive market.',
+      'category' => 'M&A',
+    ],
+  ];
+
+  foreach ($articles as $article_data) {
+    // Find category term.
+    $terms = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadByProperties([
+        'vid' => 'article_category',
+        'name' => $article_data['category'],
+      ]);
+    $term = reset($terms);
+
+    $node_data = [
+      'type' => 'article',
+      'title' => $article_data['title'],
+      'body' => [
+        'value' => '<p>' . $article_data['body'] . '</p>',
+        'format' => 'basic_html',
+      ],
+      'status' => 1,
+      'promote' => 1,
+      'uid' => 1,
+    ];
+
+    if (!empty($article_data['sticky'])) {
+      $node_data['sticky'] = 1;
+    }
+
+    // Attach tags if the article content type uses it.
+    if ($term) {
+      $node_data['field_tags'] = [['target_id' => $term->id()]];
+    }
+
+    Node::create($node_data)->save();
+  }
+}

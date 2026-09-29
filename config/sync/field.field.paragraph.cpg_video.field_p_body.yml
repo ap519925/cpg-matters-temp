@@ -1,0 +1,22 @@
+uuid: 30db03c4-aee0-476b-a93a-04ef1a333d91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_video
+  module:
+    - text
+id: paragraph.cpg_video.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_video
+label: 'Video Embed Code or URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

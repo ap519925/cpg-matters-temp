@@ -1,0 +1,29 @@
+name: 'CPG Matters Theme'
+type: theme
+description: 'A modern, future-proof custom theme for CPG Matters using Single Directory Components (SDC) and Vite.'
+core_version_requirement: ^10 || ^11
+base theme: stark
+version: '1.0.0'
+package: 'Custom'
+
+regions:
+  header: 'Header'
+  header_search: 'Header Search'
+  primary_menu: 'Primary Menu'
+  breadcrumb: 'Breadcrumb'
+  hero: 'Hero Section'
+  top_banner: 'Top Banner Ad (728x90)'
+  sidebar_first: 'Sidebar First (Skyscraper 160x600)'
+  content: 'Main Content'
+  sidebar_second: 'Sidebar Second (Rectangle 300x250, Newsletter)'
+  header_actions: 'Header Actions'
+  mobile_topics: 'Mobile Flyout Topics'
+  mobile_nav: 'Mobile Drawer Navigation'
+  footer_first: 'Footer About'
+  footer_second: 'Footer Resources'
+  footer_third: 'Footer Topics'
+  footer_fourth: 'Footer Connect'
+  footer_bottom: 'Footer Bottom (Legal)'
+
+libraries:
+  - cpg_theme/global

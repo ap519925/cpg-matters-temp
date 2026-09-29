@@ -1,0 +1,5 @@
+# cpg_register.step1:
+#   title: 'Subscribe'
+#   route_name: cpg_register.step1
+#   menu_name: main
+#   weight: 50

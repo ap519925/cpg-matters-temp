@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Paragraph template: Text Block (cpg_text)
+ * Fields: field_p_body
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-text',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_p_body }}
+  </div>
+{% endblock paragraph %}

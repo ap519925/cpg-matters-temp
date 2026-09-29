@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Dictionary Page Styles
+   ========================================================================== */
+
+/* Hide default page title since we have a custom hero */
+.path-dictionary h1.page-title,
+.path-dictionary .block-page-title-block {
+  display: none !important;
+}
+
+.dictionary-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.dict-hero {
+  background-color: #f8f9fa;
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dict-hero__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.dict-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.dict-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* Filters & Search */
+.dict-filters {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.dict-search-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.dict-search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.dict-search-input {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.dict-search-input:focus {
+  outline: none;
+  border-color: #c42032;
+}
+
+/* Alpha Navigation */
+.dict-alpha-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.dict-alpha-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.dict-alpha-link.has-entries {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.dict-alpha-link.has-entries:hover {
+  background-color: #c42032;
+  color: white;
+}
+
+.dict-alpha-link.no-entries {
+  color: #ccc;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Category Filters */
+.dict-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.dict-filter-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #666;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.dict-cat-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dict-cat-btn:hover {
+  border-color: #999;
+}
+
+.dict-cat-btn.active {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.dict-count {
+  font-family: 'Inter', sans-serif;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+/* Letter Groups and Entries */
+.dict-letter-group {
+  margin-bottom: 50px;
+}
+
+.dict-letter-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 64px;
+  color: #c42032;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.dict-entry-card {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dict-entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Category specific border colors */
+.dict-entry-card[data-category="marketing"] { border-left-color: #4a90e2; }
+.dict-entry-card[data-category="supply-chain"] { border-left-color: #f5a623; }
+.dict-entry-card[data-category="retail"] { border-left-color: #7ed321; }
+.dict-entry-card[data-category="finance"] { border-left-color: #bd10e0; }
+.dict-entry-card[data-category="e-commerce"] { border-left-color: #50e3c2; }
+.dict-entry-card[data-category="manufacturing"] { border-left-color: #9013fe; }
+
+.dict-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.dict-entry-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.dict-entry-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 15px 0;
+  font-style: italic;
+}
+
+.dict-category-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* Category specific badge colors */
+.badge--marketing { background-color: rgba(74, 144, 226, 0.1); color: #4a90e2; }
+.badge--supply-chain { background-color: rgba(245, 166, 35, 0.1); color: #e69311; }
+.badge--retail { background-color: rgba(126, 211, 33, 0.1); color: #64a71a; }
+.badge--finance { background-color: rgba(189, 16, 224, 0.1); color: #bd10e0; }
+.badge--e-commerce { background-color: rgba(80, 227, 194, 0.1); color: #35a58c; }
+.badge--manufacturing { background-color: rgba(144, 19, 254, 0.1); color: #9013fe; }
+
+.dict-entry-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.dict-entry-body p {
+  margin-top: 0;
+}
+
+.dict-example-box {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.dict-example-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.dict-example-text {
+  font-family: 'Outfit', sans-serif;
+  font-style: italic;
+  color: #555;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.dict-entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+.dict-also-known {
+  color: #666;
+}
+
+.dict-related-link {
+  color: #c42032;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.dict-related-link:hover {
+  text-decoration: underline;
+  color: #a01a29;
+}
+
+@media (max-width: 768px) {
+  .dict-hero { padding: 40px 20px; }
+  .dict-hero__title { font-size: 36px; }
+  .dict-entry-header { flex-direction: column; }
+  .dict-category-badge { margin-top: 10px; }
+  .dict-filters { padding: 20px; }
+  .dict-entry-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

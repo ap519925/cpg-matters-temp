@@ -1,0 +1,22 @@
+uuid: 0c68150a-82ed-4ce4-9538-16c07df91003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_company_card
+  module:
+    - text
+id: paragraph.cpg_company_card.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_company_card
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Paragraph template: Team Member (cpg_team_member)
+ * Fields: field_p_title (name), field_p_icon (role), field_p_image, field_p_body (bio)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-team-member',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_p_image|render|trim %}
+      <div class="cpg-paragraph-team-member__photo">
+        {{ content.field_p_image }}
+      </div>
+    {% endif %}
+    <div class="cpg-paragraph-team-member__info">
+      {% if content.field_p_title|render|striptags|trim %}
+        <h3 class="cpg-paragraph-team-member__name">{{ content.field_p_title }}</h3>
+      {% endif %}
+      {% if content.field_p_icon|render|striptags|trim %}
+        <span class="cpg-paragraph-team-member__role">{{ content.field_p_icon }}</span>
+      {% endif %}
+      {% if content.field_p_body|render|trim %}
+        <div class="cpg-paragraph-team-member__bio">{{ content.field_p_body }}</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock paragraph %}

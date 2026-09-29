@@ -1,0 +1,162 @@
+// ================================================================
+// FOOTER — dark background, 4-column grid matching CPG Matters mockup
+// ================================================================
+@use 'variables' as *;
+
+// ── Footer wrapper ──
+.cpg-layout__footer {
+    background: $cpg-bg-footer;
+    color: $cpg-text-light;
+    padding: 3.5rem 0 0;
+    margin-top: 4rem;
+}
+
+// ── Four-column grid ──
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+// ── Individual footer column ──
+.footer-col {
+    // Column heading (block title)
+    .block {
+        h2,
+        h4 {
+            color: $cpg-text-light;
+            font-family: $font-heading;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 1.25rem;
+            letter-spacing: 0.01em;
+        }
+    }
+
+    // Menu list styles
+    ul.menu,
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 0.6rem;
+    }
+
+    a {
+        color: #9CA3AF;
+        font-family: $font-body;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        text-decoration: none;
+        transition: color $transition;
+        display: inline-block;
+
+        &:hover {
+            color: $cpg-text-light;
+        }
+    }
+
+    p {
+        color: #9CA3AF;
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+}
+
+// ── Footer column block (for custom block_content) ──
+.cpg-footer-col-block {
+    &__title {
+        color: $cpg-text-light;
+        font-family: $font-heading;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 1.25rem;
+        letter-spacing: 0.01em;
+    }
+
+    &__content,
+    p {
+        color: #9CA3AF;
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 0.6rem;
+    }
+
+    a {
+        color: #9CA3AF;
+        font-size: 0.9rem;
+        line-height: 1.8;
+        text-decoration: none;
+        transition: color $transition;
+
+        &:hover {
+            color: $cpg-text-light;
+        }
+    }
+}
+
+// ── Footer bottom bar ──
+.footer-bottom {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6B7280;
+
+    .cpg-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    p {
+        margin: 0;
+        color: #6B7280;
+        font-size: 0.85rem;
+    }
+
+    a {
+        color: #9CA3AF;
+        text-decoration: none;
+        transition: color $transition;
+
+        &:hover {
+            color: $cpg-text-light;
+        }
+    }
+}
+
+// ── Responsive footer ──
+@media (max-width: 900px) {
+    .footer-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cpg-layout__footer {
+        padding: 2rem 0 0;
+    }
+}

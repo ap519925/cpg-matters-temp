@@ -1,0 +1,26 @@
+uuid: 16368315-e7b2-4d0d-821c-3358a439406f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_accordion
+    - paragraphs.paragraphs_type.cpg_accordion_item
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_accordion.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_accordion
+label: 'FAQ Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_accordion_item: cpg_accordion_item
+field_type: entity_reference_revisions

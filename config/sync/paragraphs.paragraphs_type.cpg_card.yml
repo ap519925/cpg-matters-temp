@@ -1,0 +1,10 @@
+uuid: be73d080-4adf-41a6-bbc6-8e452e6fc0d9
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_card
+label: Card
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Card'
+behavior_plugins: {  }

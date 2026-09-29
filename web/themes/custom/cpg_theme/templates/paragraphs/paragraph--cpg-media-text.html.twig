@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Paragraph template: Media & Text (cpg_media_text)
+ * Fields: field_p_title, field_p_body, field_p_image
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-media-text',
+  ]
+%}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }}>
+    <div class="cpg-paragraph-media-text__media">
+      {{ content.field_p_image }}
+    </div>
+    <div class="cpg-paragraph-media-text__text">
+      {% if content.field_p_title|render|striptags|trim %}
+        <h2 class="cpg-paragraph-media-text__title">{{ content.field_p_title }}</h2>
+      {% endif %}
+      {% if content.field_p_body|render|trim %}
+        <div class="cpg-paragraph-media-text__body">{{ content.field_p_body }}</div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock paragraph %}

@@ -1,0 +1,10 @@
+uuid: d3d23c5b-a1dc-4f58-8387-ddb1a7fbba39
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_features
+label: 'Features/Grid Section'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Features/Grid Section'
+behavior_plugins: {  }

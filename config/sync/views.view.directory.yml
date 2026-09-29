@@ -1,0 +1,200 @@
+uuid: 229f2b75-5554-49f4-908c-dcaf4d111580
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_name
+    - field.storage.node.field_expertise
+    - field.storage.node.field_website
+    - node.type.directory_listing
+    - system.menu.main
+  module:
+    - link
+    - node
+    - user
+id: directory
+label: 'CPG Industry Directory'
+module: views
+description: 'Directory listing of CPG companies and brands.'
+tag: cpg
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'CPG Industry Directory'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          type: string
+          settings:
+            link_to_entity: false
+        field_website:
+          id: field_website
+          table: node__field_website
+          field: field_website
+          plugin_id: field
+          label: ''
+          type: link
+          settings:
+            trim_length: 80
+            url_only: true
+            url_plain: false
+            rel: 'noopener noreferrer'
+            target: _blank
+        field_contact_name:
+          id: field_contact_name
+          table: node__field_contact_name
+          field: field_contact_name
+          plugin_id: field
+          label: ''
+          type: string
+        field_expertise:
+          id: field_expertise
+          table: node__field_expertise
+          field: field_expertise
+          plugin_id: field
+          label: ''
+          type: entity_reference_label
+          settings:
+            link: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 12
+          total_pages: 0
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: standard
+          order: ASC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          value:
+            directory_listing: directory_listing
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Search Directory'
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: search
+            required: false
+            remember: false
+            multiple: false
+          is_grouped: false
+      style:
+        type: default
+      row:
+        type: fields
+      use_more: false
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          content: '<p>Connect with leading brands, agencies, and data providers in the consumer packaged goods industry. Browse our comprehensive directory to find partners, suppliers, and service providers.</p>'
+      footer:
+        result:
+          id: result
+          table: views
+          field: result
+          plugin_id: result
+          content: 'Showing <strong>@start-@end</strong> of <strong>@total</strong> listings'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_contact_name'
+        - 'config:field.storage.node.field_expertise'
+        - 'config:field.storage.node.field_website'
+  page_1:
+    id: page_1
+    display_title: 'Directory Page'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: directory
+      menu:
+        type: normal
+        title: Directory
+        weight: -45
+        enabled: false
+        menu_name: main
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_contact_name'
+        - 'config:field.storage.node.field_expertise'
+        - 'config:field.storage.node.field_website'

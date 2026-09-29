@@ -1,0 +1,24 @@
+uuid: b60ca897-081e-4fa4-9f17-d7a19ac241ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dict_category
+    - node.type.dictionary_term
+    - taxonomy.vocabulary.dictionary_category
+id: node.dictionary_term.field_dict_category
+field_name: field_dict_category
+entity_type: node
+bundle: dictionary_term
+label: Category
+description: 'The category this term belongs to.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dictionary_category: dictionary_category
+field_type: entity_reference

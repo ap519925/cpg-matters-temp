@@ -1,0 +1,45 @@
+// ========== DESIGN TOKENS ==========
+
+// Brand colors
+$cpg-red: #C41E3A;
+$cpg-red-dark: #9B1730;
+$cpg-blue: #2563EB;
+
+// Text
+$cpg-text: #1A1A1A;
+$cpg-text-secondary: #6B7280;
+$cpg-text-light: #FFFFFF;
+
+// Backgrounds
+$cpg-bg: #FFFFFF;
+$cpg-bg-white: #FFFFFF;
+$cpg-bg-footer: #1A1A1A;
+
+// Borders
+$cpg-border: #E5E7EB;
+
+// Category pastel backgrounds
+$cat-blue: #D4E8FF;
+$cat-orange: #FFEDD5;
+$cat-purple: #F3E8FF;
+$cat-green: #DCFCE7;
+$cat-pink: #FFE4E6;
+$cat-yellow: #FEF9C3;
+
+// Typography
+$font-heading: 'Montserrat', -apple-system, system-ui, sans-serif;
+$font-body: 'Inter', -apple-system, system-ui, sans-serif;
+
+// Spacing
+$gap-xs: 0.25rem;
+$gap-sm: 0.5rem;
+$gap-md: 1rem;
+$gap-lg: 1.5rem;
+$gap-xl: 2rem;
+$gap-2xl: 3rem;
+
+// Misc
+$radius: 8px;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$transition: 0.2s ease;

@@ -1,0 +1,13 @@
+<div class="sitemap-section-card">
+  <div class="sitemap-section-header">
+    <p><span class="sitemap-section-icon">{{ content.field_p_icon.0['#context'].value|default(paragraph.field_p_icon.value) }}</span></p>
+    <h3 class="sitemap-section-title">{{ content.field_p_title }}</h3>
+  </div>
+  <ul class="sitemap-links">
+    {% for key, item in content.field_p_items %}
+      {% if key|first != '#' %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

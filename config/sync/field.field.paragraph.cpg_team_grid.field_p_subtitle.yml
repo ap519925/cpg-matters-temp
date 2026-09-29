@@ -1,0 +1,22 @@
+uuid: 7b10dff3-820f-41a8-b53f-a55d707d8622
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_subtitle
+    - paragraphs.paragraphs_type.cpg_team_grid
+  module:
+    - text
+id: paragraph.cpg_team_grid.field_p_subtitle
+field_name: field_p_subtitle
+entity_type: paragraph
+bundle: cpg_team_grid
+label: 'Section Subtitle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

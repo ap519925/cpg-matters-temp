@@ -1,0 +1,19 @@
+uuid: c6afd906-b377-4b81-bc0d-f64c7c5d7841
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icon
+    - paragraphs.paragraphs_type.cpg_card
+id: paragraph.cpg_card.field_p_icon
+field_name: field_p_icon
+entity_type: paragraph
+bundle: cpg_card
+label: Icon/Emoji
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

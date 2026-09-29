@@ -1,0 +1,10 @@
+uuid: 70778608-f764-4fc5-92db-7d07d50bfcc0
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_link
+label: 'Sitemap Link'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Link'
+behavior_plugins: {  }

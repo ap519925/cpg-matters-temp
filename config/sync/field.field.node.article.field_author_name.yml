@@ -1,0 +1,19 @@
+uuid: d03d19c0-2f6e-405d-973b-d8f5db0287ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author_name
+    - node.type.article
+id: node.article.field_author_name
+field_name: field_author_name
+entity_type: node
+bundle: article
+label: 'Author Name'
+description: 'Display name of the article author (overrides the Drupal username).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

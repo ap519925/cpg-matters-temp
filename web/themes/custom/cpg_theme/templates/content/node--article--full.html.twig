@@ -1,0 +1,138 @@
+{#
+/**
+ * @file
+ * Theme override for a full article page, matching the CPG Matters mockup.
+ * All article fields are editable from the Drupal dashboard:
+ *   - Title (H1)
+ *   - Category (field_tags)
+ *   - Summary / Lead Text (field_summary)
+ *   - Author Name (field_author_name)
+ *   - Read Time (field_estimated_read_time)
+ *   - Featured Image (field_image)
+ *   - Image Caption (field_image_caption)
+ *   - Body (body) — supports full HTML: H2s, blockquotes, lists, inline ads
+ */
+#}
+
+<article{{ attributes.addClass('cpg-article-full') }}>
+
+  {# ── Category Tag ── #}
+  {% if category_name_raw %}
+    <div class="cpg-article-full__category">
+      {% if category_url %}
+        <a href="{{ category_url }}" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
+      {% endif %}
+      <span class="cpg-category-icon" aria-hidden="true">{{ category_icon|default('📈') }}</span>
+      <span class="cpg-article-full__category-text">
+        {{ category_name_raw }}
+      </span>
+      {% if category_url %}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {# ── Headline ── #}
+  <h1 class="cpg-article-full__title">{{ label }}</h1>
+
+  {# ── Summary / Lead ── #}
+  {% if content.field_summary|render|trim %}
+    <div class="cpg-article-full__summary">
+      {{ content.field_summary }}
+    </div>
+  {% endif %}
+
+  {# ── Author Meta Bar ── #}
+  <div class="cpg-article-full__meta">
+    <div class="cpg-article-full__meta-left">
+      {# Author Avatar Circle #}
+      <div class="cpg-author-avatar">
+        {% if content.field_author_name|render|striptags|trim %}
+          {{ content.field_author_name|render|striptags|trim|first|upper }}
+        {% else %}
+          {{ author_name|render|striptags|trim|first|upper|default('A') }}
+        {% endif %}
+      </div>
+      <div class="cpg-author-info">
+        <span class="cpg-article-full__author">
+          {% if content.field_author_name|render|striptags|trim %}
+            {{ content.field_author_name|render|striptags|trim }}
+          {% else %}
+            {{ author_name }}
+          {% endif %}
+        </span>
+        <span class="cpg-article-full__date-read">
+          {{ date }}
+          {% if content.field_estimated_read_time|render|striptags|trim %}
+            &middot; {{ content.field_estimated_read_time|render|striptags|trim }}
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    <div class="cpg-article-full__meta-right">
+      {# Social share buttons #}
+      <div class="cpg-social-share">
+        <a href="https://twitter.com/intent/tweet?url={{ article_url|default(url) }}&text={{ plain_title|default('')|url_encode }}" target="_blank" rel="noopener" class="cpg-social-share__btn" title="Share on X">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ article_url|default(url) }}" target="_blank" rel="noopener" class="cpg-social-share__btn" title="Share on Facebook">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ article_url|default(url) }}" target="_blank" rel="noopener" class="cpg-social-share__btn" title="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:?subject={{ plain_title|default('')|url_encode }}&body=Check out this article: {{ article_url|default(url) }}" class="cpg-social-share__btn" title="Share via Email">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+        </a>
+        <a href="mailto:?subject=I thought you'd find this interesting: {{ plain_title|default('')|url_encode }}&body=Hi,%0D%0A%0D%0AI wanted to share this article with you from {{ site_name|default('CPG Matters') }}:%0D%0A%0D%0A{{ plain_title|default('') }}%0D%0A{{ article_url|default(url) }}%0D%0A%0D%0ABest regards" class="cpg-social-share__send-btn" title="{{ 'Send to Colleague'|t }}">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M15.0007 3.11066C15.4908 2.85621 16.0923 3.03513 16.3468 3.5253L21.3468 13.0253C21.4618 13.2462 21.4618 13.5079 21.3468 13.7288L16.3468 23.2288C16.0923 23.7189 15.4908 23.8979 15.0007 23.6434C14.5106 23.389 14.3316 22.7875 14.5861 22.2974L19.0542 13.377L14.5861 4.45672C14.3316 3.96661 14.5106 3.36512 15.0007 3.11066Z"/><path d="M2.3999 13.377C2.3999 12.8247 2.84762 12.377 3.3999 12.377H19.3999C19.9522 12.377 20.3999 12.8247 20.3999 13.377C20.3999 13.9293 19.9522 14.377 19.3999 14.377H3.3999C2.84762 14.377 2.3999 13.9293 2.3999 13.377Z"/></svg>
+          <span>{{ 'Send to Colleague'|t }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {# ── Featured Image ── #}
+  {% if content.field_image|render|trim %}
+    <figure class="cpg-article-full__hero-image">
+      {{ content.field_image }}
+      {% if content.field_image_caption|render|striptags|trim %}
+        <figcaption class="cpg-article-full__caption">
+          {{ content.field_image_caption|render|striptags|trim }}
+        </figcaption>
+      {% endif %}
+    </figure>
+  {% endif %}
+
+  {# ── Article Body ── #}
+  <div class="cpg-article-full__body">
+    {{ content.body }}
+  </div>
+
+  {# ── Related Topics Tags ── #}
+  {% if content.field_tags|render|trim %}
+    <div class="cpg-article-full__topics">
+      <span class="cpg-article-full__topics-label">{{ 'Related Topics'|t|upper }}</span>
+      <div class="cpg-article-full__topics-list">
+        {{ content.field_tags }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Related Articles ── #}
+  {% if related_articles %}
+    <div class="cpg-related-articles-section">
+      <hr style="border:0; border-top:1px solid #E5E7EB; margin: 3rem 0;">
+      <h2 class="cpg-related-articles-heading">{{ 'Related Articles'|t }}</h2>
+      <div class="cpg-related-articles-grid">
+        {{ related_articles }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Hide default node links ── #}
+  <div class="hidden">
+    {{ content|without('field_tags', 'field_summary', 'field_author_name', 'field_read_time', 'field_estimated_read_time', 'field_image', 'field_image_caption', 'body') }}
+  </div>
+
+</article>

@@ -1,0 +1,12 @@
+<div class="sitemap-container sitemap-container--popular">
+  <div class="sitemap-popular">
+    <h2 class="sitemap-popular__title">{{ content.field_p_title }}</h2>
+    <div class="sitemap-popular__grid">
+      {% for key, item in content.field_p_items %}
+        {% if key|first != '#' %}
+          {{ item }}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+uuid: 1191d31d-30ef-42e3-ba60-154b1276e878
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_column
+    - paragraphs.paragraphs_type.cpg_columns
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_columns.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_columns
+label: Columns
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_column: cpg_column
+field_type: entity_reference_revisions

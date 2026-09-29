@@ -1,0 +1,414 @@
+// ================================================================
+// DIRECTORY LISTING PAGE STYLES
+// Matches the directory.html mockup with hero section, filter bar,
+// 3-column card grid, and pagination.
+// ================================================================
+@use 'variables' as *;
+
+// ── Directory Container ──
+.cpg-directory {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 5rem);
+}
+
+// ── Hero Section ──
+.cpg-directory__hero {
+    padding: $gap-xl 0 $gap-lg;
+    border-bottom: 1px solid $cpg-border;
+    margin-bottom: $gap-xl;
+}
+
+.cpg-directory__title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: $cpg-text;
+    margin: 0 0 $gap-sm;
+    line-height: 1.15;
+}
+
+.cpg-directory__description {
+    font-size: 1rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+    max-width: 700px;
+
+    p {
+        margin: 0;
+    }
+}
+
+// ── Filter Bar ──
+.cpg-directory__filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F5F5F5;
+    border-radius: 30px;
+    padding: 0.6rem 1.5rem;
+    margin-bottom: $gap-xl;
+    flex-wrap: wrap;
+    gap: $gap-md;
+}
+
+.cpg-directory__filter-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $gap-md;
+    width: 100%;
+
+    // Override the Views exposed form layout for inline display
+    .views-exposed-form {
+        margin-bottom: 0;
+    }
+
+    .form--inline,
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $gap-md;
+        margin: 0;
+    }
+
+    .form-item {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $gap-sm;
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: $cpg-text;
+            white-space: nowrap;
+        }
+
+        select {
+            padding: 0.4rem 0.75rem;
+            border: 1px solid $cpg-border;
+            border-radius: $radius;
+            font-size: 0.88rem;
+            font-family: $font-body;
+            cursor: pointer;
+            background: $cpg-bg-white;
+            min-width: 120px;
+            max-width: 100%;
+        }
+    }
+
+    // Hide submit button if auto-submit is enabled
+    .form-actions {
+        .form-submit {
+            background: $cpg-text;
+            color: $cpg-text-light;
+            border: none;
+            border-radius: $radius;
+            padding: 0.4rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            font-family: $font-body;
+            cursor: pointer;
+            transition: background $transition;
+
+            &:hover {
+                background: #374151;
+            }
+        }
+    }
+}
+
+.cpg-directory__result-count {
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    width: 100%;
+    margin-top: 0.5rem;
+
+    @media (min-width: 768px) {
+        width: auto;
+        margin-top: 0;
+    }
+
+    strong,
+    b {
+        color: $cpg-red;
+        font-weight: 700;
+    }
+}
+
+// ── Card Grid (3 columns) ──
+.cpg-directory__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $gap-xl;
+    margin-bottom: $gap-xl;
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 550px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ── Individual Card ──
+.cpg-directory-card {
+    background: #E8F1FC;
+    border: 1px solid $cpg-border;
+    border-radius: $radius;
+    padding: $gap-xl;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow $transition, transform $transition;
+    position: relative;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+    }
+
+    // ── Company Name ──
+    &__name {
+        font-family: $font-heading;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $cpg-text;
+        margin: 0 0 $gap-sm;
+        line-height: 1.25;
+
+        a {
+            color: $cpg-text;
+            text-decoration: none;
+
+            &:hover {
+                color: $cpg-red;
+            }
+        }
+    }
+
+    // ── Website ──
+    &__website {
+        margin-bottom: $gap-md;
+
+        a {
+            color: $cpg-red;
+            font-size: 0.88rem;
+            text-decoration: none;
+            word-break: break-all;
+
+            &:hover {
+                text-decoration: underline;
+                color: $cpg-red-dark;
+            }
+        }
+    }
+
+    // ── Labels ──
+    &__label {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: $cpg-text-secondary;
+        margin-bottom: $gap-xs;
+    }
+
+    // ── Contact Name ──
+    &__contact {
+        margin-bottom: $gap-md;
+
+        .cpg-directory-card__value {
+            font-size: 0.92rem;
+            color: $cpg-text;
+            font-weight: 500;
+        }
+    }
+
+    // ── Expertise Tags ──
+    &__expertise {
+        margin-bottom: $gap-lg;
+        flex: 1;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-xs;
+
+        // Style individual tags (may be links or plain text)
+        a,
+        .field__item,
+        span {
+            display: inline-block;
+            background: #F3F4F6;
+            color: $cpg-text;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: 4px;
+            line-height: 1.3;
+            text-decoration: none;
+            transition: background $transition;
+            border: 1px solid $cpg-border;
+
+            &:hover {
+                background: #E5E7EB;
+            }
+        }
+    }
+
+    // ── Claim Profile Button ──
+    &__claim-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem 1rem;
+        border: 2px solid $cpg-red;
+        border-radius: $radius;
+        color: $cpg-red;
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        background: transparent;
+        cursor: pointer;
+        font-family: $font-body;
+        transition: all $transition;
+        margin-top: auto;
+
+        &:hover {
+            background: $cpg-red;
+            color: $cpg-text-light;
+        }
+    }
+
+    // ── Actions ──
+    &__actions {
+        margin-top: auto;
+        padding-top: $gap-md;
+    }
+}
+
+// ── Directory-specific pager ──
+.cpg-directory__pager {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin: $gap-xl 0 $gap-2xl;
+
+    // Page count text
+    .cpg-directory__page-info {
+        font-size: 0.85rem;
+        color: $cpg-text-secondary;
+        margin-left: $gap-md;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+    }
+}
+
+// ── Empty State ──
+.cpg-directory__empty {
+    text-align: center;
+    padding: $gap-2xl $gap-lg;
+    color: $cpg-text-secondary;
+    font-size: 1.1rem;
+
+    h3 {
+        font-family: $font-heading;
+        color: $cpg-text;
+        margin-bottom: $gap-md;
+    }
+}
+
+// ================================================================
+// DIRECTORY PROFILE (Full page view of single listing)
+// ================================================================
+.cpg-directory-profile {
+    max-width: 800px;
+    margin: $gap-xl auto;
+    padding: $gap-xl;
+
+    &__name {
+        font-family: $font-heading;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: $cpg-text;
+        margin: 0 0 $gap-md;
+    }
+
+    &__website {
+        margin-bottom: $gap-xl;
+
+        a {
+            color: $cpg-red;
+            font-size: 1rem;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__section {
+        margin-bottom: $gap-xl;
+        padding-bottom: $gap-lg;
+        border-bottom: 1px solid $cpg-border;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    &__section-title {
+        font-family: $font-heading;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: $cpg-text;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 0 0 $gap-md;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-sm;
+
+        .field__item {
+            display: inline-block;
+            background: #F3F4F6;
+            color: $cpg-text;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.4rem 0.85rem;
+            border-radius: 4px;
+            border: 1px solid $cpg-border;
+        }
+    }
+
+    &__body {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #374151;
+    }
+
+    &__cta {
+        margin-top: $gap-xl;
+        text-align: center;
+
+        .cpg-directory-card__claim-btn {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+    }
+}

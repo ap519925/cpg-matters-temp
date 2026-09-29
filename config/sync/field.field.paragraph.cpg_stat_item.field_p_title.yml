@@ -1,0 +1,19 @@
+uuid: 9cf0ac5c-b070-4170-bb62-91446ec5849d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_stat_item
+id: paragraph.cpg_stat_item.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_stat_item
+label: Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

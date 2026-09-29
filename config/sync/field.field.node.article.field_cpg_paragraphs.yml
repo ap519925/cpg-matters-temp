@@ -1,0 +1,25 @@
+uuid: 16f7d55a-eb4c-4015-b1e4-75c343dc51fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cpg_paragraphs
+    - node.type.article
+  module:
+    - entity_reference_revisions
+id: node.article.field_cpg_paragraphs
+field_name: field_cpg_paragraphs
+entity_type: node
+bundle: article
+label: Sections
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

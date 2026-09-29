@@ -1,0 +1,23 @@
+uuid: 51fd2a12-0abf-46b3-b030-00274d08f1a9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:03095934-fe61-4afb-828c-6d0f147b72a6'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: mobiledrawernavigation
+theme: cpg_theme
+region: mobile_nav
+weight: 0
+provider: null
+plugin: 'block_content:03095934-fe61-4afb-828c-6d0f147b72a6'
+settings:
+  id: 'block_content:03095934-fe61-4afb-828c-6d0f147b72a6'
+  label: ''
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 92179833-d1d8-4d64-ae58-7020c9c47224
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ad_banner:a10d741d-33f1-445f-a190-e71e4e1cb664'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_theme_left250by350banner
+theme: cpg_theme
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'block_content:a10d741d-33f1-445f-a190-e71e4e1cb664'
+settings:
+  id: 'block_content:a10d741d-33f1-445f-a190-e71e4e1cb664'
+  label: 'Left 250 by 350 Banner'
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility: {  }

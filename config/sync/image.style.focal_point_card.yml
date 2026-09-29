@@ -1,0 +1,17 @@
+uuid: f2a52e57-8d5e-4cc7-8b99-9d495bbf5779
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_card
+label: 'Directory Card / Social (1200x630)'
+effects:
+  af11dcd3-e245-49b2-9128-0c0e32486f1a:
+    uuid: af11dcd3-e245-49b2-9128-0c0e32486f1a
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 1200
+      height: 630
+      crop_type: focal_point

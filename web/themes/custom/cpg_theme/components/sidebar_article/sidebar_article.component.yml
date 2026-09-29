@@ -1,0 +1,13 @@
+name: Sidebar Article
+description: Small sidebar article for categories like Analytics, Tech, etc.
+props:
+  type: object
+  properties:
+    category:
+      type: string
+    title:
+      type: string
+    body:
+      type: string
+    image_url:
+      type: string

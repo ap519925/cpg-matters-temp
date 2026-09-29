@@ -1,0 +1,222 @@
+Block ID: 1 | Title: Stay Informed Newsletter
+<p>Get the latest CPG news delivered to your inbox</p>
+
+Block ID: 5 | Title: Footer - About Us
+<p>CPG Matters offers the latest news, research, and analysis for consumer packaged goods professionals.</p>
+
+Block ID: 6 | Title: Footer - Resources
+<ul>
+      <li><a href="/whitepapers">Whitepapers</a></li>
+      <li><a href="/dictionary">CPG Dictionary</a></li>
+      <li><a href="/directory">Industry Directory</a></li>
+      <li><a href="/sitemap">Sitemap</a></li>
+    </ul>
+
+Block ID: 7 | Title: Footer - Topics
+<ul>
+      <li><a href="/">Industry Trends</a></li>
+      <li><a href="/">Sustainability</a></li>
+      <li><a href="/">Innovation</a></li>
+      <li><a href="/">Market Analysis</a></li>
+      <li><a href="/">E-Commerce</a></li>
+    </ul>
+
+Block ID: 8 | Title: Footer - Connect
+<ul>
+      <li><a href="/contact">Contact Us</a></li>
+      <li><a href="https://twitter.com">Twitter / X</a></li>
+      <li><a href="https://linkedin.com">LinkedIn</a></li>
+      <li><a href="/register">Subscribe</a></li>
+    </ul>
+
+Block ID: 9 | Title: Footer Copyright
+<p>&copy; 2026 CPG Matters. All rights reserved.</p>
+
+Block ID: 10 | Title: Stay Informed Newsletter
+<p>Get the latest CPG news delivered to your inbox</p>
+
+Block ID: 14 | Title: Footer - About Us
+<p>CPG Matters offers the latest news, research, and analysis for consumer packaged goods professionals.</p>
+
+Block ID: 15 | Title: Footer - Resources
+<ul>
+      <li><a href="/whitepapers">Whitepapers</a></li>
+      <li><a href="/dictionary">CPG Dictionary</a></li>
+      <li><a href="/directory">Industry Directory</a></li>
+      <li><a href="/sitemap">Sitemap</a></li>
+    </ul>
+
+Block ID: 16 | Title: Footer - Topics
+<ul>
+      <li><a href="/">Industry Trends</a></li>
+      <li><a href="/">Sustainability</a></li>
+      <li><a href="/">Innovation</a></li>
+      <li><a href="/">Market Analysis</a></li>
+      <li><a href="/">E-Commerce</a></li>
+    </ul>
+
+Block ID: 17 | Title: Footer - Connect
+<ul>
+      <li><a href="/contact">Contact Us</a></li>
+      <li><a href="https://twitter.com">Twitter / X</a></li>
+      <li><a href="https://linkedin.com">LinkedIn</a></li>
+      <li><a href="/register">Subscribe</a></li>
+    </ul>
+
+Block ID: 18 | Title: Footer Copyright
+<p>&copy; 2026 CPG Matters. All rights reserved.</p>
+
+Block ID: 19 | Title: Header Phone
+<div class="header-phone" style="color:#cc0000;font-size:0.9em;padding:0.5rem 1rem;"><a style="color:inherit;text-decoration:none;" href="tel:18886043953"><strong>1 (888) 604-3953</strong></a></div>
+
+Block ID: 20 | Title: Subscribe Button
+<a href="/register-step1" class="cpg-subscribe-btn">Subscribe</a>
+
+Block ID: 21 | Title: Header Search Form
+<form action="/search/node" method="get" class="search-form"><input type="search" name="keys" placeholder="Search articles..." class="form-search" required><button type="submit" class="form-submit">Search</button></form>
+
+Block ID: 22 | Title: Mobile Topics
+        <div class="topic-grid">
+            <a href="/articles?category=sustainability" class="topic-card">
+              <span class="topic-icon">🌱</span>
+              <span class="topic-name">Sustainability</span>
+              <span class="topic-count">23 white papers</span>
+            </a>
+            <a href="/articles?category=e-commerce" class="topic-card">
+              <span class="topic-icon">🛒</span>
+              <span class="topic-name">E-Commerce</span>
+              <span class="topic-count">18 white papers</span>
+            </a>
+            <a href="/articles?category=supply-chain" class="topic-card">
+              <span class="topic-icon">🚚</span>
+              <span class="topic-name">Supply Chain</span>
+              <span class="topic-count">31 white papers</span>
+            </a>
+            <a href="/articles?category=digital-marketing" class="topic-card">
+              <span class="topic-icon">📱</span>
+              <span class="topic-name">Digital Marketing</span>
+              <span class="topic-count">26 white papers</span>
+            </a>
+            <a href="/articles?category=innovation" class="topic-card">
+              <span class="topic-icon">💡</span>
+              <span class="topic-name">Innovation</span>
+              <span class="topic-count">19 white papers</span>
+            </a>
+            <a href="/articles?category=market-research" class="topic-card">
+              <span class="topic-icon">📊</span>
+              <span class="topic-name">Market Research</span>
+              <span class="topic-count">28 white papers</span>
+            </a>
+            <a href="/articles?category=consumer-insights" class="topic-card">
+              <span class="topic-icon">🎯</span>
+              <span class="topic-name">Consumer Insights</span>
+              <span class="topic-count">22 white papers</span>
+            </a>
+            <a href="/articles?category=ai-technology" class="topic-card">
+              <span class="topic-icon">🤖</span>
+              <span class="topic-name">AI &amp; Technology</span>
+              <span class="topic-count">15 white papers</span>
+            </a>
+        </div>
+
+Block ID: 23 | Title: Mobile Drawer Navigation
+    <div class="mobile-nav-drawer__search">
+      <form action="/search/node" method="get" class="mobile-nav-search-form">
+        <input type="search" name="keys" placeholder="Search articles..." required>
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-list__item">
+        <a href="/" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">🏠</span>
+          <span class="mobile-nav-list__text">Home</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+      <li class="mobile-nav-list__item">
+        <a href="/articles" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">📰</span>
+          <span class="mobile-nav-list__text">Articles</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+      <li class="mobile-nav-list__item">
+        <a href="/white-papers" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">📄</span>
+          <span class="mobile-nav-list__text">White Papers</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+      <li class="mobile-nav-list__item">
+        <a href="/directory" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">📁</span>
+          <span class="mobile-nav-list__text">Directory</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+      <li class="mobile-nav-list__item">
+        <a href="/about-us" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">ℹ️</span>
+          <span class="mobile-nav-list__text">About Us</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+      <li class="mobile-nav-list__item">
+        <a href="/contact" class="mobile-nav-list__link">
+          <span class="mobile-nav-list__icon">✉️</span>
+          <span class="mobile-nav-list__text">Contact</span>
+          <span class="mobile-nav-list__arrow">›</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="mobile-nav-drawer__cta">
+      <a href="/register-step1" class="mobile-nav-drawer__subscribe">✨ Subscribe Now</a>
+    </div>
+
+Block ID: 24 | Title: Floating Topic Sidebar
+<nav class="topic-sidebar" aria-label="Browse by topic">
+  <a href="/search?topic=sustainability" class="topic-sidebar__icon" data-topic="sustainability" aria-label="Sustainability">
+    <span class="topic-sidebar__emoji">🌱</span>
+    <span class="topic-sidebar__tooltip">Sustainability</span>
+  </a>
+  <a href="/search?topic=e-commerce" class="topic-sidebar__icon" data-topic="e-commerce" aria-label="E-Commerce">
+    <span class="topic-sidebar__emoji">🛒</span>
+    <span class="topic-sidebar__tooltip">E-Commerce</span>
+  </a>
+  <a href="/search?topic=innovation" class="topic-sidebar__icon" data-topic="innovation" aria-label="Innovation">
+    <span class="topic-sidebar__emoji">💡</span>
+    <span class="topic-sidebar__tooltip">Innovation</span>
+  </a>
+  <a href="/search?topic=supply-chain" class="topic-sidebar__icon" data-topic="supply-chain" aria-label="Supply Chain">
+    <span class="topic-sidebar__emoji">📦</span>
+    <span class="topic-sidebar__tooltip">Supply Chain</span>
+  </a>
+  <a href="/search?topic=marketing" class="topic-sidebar__icon" data-topic="marketing" aria-label="Marketing">
+    <span class="topic-sidebar__emoji">📱</span>
+    <span class="topic-sidebar__tooltip">Marketing</span>
+  </a>
+  <a href="/search?topic=finance" class="topic-sidebar__icon" data-topic="finance" aria-label="Finance">
+    <span class="topic-sidebar__emoji">💰</span>
+    <span class="topic-sidebar__tooltip">Finance</span>
+  </a>
+  <a href="/search?topic=technology" class="topic-sidebar__icon" data-topic="technology" aria-label="Technology">
+    <span class="topic-sidebar__emoji">🔧</span>
+    <span class="topic-sidebar__tooltip">Technology</span>
+  </a>
+  <a href="/search?topic=leadership" class="topic-sidebar__icon" data-topic="leadership" aria-label="Leadership">
+    <span class="topic-sidebar__emoji">👔</span>
+    <span class="topic-sidebar__tooltip">Leadership</span>
+  </a>
+  <a href="/search?topic=retail" class="topic-sidebar__icon" data-topic="retail" aria-label="Retail">
+    <span class="topic-sidebar__emoji">🏪</span>
+    <span class="topic-sidebar__tooltip">Retail</span>
+  </a>
+  <a href="/search?topic=manufacturing" class="topic-sidebar__icon" data-topic="manufacturing" aria-label="Manufacturing">
+    <span class="topic-sidebar__emoji">🏭</span>
+    <span class="topic-sidebar__tooltip">Manufacturing</span>
+  </a>
+</nav>
+

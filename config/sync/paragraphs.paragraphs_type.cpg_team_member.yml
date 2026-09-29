@@ -1,0 +1,10 @@
+uuid: b300ba16-1655-41b3-8d26-348d69a1f4df
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_team_member
+label: 'Team Member'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Team Member'
+behavior_plugins: {  }

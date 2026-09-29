@@ -1,0 +1,22 @@
+uuid: 99f6b749-5255-4858-a648-7cc5456148d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_subtitle
+    - paragraphs.paragraphs_type.cpg_features
+  module:
+    - text
+id: paragraph.cpg_features.field_p_subtitle
+field_name: field_p_subtitle
+entity_type: paragraph
+bundle: cpg_features
+label: 'Section Subtitle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

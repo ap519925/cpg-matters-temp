@@ -1,0 +1,102 @@
+// ========== BREADCRUMB ==========
+@use 'variables' as *;
+
+.cpg-breadcrumb {
+  padding: $gap-sm 0 $gap-md;
+  margin-bottom: $gap-sm;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $gap-xs;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xs;
+    font-family: $font-body;
+    font-size: 0.82rem;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  &__link {
+    color: $cpg-text-secondary;
+    text-decoration: none;
+    transition: color $transition;
+    position: relative;
+
+    &:hover {
+      color: $cpg-red;
+    }
+
+    // Subtle underline on hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $cpg-red;
+      transition: width $transition;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__current {
+    color: $cpg-text;
+    font-weight: 600;
+    // Truncate very long titles
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+
+    @media (min-width: 768px) {
+      max-width: 400px;
+    }
+  }
+
+  &__separator {
+    display: inline-flex;
+    align-items: center;
+    color: $cpg-border;
+    flex-shrink: 0;
+
+    svg {
+      display: block;
+    }
+  }
+}
+
+// Hide breadcrumbs on the front page (they're not useful there)
+.is-front .cpg-breadcrumb {
+  display: none;
+}
+
+// Hide the block title that Drupal adds by default ("Breadcrumbs")
+.block-system-breadcrumb-block {
+  .block-title,
+  h2 {
+    // Use sr-only pattern — visible to screen readers but not visually
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}

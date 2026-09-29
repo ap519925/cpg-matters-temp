@@ -1,0 +1,23 @@
+uuid: 4a9a0174-a8c5-4669-93c2-50f4b041f044
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f56a0883-12ce-48f8-81cb-db9c755bfad4'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: headerphone
+theme: cpg_theme
+region: header_actions
+weight: -10
+provider: null
+plugin: 'block_content:f56a0883-12ce-48f8-81cb-db9c755bfad4'
+settings:
+  id: 'block_content:f56a0883-12ce-48f8-81cb-db9c755bfad4'
+  label: ''
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

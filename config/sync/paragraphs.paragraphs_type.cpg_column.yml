@@ -1,0 +1,10 @@
+uuid: 2a677da4-bb0a-4b2b-aef4-d5a21b7c5a65
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_column
+label: Column
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Column'
+behavior_plugins: {  }

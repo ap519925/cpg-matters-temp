@@ -1,0 +1,11 @@
+uuid: 911ae848-29a5-4775-b4da-dfc2f4fa3e52
+langcode: en
+status: true
+dependencies: {  }
+name: 'Directory Listing'
+type: directory_listing
+description: 'A company or brand listing in the CPG Industry Directory.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

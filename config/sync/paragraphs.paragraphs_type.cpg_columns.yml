@@ -1,0 +1,10 @@
+uuid: 8949c0d0-0c83-4ed2-9f9d-c700682234c6
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_columns
+label: 'Multi-Column Layout'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Multi-Column Layout'
+behavior_plugins: {  }

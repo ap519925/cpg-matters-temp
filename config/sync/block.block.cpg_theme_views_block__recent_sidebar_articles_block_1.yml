@@ -1,0 +1,25 @@
+uuid: 8019df41-a7f0-49f9-8dd9-49599e512d35
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.recent_sidebar_articles
+  module:
+    - views
+  theme:
+    - cpg_theme
+id: cpg_theme_views_block__recent_sidebar_articles_block_1
+theme: cpg_theme
+region: sidebar_first
+weight: 5
+provider: null
+plugin: 'views_block:recent_sidebar_articles-block_1'
+settings:
+  id: 'views_block:recent_sidebar_articles-block_1'
+  label: 'Recent Articles'
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+  exposed: {  }
+visibility: {  }

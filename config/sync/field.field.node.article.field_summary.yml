@@ -1,0 +1,22 @@
+uuid: 23666242-ffcc-4862-9523-ee4eb8eb2459
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.article
+  module:
+    - text
+id: node.article.field_summary
+field_name: field_summary
+entity_type: node
+bundle: article
+label: 'Teaser Text'
+description: 'A brief summary or teaser paragraph shown before the main body text.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

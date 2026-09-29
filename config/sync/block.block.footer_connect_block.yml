@@ -1,0 +1,25 @@
+uuid: 8ec27757-82ac-4d12-ad9a-84e865314c7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-connect
+  module:
+    - system
+  theme:
+    - cpg_theme
+id: footer_connect_block
+theme: cpg_theme
+region: footer_fourth
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-connect'
+settings:
+  id: 'system_menu_block:footer-connect'
+  label: Connect
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

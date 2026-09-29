@@ -1,0 +1,19 @@
+uuid: 7abab170-1538-4840-b093-270107be5bd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_team_grid
+id: paragraph.cpg_team_grid.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_team_grid
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Template for individual directory listing fields (card layout).
+ *
+ * Renders a single company/brand card in the directory grid.
+ * All field values are dynamically pulled from the "Directory Listing"
+ * content type fields — editable via Drupal admin.
+ *
+ * Expected fields (configured in the View):
+ * - fields.title: Company/brand name
+ * - fields.field_website: Company website URL
+ * - fields.field_contact_name: Primary contact person
+ * - fields.field_expertise: Expertise/capability tags (multi-value taxonomy)
+ * - fields.nid: Node ID (used for the "Claim Profile" link)
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+
+<div class="cpg-directory-card">
+  {# Company Name — from node title #}
+  {% if fields.title is defined %}
+    <h3 class="cpg-directory-card__name">{{ fields.title.content }}</h3>
+  {% endif %}
+
+  {# Website URL #}
+  {% if fields.field_website is defined %}
+    <div class="cpg-directory-card__website">
+      {{ fields.field_website.content }}
+    </div>
+  {% endif %}
+
+  {# Contact Name #}
+  {% if fields.field_contact_name is defined %}
+    <div class="cpg-directory-card__contact">
+      <span class="cpg-directory-card__label">{{ 'Contact Name'|t }}</span>
+      <span class="cpg-directory-card__value">{{ fields.field_contact_name.content }}</span>
+    </div>
+  {% endif %}
+
+  {# Expertise Tags #}
+  {% if fields.field_expertise is defined %}
+    <div class="cpg-directory-card__expertise">
+      <span class="cpg-directory-card__label">{{ 'Key Industries'|t }}</span>
+      <div class="cpg-directory-card__tags">
+        {{ fields.field_expertise.content }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Claim Profile Button #}
+  <div class="cpg-directory-card__actions">
+    {% if fields.nid is defined %}
+      <a href="/node/{{ fields.nid.content|striptags|trim }}/claim" class="cpg-directory-card__claim-btn">{{ 'Claim Profile'|t }}</a>
+    {% else %}
+      <a href="#" class="cpg-directory-card__claim-btn">{{ 'Claim Profile'|t }}</a>
+    {% endif %}
+  </div>
+</div>

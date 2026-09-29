@@ -1,0 +1,149 @@
+// ========== ADMIN-EDITABLE CSS CUSTOM PROPERTIES ==========
+// These CSS custom properties are set dynamically from Drupal's
+// theme settings (Appearance → CPG Theme → Settings).
+// The values are injected as inline styles on the <html> element
+// by cpg_theme_preprocess_html() in cpg_theme.theme.
+//
+// This file overrides hardcoded color values with var(--custom-prop, fallback)
+// so that admin changes take effect site-wide without recompiling SCSS.
+
+// ── Header ──
+.cpg-layout__header {
+  border-bottom-color: var(--cpg-brand, #C41E3A);
+  border-bottom-width: var(--cpg-header-border-width, 4px);
+}
+
+// ── Branding ──
+.header-branding .site-title {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Navigation active/hover ──
+.header-nav li a:hover,
+.header-nav .menu-item a:hover {
+  color: var(--cpg-brand, #C41E3A);
+}
+.header-nav li a:after,
+.header-nav .menu-item a:after {
+  background: var(--cpg-brand, #C41E3A);
+}
+
+// ── Subscribe button ──
+.cpg-subscribe-btn {
+  background: var(--cpg-brand, #C41E3A);
+}
+.cpg-subscribe-btn:hover {
+  background: var(--cpg-brand-dark, #9B1730);
+}
+
+// ── Category tag colors ──
+.cpg-article-teaser__category a,
+.cpg-article-teaser__category .field__item {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Article full category ──
+.cpg-article-full__category-text a,
+.cpg-article-full__category-text .field__item {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Read more link ──
+.cpg-article-teaser__readmore a {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Author avatar ──
+.cpg-author-avatar {
+  background: var(--cpg-brand, #C41E3A);
+}
+
+// ── Featured article link ──
+.cpg-article-teaser--featured .cpg-article-teaser__title a:hover {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Footer ──
+.cpg-layout__footer {
+  background: var(--cpg-footer-bg, #1A1A1A);
+}
+
+// ── Newsletter block ──
+.cpg-newsletter-block {
+  background: var(--cpg-brand, #C41E3A);
+}
+.cpg-newsletter-block__btn {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Directory card ──
+.cpg-directory-card {
+  background-color: var(--cpg-directory-card-bg, #E8F1FC);
+}
+
+// ── White papers card ──
+.wp-card {
+  background-color: var(--cpg-wp-card-bg, #FFFFFF);
+}
+
+// ── Claim button ──
+.cpg-directory-card__claim-btn {
+  border-color: var(--cpg-brand, #C41E3A);
+  color: var(--cpg-brand, #C41E3A);
+}
+.cpg-directory-card__claim-btn:hover {
+  background: var(--cpg-brand, #C41E3A);
+}
+
+// ── Pager active ──
+.cpg-directory__pager .pager__item--active a,
+.cpg-directory__pager .pager__item--active span,
+.cpg-serp__pager .pager__item--active a,
+.cpg-serp__pager .pager__item--active span {
+  background: var(--cpg-brand, #C41E3A);
+  border-color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Mobile drawer accent ──
+.mobile-nav-drawer:before {
+  background: linear-gradient(90deg, var(--cpg-brand, #c41e3a), var(--cpg-brand-dark, #9b1730), var(--cpg-brand, #e13e59));
+}
+.mobile-nav-drawer__subscribe {
+  background: linear-gradient(135deg, var(--cpg-brand, #c41e3a), var(--cpg-brand-dark, #98172d));
+}
+
+// ── Filter submit ──
+.cpg-serp__filters-body .form-actions .form-submit,
+.cpg-serp__filters-body .form-actions button[type=submit] {
+  background: var(--cpg-brand, #C41E3A);
+}
+
+// ── About CTA ──
+.cpg-about__cta {
+  background: var(--cpg-brand, #C41E3A);
+}
+
+// ── Stats number ──
+.cpg-about__stat-number {
+  color: var(--cpg-brand, #C41E3A);
+}
+
+// ── White papers featured ──
+.cpg-whitepapers__featured .featured-card {
+  background-color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Social share send button ──
+.cpg-social-share__send-btn {
+  border-color: var(--cpg-brand, #C41E3A);
+  color: var(--cpg-brand, #C41E3A);
+}
+.cpg-social-share__send-btn:hover {
+  background: var(--cpg-brand, #C41E3A);
+  border-color: var(--cpg-brand, #C41E3A);
+}
+
+// ── Body text ──
+body {
+  color: var(--cpg-text, #1A1A1A);
+}

@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Paragraph template: Column (cpg_column)
+ * Fields: field_p_items (nested paragraphs of any type)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-column',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {{ content.field_p_items }}
+  </div>
+{% endblock paragraph %}

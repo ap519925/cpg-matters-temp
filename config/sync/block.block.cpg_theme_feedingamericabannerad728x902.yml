@@ -1,0 +1,23 @@
+uuid: 14c3ff53-6892-4dd1-a0f4-565bd56a83cc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ad_banner:e6ecdc01-2729-4416-85d5-0f1410d9e516'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_theme_feedingamericabannerad728x902
+theme: cpg_theme
+region: sidebar_second
+weight: -9
+provider: null
+plugin: 'block_content:e6ecdc01-2729-4416-85d5-0f1410d9e516'
+settings:
+  id: 'block_content:e6ecdc01-2729-4416-85d5-0f1410d9e516'
+  label: 'Feeding America Banner Ad (728x90) 2'
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility: {  }

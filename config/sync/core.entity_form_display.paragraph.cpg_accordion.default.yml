@@ -1,0 +1,38 @@
+uuid: 2a82cf0b-c82d-45d8-84c3-3ca572073958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_accordion.field_p_items
+    - field.field.paragraph.cpg_accordion.field_p_title
+    - paragraphs.paragraphs_type.cpg_accordion
+  module:
+    - paragraphs
+id: paragraph.cpg_accordion.default
+targetEntityType: paragraph
+bundle: cpg_accordion
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_p_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

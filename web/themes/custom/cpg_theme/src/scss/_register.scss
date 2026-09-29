@@ -1,0 +1,695 @@
+// =========================================================================
+// Registration Pages Styles
+// =========================================================================
+
+@use 'variables' as *;
+
+.page-register-step1,
+.page-register-step2 {
+  // Override body for full page gray background
+  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.cpg-register-wrapper {
+  * {
+    box-sizing: border-box;
+  }
+  
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .registration-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  /* Header */
+  .reg-header {
+    background: linear-gradient(135deg, $cpg-red 0%, darken($cpg-red, 15%) 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .reg-logo {
+    font-family: $font-heading;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    .cpg {
+      color: white;
+    }
+    
+    .matters {
+      color: rgba(255,255,255,0.9);
+    }
+  }
+
+  .reg-subtitle {
+    font-family: $font-body;
+    font-size: 14px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Progress Indicator */
+  .progress-bar {
+    height: 4px;
+    background: rgba($cpg-red, 0.2);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: $cpg-red;
+    transition: width 0.3s ease;
+    
+    &.step-1 {
+      width: 50%;
+    }
+    &.step-2 {
+      width: 100%;
+    }
+  }
+
+  /* Main Content */
+  .reg-content {
+    padding: 50px 40px;
+  }
+
+  .welcome-message {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .welcome-title {
+    font-family: $font-heading;
+    font-size: 32px;
+    font-weight: 700;
+    color: $cpg-text;
+    margin-bottom: 15px;
+  }
+
+  .welcome-text {
+    font-family: $font-body;
+    font-size: 16px;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+  }
+
+  /* Form Fields */
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .field-label {
+    font-family: $font-body;
+    font-size: 18px;
+    font-weight: 600;
+    color: $cpg-text;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .field-sublabel {
+    font-family: $font-body;
+    font-size: 14px;
+    color: $cpg-text-secondary;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: 400;
+  }
+
+  .input-wrapper {
+    position: relative;
+  }
+
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid $cpg-border;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: $font-body;
+    transition: all 0.3s ease;
+    background: white;
+    color: $cpg-text;
+
+    &:focus {
+      outline: none;
+      border-color: $cpg-red;
+      box-shadow: 0 0 0 3px rgba($cpg-red, 0.1);
+    }
+
+    &.error {
+      border-color: #e74c3c;
+    }
+
+    &.success {
+      border-color: #27ae60;
+    }
+  }
+
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%234a4a4a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 50px;
+  }
+
+  /* Input Icons */
+  .input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-family: sans-serif;
+
+    &.check {
+      color: #27ae60;
+    }
+
+    &.warning {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+  }
+
+  .form-input.success ~ .input-icon.check,
+  .form-select.success ~ .input-icon.check {
+    opacity: 1;
+  }
+
+  .form-input.error ~ .input-icon.warning,
+  .form-select.error ~ .input-icon.warning {
+    opacity: 1;
+  }
+
+  /* Helper Text */
+  .helper-text {
+    font-family: $font-body;
+    font-size: 13px;
+    color: $cpg-text-secondary;
+    margin-top: 8px;
+    display: block;
+  }
+
+  .error-message {
+    font-family: $font-body;
+    font-size: 13px;
+    color: #e74c3c;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .form-input.error ~ .error-message,
+  .form-select.error ~ .error-message {
+    display: block;
+  }
+
+  /* Optional Badge */
+  .optional-badge {
+    font-size: 12px;
+    color: $cpg-text-secondary;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+
+  /* Password Strength Indicator */
+  .password-strength {
+    margin-top: 10px;
+    display: none;
+  }
+
+  .form-input:focus ~ .password-strength,
+  .form-input:not(:placeholder-shown) ~ .password-strength {
+    display: block;
+  }
+
+  .strength-label {
+    font-family: $font-body;
+    font-size: 12px;
+    color: $cpg-text-secondary;
+    margin-bottom: 5px;
+  }
+
+  .strength-bars {
+    display: flex;
+    gap: 5px;
+  }
+
+  .strength-bar {
+    height: 4px;
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+
+    &.active.weak { background: #e74c3c; }
+    &.active.medium { background: #f39c12; }
+    &.active.strong { background: #27ae60; }
+  }
+
+  /* reCAPTCHA */
+  .recaptcha-wrapper {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Colleague Section */
+  .colleague-section {
+    background: $cpg-bg;
+    border: 2px dashed $cpg-border;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .colleague-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .colleague-title {
+    font-family: $font-body;
+    font-size: 18px;
+    font-weight: 600;
+    color: $cpg-text;
+  }
+
+  .colleague-subtitle {
+    font-family: $font-body;
+    font-size: 14px;
+    color: $cpg-text-secondary;
+    margin-bottom: 20px;
+  }
+
+  .colleague-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .colleague-entry {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid $cpg-border;
+  }
+
+  .colleague-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .colleague-number {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: $cpg-red;
+  }
+
+  .remove-colleague {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover { color: darken(#e74c3c, 10%); }
+  }
+
+  .add-colleague-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: $cpg-red;
+    border: 2px dashed $cpg-red;
+    border-radius: 8px;
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover { background: rgba($cpg-red, 0.05); }
+  }
+
+  /* Buttons */
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .back-btn {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    color: $cpg-text;
+    border: 2px solid $cpg-border;
+    border-radius: 8px;
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $cpg-text;
+      background: $cpg-bg;
+    }
+  }
+
+  .continue-btn,
+  .webform-button--next,
+  .webform-button--submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, $cpg-red 0%, darken($cpg-red, 15%) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba($cpg-red, 0.3);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  /* Footer */
+  .reg-footer {
+    text-align: center;
+    padding: 30px 40px;
+    background: $cpg-bg;
+    border-top: 1px solid $cpg-border;
+  }
+
+  .footer-text {
+    font-family: $font-body;
+    font-size: 14px;
+    color: $cpg-text-secondary;
+  }
+
+  .footer-link {
+    color: $cpg-red;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover { text-decoration: underline; }
+
+    &--home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: $cpg-text-secondary;
+      font-weight: 500;
+      font-size: 13px;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $cpg-red;
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .reg-header,
+    .reg-content { padding: 30px 20px; }
+    .welcome-title { font-size: 26px; }
+    .reg-footer { padding: 20px; }
+    .colleague-input-group { grid-template-columns: 1fr; }
+    .button-group { flex-direction: column; }
+    .reg-complete-header { padding: 40px 20px; }
+    .reg-complete-content { padding: 30px 20px; }
+    .reg-complete-title { font-size: 28px; }
+  }
+
+  // =========================================================================
+  // Registration Complete Page
+  // =========================================================================
+
+  .registration-complete {
+    .reg-complete-header {
+      background: linear-gradient(135deg, $cpg-red 0%, darken($cpg-red, 15%) 100%);
+      color: white;
+      padding: 50px 40px;
+      text-align: center;
+    }
+
+    .envelope-circle {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+    }
+
+    .envelope-icon {
+      font-size: 36px;
+    }
+
+    .reg-complete-title {
+      font-family: $font-heading;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .reg-complete-subtitle {
+      font-family: $font-body;
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+
+    .reg-complete-content {
+      padding: 40px;
+    }
+
+    // Email sent box
+    .email-sent-box {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .email-sent-label {
+      display: block;
+      font-family: $font-body;
+      font-size: 14px;
+      color: $cpg-text-secondary;
+      margin-bottom: 5px;
+    }
+
+    .email-sent-address {
+      display: block;
+      font-family: $font-body;
+      font-size: 16px;
+      font-weight: 600;
+      color: $cpg-text;
+    }
+
+    // Next steps
+    .next-steps {
+      margin-bottom: 35px;
+    }
+
+    .next-steps-title {
+      font-family: $font-heading;
+      font-size: 22px;
+      font-weight: 700;
+      color: $cpg-text;
+      margin-bottom: 25px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 25px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: $cpg-red;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $font-body;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-heading {
+      font-family: $font-body;
+      font-size: 16px;
+      font-weight: 600;
+      color: $cpg-text;
+      margin-bottom: 4px;
+    }
+
+    .step-detail {
+      font-family: $font-body;
+      font-size: 14px;
+      color: $cpg-text-secondary;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    // Info tip box
+    .info-tip-box {
+      background: #fff9e6;
+      border: 1px solid #f0e6c0;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .info-tip-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .info-tip-title {
+      font-family: $font-body;
+      font-size: 16px;
+      font-weight: 700;
+      color: $cpg-text;
+      margin-bottom: 8px;
+    }
+
+    .info-tip-text {
+      font-family: $font-body;
+      font-size: 14px;
+      color: $cpg-text-secondary;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    // Resend section
+    .resend-section {
+      text-align: center;
+    }
+
+    .resend-divider {
+      border: none;
+      border-top: 1px solid $cpg-border;
+      margin-bottom: 25px;
+    }
+
+    .resend-label {
+      font-family: $font-body;
+      font-size: 14px;
+      color: $cpg-text-secondary;
+      margin-bottom: 15px;
+    }
+
+    .resend-btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border: 2px solid $cpg-red;
+      border-radius: 8px;
+      color: $cpg-red;
+      font-family: $font-body;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: white;
+
+      &:hover {
+        background: rgba($cpg-red, 0.05);
+        transform: translateY(-1px);
+      }
+    }
+
+    // Footer
+    .reg-complete-footer {
+      text-align: center;
+      padding: 25px 40px;
+      background: $cpg-bg;
+      border-top: 1px solid $cpg-border;
+      
+      p {
+        font-family: $font-body;
+        font-size: 14px;
+        color: $cpg-text-secondary;
+        margin: 5px 0;
+      }
+    }
+  }
+}

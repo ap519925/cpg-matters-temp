@@ -1,0 +1,43 @@
+uuid: 149a0da5-e39f-4693-8652-af3c8e07d28f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_stat_item.field_p_body
+    - field.field.paragraph.cpg_stat_item.field_p_icon
+    - field.field.paragraph.cpg_stat_item.field_p_title
+    - paragraphs.paragraphs_type.cpg_stat_item
+  module:
+    - text
+id: paragraph.cpg_stat_item.default
+targetEntityType: paragraph
+bundle: cpg_stat_item
+mode: default
+content:
+  field_p_body:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_icon:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,17 @@
+uuid: c54dc0b6-c316-4f6b-aa0b-924cc016d204
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_hero
+label: 'Hero Banner (1920x1080)'
+effects:
+  3e9d524b-1b5e-4c87-a78c-6c62d6c2f18b:
+    uuid: 3e9d524b-1b5e-4c87-a78c-6c62d6c2f18b
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 1920
+      height: 1080
+      crop_type: focal_point

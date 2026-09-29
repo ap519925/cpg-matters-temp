@@ -1,0 +1,10 @@
+uuid: aaeb7f7d-f9f2-43b5-8379-7f6dc53f9235
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_accordion
+label: 'Accordion / FAQ'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Accordion / FAQ'
+behavior_plugins: {  }

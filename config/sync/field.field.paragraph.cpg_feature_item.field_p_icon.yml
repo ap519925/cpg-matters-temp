@@ -1,0 +1,19 @@
+uuid: 2c2e9d23-ad73-45d4-9400-124f0fa92d7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icon
+    - paragraphs.paragraphs_type.cpg_feature_item
+id: paragraph.cpg_feature_item.field_p_icon
+field_name: field_p_icon
+entity_type: paragraph
+bundle: cpg_feature_item
+label: 'Icon Emoji or Path'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

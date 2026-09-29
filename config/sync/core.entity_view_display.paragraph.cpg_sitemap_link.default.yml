@@ -1,0 +1,27 @@
+uuid: b80a865d-918d-4eb2-8caa-d08e7bc333ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_sitemap_link.field_p_link
+    - paragraphs.paragraphs_type.cpg_sitemap_link
+  module:
+    - link
+id: paragraph.cpg_sitemap_link.default
+targetEntityType: paragraph
+bundle: cpg_sitemap_link
+mode: default
+content:
+  field_p_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

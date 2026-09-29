@@ -1,0 +1,10 @@
+uuid: d3ffcef7-c464-4a4e-a4bc-16eb2dff10e5
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_section
+label: 'Sitemap Section Card'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Section Card'
+behavior_plugins: {  }

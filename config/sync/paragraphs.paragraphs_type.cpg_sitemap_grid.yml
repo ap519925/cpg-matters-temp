@@ -1,0 +1,10 @@
+uuid: 50dfd419-47cf-4cc9-b30b-68ae2bd4caa8
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_grid
+label: 'Sitemap Grid'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Grid'
+behavior_plugins: {  }

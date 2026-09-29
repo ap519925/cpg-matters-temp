@@ -1,0 +1,25 @@
+uuid: c159f431-8c26-4eec-81b0-106d0bba1ff1
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-about
+  module:
+    - system
+  theme:
+    - cpg_theme
+id: footer_about_block
+theme: cpg_theme
+region: footer_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-about'
+settings:
+  id: 'system_menu_block:footer-about'
+  label: 'About CPG Matters'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

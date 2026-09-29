@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Template for ad_banner block content type.
+ * ad_size variable is set by cpg_theme_preprocess_block().
+ */
+#}
+{% set size = ad_size|default('300x250') %}
+{% set dims = size|split('x') %}
+{% set w = dims[0]|default('300') %}
+{% set h = dims[1]|default('250') %}
+{% set block_entity = elements.content['#block_content'] %}
+{% set img_url = '' %}
+{% set link_url = '' %}
+{% if block_entity and not block_entity.field_ad_image.isEmpty() %}
+  {% set img_url = file_url(block_entity.field_ad_image.entity.uri.value) %}
+{% endif %}
+{% if block_entity and not block_entity.field_ad_link.isEmpty() %}
+  {% set link_url = block_entity.field_ad_link.0.url %}
+{% endif %}
+<div{{ attributes.addClass('cpg-ad-banner') }} style="
+  max-width: {{ w }}px;
+  aspect-ratio: {{ w }} / {{ h }};
+  width: 100%;
+">
+  {% if img_url %}
+    {% if link_url %}
+      <a href="{{ link_url }}" target="_blank" rel="noopener noreferrer" style="display:block;">
+        <img src="{{ img_url }}" alt="Advertisement" width="{{ w }}" height="{{ h }}" style="width:100%; height:100%; object-fit:contain;" />
+      </a>
+    {% else %}
+      <img src="{{ img_url }}" alt="Advertisement" width="{{ w }}" height="{{ h }}" style="width:100%; height:100%; object-fit:contain;" />
+    {% endif %}
+  {% else %}
+    <div>
+      <span style="display:block; font-weight:700; color:#64748B; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em;">
+        SAMPLE BANNER
+      </span>
+      <span style="display:block; color:#94A3B8; font-size:0.65rem; margin-top:2px; text-transform:uppercase;">
+        {{ size }}
+      </span>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,10 @@
+uuid: 726c4b21-a113-46c5-afcf-d81d2d1c616b
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_media_text
+label: 'Media & Text (Side by Side)'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Media & Text (Side by Side)'
+behavior_plugins: {  }

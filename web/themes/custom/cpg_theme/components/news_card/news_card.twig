@@ -1,0 +1,22 @@
+<article class="cpg-news-card">
+  {% if image_url %}
+  <div class="cpg-news-card__image">
+    <img src="{{ image_url }}" alt="{{ title }}" />
+  </div>
+  {% endif %}
+  <div class="cpg-news-card__content">
+    <span class="category-label">{{ category }}</span>
+    <h3 class="cpg-news-card__title">
+      <a href="#" style="text-decoration: none; color: inherit;">{{ title }}</a>
+    </h3>
+    <div class="cpg-news-card__body">
+      {{ body }}
+      <div style="margin-top: 10px;">
+        <a href="#" style="color: var(--cpg-primary-red); font-weight: 600; text-decoration: none; font-size: 0.875rem;">Read more &rarr;</a>
+      </div>
+    </div>
+    <div class="cpg-news-card__meta">
+      <span class="time-ago">{{ time_ago }}</span>
+    </div>
+  </div>
+</article>

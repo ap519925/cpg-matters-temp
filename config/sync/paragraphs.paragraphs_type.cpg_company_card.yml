@@ -1,0 +1,10 @@
+uuid: 8ceaf75a-4475-4c13-93d6-aabcba8f551b
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_company_card
+label: 'Company Card'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Company Card'
+behavior_plugins: {  }

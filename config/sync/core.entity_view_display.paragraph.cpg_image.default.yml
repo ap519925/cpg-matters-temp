@@ -1,0 +1,26 @@
+uuid: e091d668-17e5-4052-8c1f-e788a3d2c07b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_image.field_p_image
+    - paragraphs.paragraphs_type.cpg_image
+  module:
+    - image
+id: paragraph.cpg_image.default
+targetEntityType: paragraph
+bundle: cpg_image
+mode: default
+content:
+  field_p_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

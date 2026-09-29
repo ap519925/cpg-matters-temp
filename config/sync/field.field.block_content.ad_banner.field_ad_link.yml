@@ -1,0 +1,23 @@
+uuid: 1a3204dc-2204-4fb3-a859-5bdec82c0326
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ad_banner
+    - field.storage.block_content.field_ad_link
+  module:
+    - link
+id: block_content.ad_banner.field_ad_link
+field_name: field_ad_link
+entity_type: block_content
+bundle: ad_banner
+label: 'Ad Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

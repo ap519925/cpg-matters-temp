@@ -1,0 +1,19 @@
+uuid: 7135e73a-fee7-4fd4-8f48-657205107bef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dict_also_known
+    - node.type.dictionary_term
+id: node.dictionary_term.field_dict_also_known
+field_name: field_dict_also_known
+entity_type: node
+bundle: dictionary_term
+label: 'Also Known As'
+description: 'Alternative names for this term, comma-separated.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

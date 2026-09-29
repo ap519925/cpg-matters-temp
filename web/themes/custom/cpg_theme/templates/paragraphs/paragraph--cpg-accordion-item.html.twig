@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Paragraph template: Accordion Item (cpg_accordion_item)
+ * Fields: field_p_title (question), field_p_body (answer)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-accordion-item',
+  ]
+%}
+{% block paragraph %}
+  <details{{ attributes.addClass(classes) }}>
+    <summary class="cpg-paragraph-accordion-item__question">
+      {{ content.field_p_title|render|striptags|trim }}
+      <span class="cpg-paragraph-accordion-item__icon" aria-hidden="true">+</span>
+    </summary>
+    <div class="cpg-paragraph-accordion-item__answer">
+      {{ content.field_p_body }}
+    </div>
+  </details>
+{% endblock paragraph %}

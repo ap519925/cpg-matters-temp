@@ -1,0 +1,19 @@
+uuid: 41d89789-7417-4806-bb85-ccb060b44e5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dict_full_name
+    - node.type.dictionary_term
+id: node.dictionary_term.field_dict_full_name
+field_name: field_dict_full_name
+entity_type: node
+bundle: dictionary_term
+label: 'Full Name / Subtitle'
+description: 'The full expanded name of the term (e.g., "Advertised Suggested Retail Price" for ASRP).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

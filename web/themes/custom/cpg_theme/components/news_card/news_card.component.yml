@@ -1,0 +1,15 @@
+name: News Card
+description: Horizontal news article for Latest News
+props:
+  type: object
+  properties:
+    category:
+      type: string
+    title:
+      type: string
+    body:
+      type: string
+    image_url:
+      type: string
+    time_ago:
+      type: string

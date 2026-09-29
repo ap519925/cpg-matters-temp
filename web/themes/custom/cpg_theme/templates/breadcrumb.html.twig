@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items (each with 'url' and 'text').
+ */
+#}
+{% if breadcrumb %}
+  <nav class="cpg-breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+    <ol class="cpg-breadcrumb__list">
+      {% for item in breadcrumb %}
+        <li class="cpg-breadcrumb__item{% if loop.last %} cpg-breadcrumb__item--active{% endif %}">
+          {% if item.url and not loop.last %}
+            <a href="{{ item.url }}" class="cpg-breadcrumb__link">{{ item.text }}</a>
+          {% else %}
+            <span class="cpg-breadcrumb__current" aria-current="page">{{ item.text }}</span>
+          {% endif %}
+          {% if not loop.last %}
+            <span class="cpg-breadcrumb__separator" aria-hidden="true">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

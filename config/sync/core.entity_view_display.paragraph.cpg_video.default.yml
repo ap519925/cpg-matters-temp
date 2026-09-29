@@ -1,0 +1,31 @@
+uuid: d1c0d8db-43bb-49a2-9013-0207363326d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_video.field_p_body
+    - field.field.paragraph.cpg_video.field_p_title
+    - paragraphs.paragraphs_type.cpg_video
+  module:
+    - text
+id: paragraph.cpg_video.default
+targetEntityType: paragraph
+bundle: cpg_video
+mode: default
+content:
+  field_p_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

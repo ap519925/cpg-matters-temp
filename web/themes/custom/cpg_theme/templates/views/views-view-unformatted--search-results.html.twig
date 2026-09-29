@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Template for individual search result rows (table format).
+ *
+ * Each row displays an article's title, teaser, category tag,
+ * author name, and date — all pulled dynamically from Drupal fields.
+ *
+ * Variables:
+ * - rows: The result rows from the View
+ * - title: (optional) View title
+ *
+ * The fields rendered here are configured in the View display settings:
+ * - Title (linked)
+ * - Body (trimmed)
+ * - Category tag (field_tags)
+ * - Author (uid display name)
+ * - Created date
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{% for row in rows %}
+  <div class="cpg-serp__row">
+    {{ row.content }}
+  </div>
+{% endfor %}

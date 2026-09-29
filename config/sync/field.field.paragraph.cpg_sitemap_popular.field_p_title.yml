@@ -1,0 +1,19 @@
+uuid: a4ffb7d1-62a0-4d01-bb56-977abf5c6faa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_popular
+id: paragraph.cpg_sitemap_popular.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_sitemap_popular
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

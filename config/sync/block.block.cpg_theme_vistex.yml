@@ -1,0 +1,28 @@
+uuid: 48874da0-022a-4141-8a22-a46a3bc55f48
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:8d374f97-dcd3-43e0-8d41-2b5b5e9746b5'
+  module:
+    - block_content
+    - system
+  theme:
+    - cpg_theme
+id: cpg_theme_vistex
+theme: cpg_theme
+region: content
+weight: -10
+provider: null
+plugin: 'block_content:8d374f97-dcd3-43e0-8d41-2b5b5e9746b5'
+settings:
+  id: 'block_content:8d374f97-dcd3-43e0-8d41-2b5b5e9746b5'
+  label: Vistex
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

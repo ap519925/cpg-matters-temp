@@ -1,0 +1,36 @@
+.cpg-sidebar-article {
+    margin-bottom: var(--spacing-lg);
+}
+
+.cpg-sidebar-article__image {
+    margin-bottom: var(--spacing-sm);
+}
+
+.cpg-sidebar-article__image img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 4px;
+    background: var(--cpg-bg-gray);
+    opacity: 0.8;
+}
+
+.cpg-sidebar-article__title {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cpg-sidebar-article__title:hover {
+    color: var(--cpg-primary-blue);
+}
+
+.cpg-sidebar-article__body {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

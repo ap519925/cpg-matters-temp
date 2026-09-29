@@ -1,0 +1,10 @@
+uuid: f525a608-b39a-478b-9b22-c84096722189
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_cta
+label: 'Call to Action'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Call to Action'
+behavior_plugins: {  }

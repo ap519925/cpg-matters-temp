@@ -1,0 +1,27 @@
+uuid: 25b1aa0b-c03f-4fc2-9359-9508e6d27453
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.article_category.field_bg_color
+    - field.field.taxonomy_term.article_category.field_category_color
+    - field.field.taxonomy_term.article_category.field_category_icon
+    - taxonomy.vocabulary.article_category
+  module:
+    - text
+id: taxonomy_term.article_category.default
+targetEntityType: taxonomy_term
+bundle: article_category
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_bg_color: true
+  field_category_color: true
+  field_category_icon: true

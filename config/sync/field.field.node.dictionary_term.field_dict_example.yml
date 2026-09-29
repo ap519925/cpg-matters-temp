@@ -1,0 +1,22 @@
+uuid: d699b82e-c184-4bda-bc0d-6ac4f79aa298
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dict_example
+    - node.type.dictionary_term
+  module:
+    - text
+id: node.dictionary_term.field_dict_example
+field_name: field_dict_example
+entity_type: node
+bundle: dictionary_term
+label: Example
+description: 'An example showing the term used in context.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

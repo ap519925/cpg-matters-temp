@@ -1,0 +1,369 @@
+// ================================================================
+// ARTICLE TEASERS — cards with pastel category backgrounds,
+// featured hero treatment, social sharing
+// ================================================================
+@use 'variables' as *;
+
+// ── Category pastel background colors ──
+$cpg-cat-sustainability: #d4ffd4;
+$cpg-cat-ecommerce: #d4e8ff;
+$cpg-cat-innovation: #ffe8cc;
+$cpg-cat-supplychain: #e6d4ff;
+$cpg-cat-marketing: #ffd4e8;
+$cpg-cat-finance: #ffe8d4;
+$cpg-cat-technology: #d4fff0;
+$cpg-cat-leadership: #ffe4d4;
+$cpg-cat-retail: #f0d4ff;
+$cpg-cat-manufacturing: #fff4d4;
+
+.cpg-article-teaser {
+    background: $cpg-bg-white;
+    border-radius: $radius;
+    overflow: hidden;
+    margin-bottom: $gap-xl;
+    transition: box-shadow $transition, transform $transition;
+    border: 1px solid $cpg-border;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+    }
+
+    // ── Pastel backgrounds for NON-featured teasers based on category ──
+    &:not(.cpg-article-teaser--featured) {
+        border-color: transparent;
+
+        &.cpg-cat-sustainability { background: $cpg-cat-sustainability; }
+        &.cpg-cat-e-commerce { background: $cpg-cat-ecommerce; }
+        &.cpg-cat-innovation { background: $cpg-cat-innovation; }
+        &.cpg-cat-supply-chain { background: $cpg-cat-supplychain; }
+        &.cpg-cat-marketing { background: $cpg-cat-marketing; }
+        &.cpg-cat-finance { background: $cpg-cat-finance; }
+        &.cpg-cat-technology { background: $cpg-cat-technology; }
+        &.cpg-cat-leadership { background: $cpg-cat-leadership; }
+        &.cpg-cat-retail { background: $cpg-cat-retail; }
+        &.cpg-cat-manufacturing { background: $cpg-cat-manufacturing; }
+
+        // Fallback rotating pastel backgrounds for any other unmapped categories to ensure vibrance
+        &:nth-of-type(6n+1):not([class*="cpg-cat-"]) { background: #e6d4ff; } // purple
+        &:nth-of-type(6n+2):not([class*="cpg-cat-"]) { background: #d4ffd4; } // green
+        &:nth-of-type(6n+3):not([class*="cpg-cat-"]) { background: #ffe8cc; } // orange
+        &:nth-of-type(6n+4):not([class*="cpg-cat-"]) { background: #d4e8ff; } // blue
+        &:nth-of-type(6n+5):not([class*="cpg-cat-"]) { background: #ffd4e8; } // pink
+        &:nth-of-type(6n+6):not([class*="cpg-cat-"]) { background: #d4fff0; } // teal
+        
+        // Also force fallback for the generic default class
+        &.cpg-cat-default:nth-of-type(6n+1) { background: #e6d4ff; }
+        &.cpg-cat-default:nth-of-type(6n+2) { background: #d4ffd4; }
+        &.cpg-cat-default:nth-of-type(6n+3) { background: #ffe8cc; }
+        &.cpg-cat-default:nth-of-type(6n+4) { background: #d4e8ff; }
+        &.cpg-cat-default:nth-of-type(6n+5) { background: #ffd4e8; }
+        &.cpg-cat-default:nth-of-type(6n+6) { background: #d4fff0; }
+
+    }
+
+    // ── Image ──
+    &__image {
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: $cpg-border;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+    }
+
+    &:hover &__image img {
+        transform: scale(1.03);
+    }
+
+    // ── Content container ──
+    &__content {
+        padding: $gap-lg $gap-xl $gap-xl;
+    }
+
+    // ── Category tag with icon ──
+    &__category {
+        margin-bottom: $gap-sm;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        a,
+        .field__item {
+            display: inline-block;
+            color: $cpg-red;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0;
+        }
+
+        .field__label {
+            display: none;
+        }
+    }
+
+    // ── Title ──
+    &__title {
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        margin-bottom: $gap-sm;
+        line-height: 1.25;
+
+        a {
+            color: $cpg-text;
+
+            &:hover {
+                color: $cpg-red;
+            }
+        }
+    }
+
+    // ── Body ──
+    &__body {
+        color: $cpg-text;
+        font-size: 1rem;
+        line-height: 1.65;
+        margin-bottom: $gap-md;
+        opacity: 0.85;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // ── Meta / Author row ──
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: $gap-md;
+        font-size: 0.85rem;
+        color: $cpg-text-secondary;
+        margin-bottom: $gap-sm;
+        padding-top: $gap-md;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    &__author {
+        font-weight: 600;
+        color: $cpg-text;
+        font-size: 0.85rem;
+    }
+
+    &__date-read {
+        color: $cpg-text-secondary;
+        font-size: 0.8rem;
+    }
+
+    &__date {
+        font-size: 0.78rem;
+        color: $cpg-text-secondary;
+        display: block;
+        margin-top: $gap-xs;
+    }
+
+    // ── Read more ──
+    &__readmore a {
+        color: $cpg-red;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    // ── Time ago ──
+    &__time-ago {
+        font-size: 0.78rem;
+        color: $cpg-text-secondary;
+        margin-top: $gap-xs;
+    }
+
+    // ── Hide Drupal node links and field labels ──
+    .node__links,
+    .links {
+        display: none;
+    }
+
+    .field--type-image {
+        margin: 0;
+        padding: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .field__label {
+        display: none;
+    }
+}
+
+// ── Category icon emoji ──
+.cpg-category-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+// ── Author avatar circle ──
+.cpg-author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $cpg-red;
+    color: $cpg-text-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.cpg-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cpg-meta-dot {
+    margin: 0 0.3rem;
+}
+
+.cpg-read-time {
+    color: $cpg-text-secondary;
+}
+
+// ================================================================
+// FEATURED (sticky) article — hero treatment
+// ================================================================
+.cpg-article-teaser--featured {
+    background: $cpg-bg-white !important;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: none;
+        transform: none;
+    }
+
+    .cpg-article-teaser__content {
+        padding: $gap-lg 0 $gap-xl;
+    }
+
+    .cpg-article-teaser__title {
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        line-height: 1.15;
+        margin-bottom: $gap-md;
+
+        a {
+            color: $cpg-blue;
+            text-decoration: underline;
+
+            &:hover {
+                color: $cpg-red;
+            }
+        }
+    }
+
+    .cpg-article-teaser__body {
+        font-size: 1.1rem;
+        opacity: 1;
+        color: #374151;
+    }
+}
+
+// ================================================================
+// SOCIAL SHARING ICONS
+// ================================================================
+.cpg-social-share {
+    display: flex;
+    gap: $gap-sm;
+    padding-top: $gap-lg;
+    margin-top: $gap-md;
+    border-top: 1px solid $cpg-border;
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid $cpg-border;
+        color: $cpg-text-secondary;
+        background: $cpg-bg-white;
+        transition: all $transition;
+
+        &:hover {
+            color: $cpg-text-light;
+            background: $cpg-text;
+            border-color: $cpg-text;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &__send-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 36px;
+        padding: 0 16px 0 12px;
+        border-radius: 999px;
+        border: 1px solid $cpg-red;
+        background: $cpg-bg-white;
+        color: $cpg-red;
+        font-size: 0.8rem;
+        font-weight: 600;
+        font-family: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+
+        svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        &:hover {
+            background: $cpg-red;
+            color: $cpg-text-light;
+            border-color: $cpg-red;
+            box-shadow: 0 2px 8px rgba(181, 19, 26, 0.25);
+
+            svg {
+                transform: translateX(2px);
+            }
+        }
+    }
+}
+
+// ================================================================
+// "Latest News" section heading
+// ================================================================
+.cpg-content-main {
+
+    h2.cpg-latest-heading,
+    .views-element-container h2 {
+        font-size: 1.35rem;
+        border-bottom: 3px solid $cpg-text;
+        padding-bottom: $gap-sm;
+        margin-bottom: $gap-xl;
+    }
+}

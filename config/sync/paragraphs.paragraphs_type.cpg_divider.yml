@@ -1,0 +1,10 @@
+uuid: 549b013f-2212-464d-a08d-35a17eb062a9
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_divider
+label: 'Section Divider'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Section Divider'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 422873b5-fbd4-414d-950b-8c66ade66cb9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:24f0de05-1454-41a0-a399-d6fe7ad7f7fb'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_footer_copyright
+theme: cpg_theme
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_content:24f0de05-1454-41a0-a399-d6fe7ad7f7fb'
+settings:
+  id: 'block_content:24f0de05-1454-41a0-a399-d6fe7ad7f7fb'
+  label: 'Footer Copyright'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

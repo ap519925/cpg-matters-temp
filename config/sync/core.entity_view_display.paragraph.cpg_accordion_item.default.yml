@@ -1,0 +1,31 @@
+uuid: 66fe4bc3-1c07-4e77-a9ac-7357bb38aac0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_accordion_item.field_p_body
+    - field.field.paragraph.cpg_accordion_item.field_p_title
+    - paragraphs.paragraphs_type.cpg_accordion_item
+  module:
+    - text
+id: paragraph.cpg_accordion_item.default
+targetEntityType: paragraph
+bundle: cpg_accordion_item
+mode: default
+content:
+  field_p_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

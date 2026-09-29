@@ -1,0 +1,9 @@
+name: Newsletter
+description: Stay informed newsletter subscription box
+props:
+  type: object
+  properties:
+    title:
+      type: string
+    description:
+      type: string

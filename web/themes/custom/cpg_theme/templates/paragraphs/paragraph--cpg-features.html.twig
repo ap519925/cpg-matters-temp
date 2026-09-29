@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Paragraph template: Features Grid Section (cpg_features)
+ * Fields: field_p_title, field_p_subtitle, field_p_items (nested cpg_feature_item)
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-features',
+  ]
+%}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }}>
+    {% if content.field_p_title|render|striptags|trim %}
+      <h2 class="cpg-paragraph-features__title">{{ content.field_p_title }}</h2>
+    {% endif %}
+    {% if content.field_p_subtitle|render|trim %}
+      <div class="cpg-paragraph-features__subtitle">{{ content.field_p_subtitle }}</div>
+    {% endif %}
+    <div class="cpg-paragraph-features__grid">
+      {{ content.field_p_items }}
+    </div>
+  </section>
+{% endblock paragraph %}

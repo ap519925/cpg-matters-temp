@@ -1,0 +1,23 @@
+uuid: 92509e84-5c80-44b5-86c6-28640d3df7e2
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:de3dafa8-2451-427a-8105-8cda7ebeca0b'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_theme_floating_topics
+theme: cpg_theme
+region: mobile_topics
+weight: 0
+provider: null
+plugin: 'block_content:de3dafa8-2451-427a-8105-8cda7ebeca0b'
+settings:
+  id: 'block_content:de3dafa8-2451-427a-8105-8cda7ebeca0b'
+  label: 'Floating Topic Sidebar'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

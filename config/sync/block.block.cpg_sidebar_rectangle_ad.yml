@@ -1,0 +1,23 @@
+uuid: 8cbd4684-3283-49e9-afae-1a89595ef395
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:ad_banner:a8cd348e-be38-4af6-a0cd-3b4da555493a'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_sidebar_rectangle_ad
+theme: cpg_theme
+region: sidebar_second
+weight: -8
+provider: null
+plugin: 'block_content:a8cd348e-be38-4af6-a0cd-3b4da555493a'
+settings:
+  id: 'block_content:a8cd348e-be38-4af6-a0cd-3b4da555493a'
+  label: 'Sidebar Rectangle Ad (300x250)'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

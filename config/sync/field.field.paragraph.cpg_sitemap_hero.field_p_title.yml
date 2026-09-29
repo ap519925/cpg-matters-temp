@@ -1,0 +1,19 @@
+uuid: e42384d0-9ef7-4b1f-baed-892bfcba258a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_hero
+id: paragraph.cpg_sitemap_hero.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_sitemap_hero
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

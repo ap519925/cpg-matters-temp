@@ -1,0 +1,23 @@
+name: 'CPG Matters Starter Recipe'
+description: 'Installs essential modern modules and sets up the CPG Matters theme.'
+type: 'Site creation'
+
+install:
+  - node
+  - block
+  - views
+  - layout_builder
+  - layout_discovery
+  - media
+  - responsive_image
+  - image
+  - pathauto
+  - metatag
+  - link
+
+config:
+  actions:
+    system.theme:
+      simple_config_update:
+        default: cpg_theme
+        admin: claro

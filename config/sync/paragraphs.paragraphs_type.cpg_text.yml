@@ -1,0 +1,10 @@
+uuid: 9c6a29ea-c485-4183-a0d7-d8d33a733647
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_text
+label: 'Text Block'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Text Block'
+behavior_plugins: {  }

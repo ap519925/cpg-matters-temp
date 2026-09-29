@@ -1,0 +1,19 @@
+uuid: 5d8a3a21-39b3-44d8-93ca-9fc29936cc5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_directory_grid
+id: paragraph.cpg_directory_grid.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_directory_grid
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

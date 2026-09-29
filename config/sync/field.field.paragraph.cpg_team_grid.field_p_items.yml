@@ -1,0 +1,26 @@
+uuid: 0ac012fd-4f6f-4489-bca9-3e298919d6f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_team_grid
+    - paragraphs.paragraphs_type.cpg_team_member
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_team_grid.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_team_grid
+label: 'Team Members'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_team_member: cpg_team_member
+field_type: entity_reference_revisions

@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for a generic block.
+ * Ensure block labels are output correctly.
+ */
+#}
+<div{{ attributes.addClass('block', 'block-' ~ configuration.provider|clean_class, 'block-' ~ plugin_id|clean_class) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h4{{ title_attributes.addClass('block-title') }}>{{ label }}</h4>
+  {% endif %}
+  {{ title_suffix }}
+  
+  {% block content %}
+    <div class="block-content">
+      {{ content }}
+    </div>
+  {% endblock %}
+</div>

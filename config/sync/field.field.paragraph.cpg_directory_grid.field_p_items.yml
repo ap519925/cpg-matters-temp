@@ -1,0 +1,26 @@
+uuid: 02b387f4-1221-46c4-9723-ba844ff7cde6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_company_card
+    - paragraphs.paragraphs_type.cpg_directory_grid
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_directory_grid.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_directory_grid
+label: 'Directory Listings'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_company_card: cpg_company_card
+field_type: entity_reference_revisions

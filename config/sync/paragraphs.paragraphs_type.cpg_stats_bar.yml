@@ -1,0 +1,10 @@
+uuid: 31dd270f-4eff-4c1e-816c-f3b578f15500
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_stats_bar
+label: 'Statistics Bar'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Statistics Bar'
+behavior_plugins: {  }

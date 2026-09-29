@@ -1,0 +1,10 @@
+uuid: 39995a3e-30e4-4438-bcf2-b2467f3413b8
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_sitemap_popular
+label: 'Sitemap Popular Destinations'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Sitemap Popular Destinations'
+behavior_plugins: {  }

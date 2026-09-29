@@ -1,0 +1,25 @@
+uuid: d5ba75e5-2ac9-4dac-a18d-98ed3b55073b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_text.field_p_body
+    - paragraphs.paragraphs_type.cpg_text
+  module:
+    - text
+id: paragraph.cpg_text.default
+targetEntityType: paragraph
+bundle: cpg_text
+mode: default
+content:
+  field_p_body:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

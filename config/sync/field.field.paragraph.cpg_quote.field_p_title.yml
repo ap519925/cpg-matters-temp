@@ -1,0 +1,19 @@
+uuid: ce734de5-d32d-4096-be83-f57c1562efc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_quote
+id: paragraph.cpg_quote.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_quote
+label: Attribution
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

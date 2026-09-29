@@ -1,0 +1,25 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: 'public://CPGMatters-Logo.png'
+favicon:
+  use_default: 1
+cpg_brand_color: '#C41E3A'
+cpg_brand_color_dark: '#9B1730'
+cpg_text_color: '#1A1A1A'
+cpg_footer_bg: '#1A1A1A'
+cpg_header_border_width: '2'
+cpg_directory_card_bg: '#E8F1FC'
+cpg_whitepapers_card_bg: '#E8F1FC'
+cpg_phone_number: ''
+cpg_twitter_url: 'https://x.com/CPGMattersZine'
+cpg_facebook_url: 'https://www.facebook.com/profile.php?id=61574512910579'
+cpg_linkedin_url: 'https://www.linkedin.com/company/cpgmatters.com'
+cpg_share_twitter: 1
+cpg_share_facebook: 1
+cpg_share_linkedin: 1
+cpg_share_email: 1

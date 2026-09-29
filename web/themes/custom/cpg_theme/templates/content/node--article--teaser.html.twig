@@ -1,0 +1,125 @@
+{#
+/**
+ * @file
+ * Theme override for article teasers on the front page.
+ * Hardcoded to perfectly match the mockup design features.
+ */
+#}
+
+{# Determine if this is the featured/sticky article #}
+{% set is_featured = node.isSticky() %}
+
+{% set classes = [
+  'cpg-article-teaser',
+  is_featured ? 'cpg-article-teaser--featured' : '',
+  not is_featured ? category_class : ''
+] %}
+
+<article{{ attributes.addClass(classes) }} style="{% if not is_featured %}border: none; border-radius: 8px; overflow: hidden; margin-bottom: 2rem;{% if category_bg_color %} background-color: {{ category_bg_color }};{% endif %}{% endif %}">
+
+  {# ── Image (Hero or standard) ── #}
+  {% if content.field_image|render|trim %}
+    <div class="cpg-article-teaser__image" style="width: 100%; {% if is_featured %}aspect-ratio: 16/8;{% else %}aspect-ratio: 16/9;{% endif %} overflow: hidden; background: #e5e7eb; display: block;">
+      {{ content.field_image }}
+    </div>
+  {% endif %}
+
+  <div class="cpg-article-teaser__content" style="padding: 1.5rem 1.5rem 2rem; {% if is_featured %}padding: 2rem 1.5rem;{% endif %}">
+
+    {# ── Category Tag ── #}
+    {% if category_name_raw %}
+      {% if category_url %}
+        <a href="{{ category_url }}" class="cpg-article-teaser__category" style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; text-decoration: none;">
+      {% else %}
+        <div class="cpg-article-teaser__category" style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+      {% endif %}
+        <span class="cpg-category-icon" aria-hidden="true" style="font-size: 0.85rem;">{{ category_icon|default('📈') }}</span>
+        <span style="color: #C41E3A; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">
+          {{ category_name_raw }}
+        </span>
+      {% if category_url %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {# ── Title ── #}
+    <h2 class="cpg-article-teaser__title" style="{% if is_featured %}margin-bottom: 1rem;{% else %}margin-bottom: 0.5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.6em;{% endif %};">
+      <a href="{{ url }}" rel="bookmark" style="text-decoration: none;">
+        {{ label }}
+      </a>
+    </h2>
+
+    {# ── Body Teaser ── #}
+    {% if custom_teaser %}
+      <div class="cpg-article-teaser__body" style="{% if not is_featured %}height: 4.5em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;{% endif %} margin-bottom: 1rem;">
+        {{ custom_teaser }}
+      </div>
+    {% endif %}
+
+    {# ── Author Row (Featured Only) ── #}
+    {% if is_featured and display_submitted %}
+      <div class="cpg-article-teaser__meta" style="display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #E5E7EB;">
+        <div class="cpg-author-avatar" style="width: 44px; height: 44px; border-radius: 50%; background: #9B1730; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">
+          {{ author_name|render|striptags|trim|first|upper ?: 'S' }}
+        </div>
+        <div class="cpg-author-info" style="display: flex; flex-direction: column; gap: 2px;">
+          <span class="cpg-article-teaser__author">By {{ author_name }}</span>
+          <span class="cpg-article-teaser__date-read">
+            {{ date }}
+            {% if content.field_estimated_read_time|render|striptags|trim %}
+              &middot; {{ content.field_estimated_read_time|render|striptags|trim }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+
+      {# ── Social sharing row ── #}
+      <div class="cpg-social-share" style="display: flex; gap: 12px; margin-top: 1.5rem;">
+        {% if share_twitter %}
+          <a href="https://twitter.com/intent/tweet?url={{ article_url|url_encode }}&text={{ plain_title|url_encode }}" target="_blank" rel="noopener" title="Share on X" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 14px; transition: all 0.2s;">X</a>
+        {% endif %}
+        {% if share_facebook %}
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ article_url|url_encode }}" target="_blank" rel="noopener" title="Share on Facebook" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: bold; font-family:serif; transition: all 0.2s;">f</a>
+        {% endif %}
+        {% if share_linkedin %}
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ article_url|url_encode }}&title={{ plain_title|url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: bold; font-family:serif; transition: all 0.2s;">in</a>
+        {% endif %}
+        {% if share_email %}
+          <a href="mailto:?subject={{ plain_title|url_encode }}&body={{ article_url|url_encode }}" title="Share via Email" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 14px; font-weight: bold; transition: all 0.2s;">@</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# ── Standard Card Footer (Non-Featured) ── #}
+    {% if not is_featured %}
+      <div class="cpg-article-teaser__footer" style="margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <a href="{{ url }}" style="color: #C41E3A; font-weight: 700; font-size: 0.85rem; text-decoration: none; display: inline-block;">{{ 'Read more'|t }} &rarr;</a>
+          {% if date %}
+            <div style="font-size: 0.75rem; color: #9CA3AF; margin-top: 6px;">{{ date }}</div>
+          {% endif %}
+        </div>
+        {# ── Social sharing icons ── #}
+        <div class="cpg-social-share cpg-social-share--teaser" style="display: flex; gap: 8px;">
+          {% if share_twitter %}
+            <a href="https://twitter.com/intent/tweet?url={{ article_url|url_encode }}&text={{ plain_title|url_encode }}" target="_blank" rel="noopener" title="Share on X" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 12px; transition: all 0.2s;">X</a>
+          {% endif %}
+          {% if share_facebook %}
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ article_url|url_encode }}" target="_blank" rel="noopener" title="Share on Facebook" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 12px; font-weight: bold; font-family: serif; transition: all 0.2s;">f</a>
+          {% endif %}
+          {% if share_linkedin %}
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ article_url|url_encode }}&title={{ plain_title|url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 12px; font-weight: bold; font-family: serif; transition: all 0.2s;">in</a>
+          {% endif %}
+          {% if share_email %}
+            <a href="mailto:?subject={{ plain_title|url_encode }}&body={{ article_url|url_encode }}" title="Share via Email" style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #F3F4F6; border: 1px solid #E5E7EB; color: #6B7280; text-decoration: none; font-size: 12px; font-weight: bold; transition: all 0.2s;">@</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>
+

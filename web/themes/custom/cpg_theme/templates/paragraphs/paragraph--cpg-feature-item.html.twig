@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Paragraph template: Feature/Grid Item (cpg_feature_item)
+ * Fields: field_p_title, field_p_icon, field_p_body
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-feature-item',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_p_icon|render|striptags|trim %}
+      <div class="cpg-paragraph-feature-item__icon">
+        {{ content.field_p_icon|render|striptags|trim }}
+      </div>
+    {% endif %}
+    {% if content.field_p_title|render|striptags|trim %}
+      <h3 class="cpg-paragraph-feature-item__title">{{ content.field_p_title }}</h3>
+    {% endif %}
+    {% if content.field_p_body|render|trim %}
+      <div class="cpg-paragraph-feature-item__body">{{ content.field_p_body }}</div>
+    {% endif %}
+  </div>
+{% endblock paragraph %}

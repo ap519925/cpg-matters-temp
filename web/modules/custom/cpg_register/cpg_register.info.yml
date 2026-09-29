@@ -1,0 +1,6 @@
+name: 'CPG Register'
+type: module
+description: 'Registration multi-step form'
+package: Custom
+core_version_requirement: ^10 || ^11
+version: '1.0.0'

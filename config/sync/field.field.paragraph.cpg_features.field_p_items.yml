@@ -1,0 +1,26 @@
+uuid: 8c2d9757-460b-4503-8930-a3f85306b005
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_items
+    - paragraphs.paragraphs_type.cpg_feature_item
+    - paragraphs.paragraphs_type.cpg_features
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_features.field_p_items
+field_name: field_p_items
+entity_type: paragraph
+bundle: cpg_features
+label: 'Feature Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cpg_feature_item: cpg_feature_item
+field_type: entity_reference_revisions

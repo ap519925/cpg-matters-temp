@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Template for a single Directory Listing node (full view).
+ *
+ * Displays the full profile of a company/brand from the directory.
+ * All fields are managed via the Drupal "Directory Listing" content type
+ * and are editable from the admin dashboard.
+ *
+ * Variables:
+ * - node: The node entity
+ * - content: All rendered field output
+ * - label: The node title
+ * - url: The canonical URL of the node
+ *
+ * Managed fields:
+ * - title: Company name
+ * - field_website: Company website (link field)
+ * - field_contact_name: Contact person name
+ * - field_expertise: Expertise taxonomy terms
+ * - body: Company description
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+<article{{ attributes.addClass('cpg-directory-profile') }}>
+
+  {# Company Name #}
+  <h1 class="cpg-directory-profile__name">{{ label }}</h1>
+
+  {# Website #}
+  {% if content.field_website|render|striptags|trim %}
+    <div class="cpg-directory-profile__website">
+      {{ content.field_website }}
+    </div>
+  {% endif %}
+
+  {# Contact Info #}
+  {% if content.field_contact_name|render|striptags|trim %}
+    <div class="cpg-directory-profile__section">
+      <h3 class="cpg-directory-profile__section-title">{{ 'Contact'|t }}</h3>
+      <div class="cpg-directory-profile__contact-name">
+        {{ content.field_contact_name }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Expertise / Capabilities #}
+  {% if content.field_expertise|render|striptags|trim %}
+    <div class="cpg-directory-profile__section">
+      <h3 class="cpg-directory-profile__section-title">{{ 'Expertise & Capabilities'|t }}</h3>
+      <div class="cpg-directory-profile__tags">
+        {{ content.field_expertise }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Company Description #}
+  {% if content.body|render|striptags|trim %}
+    <div class="cpg-directory-profile__section">
+      <h3 class="cpg-directory-profile__section-title">{{ 'About'|t }}</h3>
+      <div class="cpg-directory-profile__body">
+        {{ content.body }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Claim Profile CTA #}
+  <div class="cpg-directory-profile__cta">
+    <a href="{{ url }}claim" class="cpg-directory-card__claim-btn">{{ 'Claim This Profile'|t }}</a>
+  </div>
+
+</article>

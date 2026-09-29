@@ -1,0 +1,25 @@
+uuid: 9803b713-7708-47f5-b70e-2e2e4b536501
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cpg_paragraphs
+    - node.type.directory_listing
+  module:
+    - entity_reference_revisions
+id: node.directory_listing.field_cpg_paragraphs
+field_name: field_cpg_paragraphs
+entity_type: node
+bundle: directory_listing
+label: Sections
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

@@ -1,0 +1,48 @@
+uuid: 1737dbb9-4583-4cc3-ab50-7ec81996e1e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_features.field_p_items
+    - field.field.paragraph.cpg_features.field_p_subtitle
+    - field.field.paragraph.cpg_features.field_p_title
+    - paragraphs.paragraphs_type.cpg_features
+  module:
+    - paragraphs
+    - text
+id: paragraph.cpg_features.default
+targetEntityType: paragraph
+bundle: cpg_features
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_p_subtitle:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

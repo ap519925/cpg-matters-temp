@@ -1,0 +1,8 @@
+{% set url = content.field_p_link.0['#url']|default(paragraph.field_p_link.0.url) %}
+{% set title = paragraph.field_p_title.value %}
+{% set icon = paragraph.field_p_icon.value %}
+
+<a class="sitemap-popular__card" href="{{ url }}">
+  <span class="sitemap-popular__icon">{{ icon }}</span> 
+  <span class="sitemap-popular__label">{{ title }}</span> 
+</a>

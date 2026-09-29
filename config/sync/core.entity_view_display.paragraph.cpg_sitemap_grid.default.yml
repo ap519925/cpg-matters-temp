@@ -1,0 +1,24 @@
+uuid: b3cbf463-1caa-4fb5-b762-a3dcac4c16f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_sitemap_grid.field_p_items
+    - paragraphs.paragraphs_type.cpg_sitemap_grid
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_sitemap_grid.default
+targetEntityType: paragraph
+bundle: cpg_sitemap_grid
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

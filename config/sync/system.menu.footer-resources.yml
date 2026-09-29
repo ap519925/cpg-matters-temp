@@ -1,0 +1,8 @@
+uuid: 3df23ef2-0301-4c45-a671-f00ddb093f83
+langcode: en
+status: true
+dependencies: {  }
+id: footer-resources
+label: Resources
+description: 'Footer column: Resources links'
+locked: false

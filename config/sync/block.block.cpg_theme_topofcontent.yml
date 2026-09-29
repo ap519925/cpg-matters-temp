@@ -1,0 +1,23 @@
+uuid: d8517f4d-2dcf-451d-a8c8-4cffca60303c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ad_banner:f0c682c6-8803-437f-8a32-121ddebda9a9'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: cpg_theme_topofcontent
+theme: cpg_theme
+region: top_banner
+weight: 0
+provider: null
+plugin: 'block_content:f0c682c6-8803-437f-8a32-121ddebda9a9'
+settings:
+  id: 'block_content:f0c682c6-8803-437f-8a32-121ddebda9a9'
+  label: 'Top of Content'
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility: {  }

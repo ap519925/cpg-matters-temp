@@ -1,0 +1,19 @@
+uuid: c02484a6-a300-4253-a4bb-694987415557
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_bg_color
+    - taxonomy.vocabulary.tags
+id: taxonomy_term.tags.field_bg_color
+field_name: field_bg_color
+entity_type: taxonomy_term
+bundle: tags
+label: 'Background Hex Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

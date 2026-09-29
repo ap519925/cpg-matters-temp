@@ -1,0 +1,877 @@
+// =========================================================================
+// Paragraph Component Styles
+// =========================================================================
+
+@use 'variables' as *;
+
+// ---------------------------------------------------------------------------
+// Shared paragraph spacing
+// ---------------------------------------------------------------------------
+.paragraph {
+  margin-bottom: 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Hero Banner
+// ---------------------------------------------------------------------------
+.cpg-paragraph-hero {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+
+  &__bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba($cpg-red, 0.85) 0%, rgba(darken($cpg-red, 20%), 0.9) 100%);
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 800px;
+    color: white;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: white;
+
+    .field { display: inline; }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  &__cta a {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: white;
+    color: $cpg-red;
+    border-radius: 50px;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 300px;
+    &__title { font-size: 2rem; }
+    &__content { padding: 2.5rem 1.5rem; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Text Block
+// ---------------------------------------------------------------------------
+.cpg-paragraph-text {
+  font-family: $font-body;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: $cpg-text;
+
+  h2, h3, h4 {
+    font-family: $font-heading;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: $cpg-text;
+  }
+
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.4rem; }
+
+  p { margin-bottom: 1.25rem; }
+
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    li { margin-bottom: 0.5rem; }
+  }
+
+  a {
+    color: $cpg-red;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover { color: darken($cpg-red, 10%); }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Image
+// ---------------------------------------------------------------------------
+.cpg-paragraph-image {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Features Grid
+// ---------------------------------------------------------------------------
+.cpg-paragraph-features {
+  text-align: center;
+  padding: 3rem 0;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    color: $cpg-text-secondary;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.cpg-paragraph-feature-item {
+  background: white;
+  border: 1px solid $cpg-border;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin-bottom: 0.5rem;
+    .field { display: inline; }
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Call to Action
+// ---------------------------------------------------------------------------
+.cpg-paragraph-cta {
+  background: linear-gradient(135deg, $cpg-red 0%, darken($cpg-red, 15%) 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 4rem 3rem;
+  text-align: center;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+    .field { display: inline; }
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+  }
+
+  &__action a {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: white;
+    color: $cpg-red;
+    border-radius: 50px;
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.5rem;
+    &__title { font-size: 1.5rem; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Media & Text (Side by Side)
+// ---------------------------------------------------------------------------
+.cpg-paragraph-media-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 2rem 0;
+
+  &:nth-child(even) {
+    .cpg-paragraph-media-text__media { order: 2; }
+    .cpg-paragraph-media-text__text { order: 1; }
+  }
+
+  &__media {
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $cpg-text-secondary;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    &:nth-child(even) {
+      .cpg-paragraph-media-text__media { order: 1; }
+      .cpg-paragraph-media-text__text { order: 2; }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Directory Grid
+// ---------------------------------------------------------------------------
+.cpg-paragraph-directory-grid {
+  padding: 2rem 0;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    color: $cpg-text-secondary;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.cpg-paragraph-company-card {
+  background: white;
+  border: 1px solid $cpg-border;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  &__logo {
+    background: #f7f8fa;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid $cpg-border;
+
+    img {
+      max-height: 80px;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    padding: 1.5rem;
+  }
+
+  &__tag {
+    display: inline-block;
+    background: rgba($cpg-red, 0.08);
+    color: $cpg-red;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+
+    .field { display: inline; }
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin-bottom: 0.5rem;
+    .field { display: inline; }
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__link a {
+    display: inline-block;
+    color: $cpg-red;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Statistics Bar
+// ---------------------------------------------------------------------------
+.cpg-paragraph-stats-bar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: white;
+    .field { display: inline; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.cpg-paragraph-stat-item {
+  text-align: center;
+
+  &__value {
+    font-family: $font-heading;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: $cpg-red;
+    margin-bottom: 0.25rem;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+    color: white;
+    .field { display: inline; }
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    opacity: 0.65;
+    color: white;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Team Grid
+// ---------------------------------------------------------------------------
+.cpg-paragraph-team-grid {
+  padding: 2rem 0;
+  text-align: center;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    color: $cpg-text-secondary;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.cpg-paragraph-team-member {
+  background: white;
+  border: 1px solid $cpg-border;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  &__photo {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f0f0f0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    padding: 1.5rem;
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin-bottom: 0.25rem;
+    .field { display: inline; }
+  }
+
+  &__role {
+    display: block;
+    font-family: $font-body;
+    font-size: 0.85rem;
+    color: $cpg-red;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    .field { display: inline; }
+  }
+
+  &__bio {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Accordion / FAQ
+// ---------------------------------------------------------------------------
+.cpg-paragraph-accordion {
+  padding: 2rem 0;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.cpg-paragraph-accordion-item {
+  background: white;
+  border: 1px solid $cpg-border;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &[open] {
+    .cpg-paragraph-accordion-item__icon {
+      transform: rotate(45deg);
+    }
+  }
+
+  &__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    font-family: $font-body;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $cpg-text;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker { display: none; }
+
+    &:hover { color: $cpg-red; }
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $cpg-text-secondary;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  &__answer {
+    padding: 0 1.5rem 1.5rem;
+    font-family: $font-body;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: $cpg-text-secondary;
+    border-top: 1px solid $cpg-border;
+    padding-top: 1rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Video Embed
+// ---------------------------------------------------------------------------
+.cpg-paragraph-video {
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__embed {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+
+    iframe, video, embed, object {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Blockquote / Testimonial
+// ---------------------------------------------------------------------------
+.cpg-paragraph-quote {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  border-left: 4px solid $cpg-red;
+  border-radius: 0 12px 12px 0;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  position: relative;
+
+  &__mark {
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba($cpg-red, 0.15);
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: $cpg-text;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__photo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $cpg-text;
+    font-style: normal;
+    display: block;
+    .field { display: inline; }
+  }
+
+  &__role {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    color: $cpg-text-secondary;
+    display: block;
+    .field { display: inline; }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Section Divider
+// ---------------------------------------------------------------------------
+.cpg-paragraph-divider {
+  padding: 1rem 0;
+
+  &__line {
+    border: 0;
+    border-top: 1px solid $cpg-border;
+    margin: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Multi-Column Layout
+// ---------------------------------------------------------------------------
+.cpg-paragraph-columns {
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    &__row {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.cpg-paragraph-column {
+  // Columns inherit their width from the parent grid
+}
+
+// ---------------------------------------------------------------------------
+// Card Grid
+// ---------------------------------------------------------------------------
+.cpg-paragraph-card-grid {
+  padding: 2rem 0;
+  text-align: center;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: $cpg-text;
+    .field { display: inline; }
+  }
+
+  &__subtitle {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    color: $cpg-text-secondary;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    text-align: left;
+  }
+}
+
+.cpg-paragraph-card {
+  background: white;
+  border: 1px solid $cpg-border;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  &__image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #f0f0f0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 1.5rem;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: $cpg-text;
+    margin-bottom: 0.5rem;
+    .field { display: inline; }
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $cpg-text-secondary;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__link a {
+    display: inline-block;
+    color: $cpg-red;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+    &::after { content: ' →'; }
+  }
+}

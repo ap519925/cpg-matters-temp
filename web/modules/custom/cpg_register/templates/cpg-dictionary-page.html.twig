@@ -1,0 +1,157 @@
+{#
+/**
+ * @file
+ * Dictionary page template.
+ * Displays CPG industry terms grouped by letter with search and category filters.
+ */
+#}
+<div class="dictionary-page">
+
+  {# Hero Section #}
+  <div class="dict-hero">
+    <h1 class="dict-hero__title">{{ title }}</h1>
+    <p class="dict-hero__subtitle">{{ subtitle }}</p>
+  </div>
+
+  <div class="dict-container">
+
+    {# Search & Filter Bar #}
+    <div class="dict-filters">
+      <div class="dict-search-box">
+        <span class="dict-search-icon">🔍</span>
+        <input type="text" class="dict-search-input" id="dict-search" placeholder="Search for a term... (e.g., SKU, slotting fee, velocity)">
+      </div>
+
+      {# Alphabet Navigation #}
+      <div class="dict-alpha-nav" id="dict-alpha-nav">
+        {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'|split('') %}
+          {% set is_active = letter in available_letters %}
+          <a href="#letter-{{ letter }}"
+             class="dict-alpha-link {{ is_active ? 'has-entries' : 'no-entries' }}"
+             {% if not is_active %}aria-disabled="true"{% endif %}>
+            {{ letter }}
+          </a>
+        {% endfor %}
+      </div>
+
+      {# Category Filter Tabs #}
+      <div class="dict-category-filters">
+        <span class="dict-filter-label">Filter by topic:</span>
+        <button class="dict-cat-btn active" data-category="all">All Terms</button>
+        {% for category in categories %}
+          <button class="dict-cat-btn" data-category="{{ category|lower|replace({' ': '-'}) }}">{{ category }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# Total Count #}
+    <p class="dict-count">Showing <strong id="dict-visible-count">{{ total_count }}</strong> terms</p>
+
+    {# Dictionary Entries Grouped by Letter #}
+    <div class="dict-entries" id="dict-entries">
+      {% for letter, terms in grouped_terms %}
+        <div class="dict-letter-group" id="letter-{{ letter }}" data-letter="{{ letter }}">
+          <h2 class="dict-letter-heading">{{ letter }}</h2>
+
+          {% for term in terms %}
+            <div class="dict-entry-card" data-category="{{ term.category_class }}" data-title="{{ term.title|lower }}">
+              <div class="dict-entry-header">
+                <h3 class="dict-entry-title">{{ term.title }}</h3>
+                {% if term.category %}
+                  <span class="dict-category-badge badge--{{ term.category_class }}">{{ term.category|upper }}</span>
+                {% endif %}
+              </div>
+
+              {% if term.full_name %}
+                <p class="dict-entry-subtitle">{{ term.full_name }}</p>
+              {% endif %}
+
+              <div class="dict-entry-body">
+                {{ term.body|raw }}
+              </div>
+
+              {% if term.example %}
+                <div class="dict-example-box">
+                  <span class="dict-example-label">EXAMPLE</span>
+                  <p class="dict-example-text">{{ term.example|raw }}</p>
+                </div>
+              {% endif %}
+
+              <div class="dict-entry-footer">
+                {% if term.also_known %}
+                  <span class="dict-also-known">Also known as: {{ term.also_known }}</span>
+                {% endif %}
+                {% if term.related_link_url %}
+                  <a href="{{ term.related_link_url }}" class="dict-related-link">{{ term.related_link_title ?: 'Related articles' }} →</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{# Client-side search and filter JS #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var searchInput = document.getElementById('dict-search');
+  var catBtns = document.querySelectorAll('.dict-cat-btn');
+  var cards = document.querySelectorAll('.dict-entry-card');
+  var letterGroups = document.querySelectorAll('.dict-letter-group');
+  var countEl = document.getElementById('dict-visible-count');
+  var activeCategory = 'all';
+
+  function filterTerms() {
+    var query = searchInput.value.toLowerCase().trim();
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var title = card.getAttribute('data-title');
+      var category = card.getAttribute('data-category');
+      var matchesSearch = !query || title.indexOf(query) !== -1 ||
+        card.textContent.toLowerCase().indexOf(query) !== -1;
+      var matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+      if (matchesSearch && matchesCategory) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Hide empty letter groups
+    letterGroups.forEach(function(group) {
+      var visibleCards = group.querySelectorAll('.dict-entry-card:not([style*="display: none"])');
+      group.style.display = visibleCards.length > 0 ? '' : 'none';
+    });
+
+    countEl.textContent = visible;
+  }
+
+  searchInput.addEventListener('input', filterTerms);
+
+  catBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      catBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeCategory = btn.getAttribute('data-category');
+      filterTerms();
+    });
+  });
+
+  // Smooth scroll for alpha nav
+  document.querySelectorAll('.dict-alpha-link.has-entries').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>

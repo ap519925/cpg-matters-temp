@@ -1,0 +1,19 @@
+name: Featured Article
+description: Large featured article block
+props:
+  type: object
+  properties:
+    category:
+      type: string
+    title:
+      type: string
+    body:
+      type: string
+    author:
+      type: string
+    date:
+      type: string
+    image_url:
+      type: string
+    read_time:
+      type: string

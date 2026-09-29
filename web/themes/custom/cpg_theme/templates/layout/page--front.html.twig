@@ -1,0 +1,125 @@
+{#
+/**
+ * @file
+ * Theme override for the front page.
+ */
+#}
+<div class="cpg-layout cpg-front-page">
+
+  {# ===== HEADER ===== #}
+  {% if page.header or page.header_search or page.primary_menu %}
+    <header class="cpg-layout__header" role="banner">
+      <div class="cpg-container header-inner">
+        
+        {# Branding #}
+        <div class="header-branding">
+          <a href="/" class="site-branding-link">
+            {% if site_logo %}
+              <img src="{{ site_logo }}" alt="{{ site_name }}" class="site-logo-img" style="max-height: 40px; width: auto; display: block; margin-bottom: 4px;" />
+            {% else %}
+              <h1 class="site-title">{{ site_name|default('CPG Matters') }}</h1>
+            {% endif %}
+            {% if site_slogan %}
+            <div class="site-slogan">{{ site_slogan }}</div>
+          {% endif %}
+          </a>
+        </div>
+
+        {# Navigation #}
+        <div class="header-nav">
+          {{ page.primary_menu }}
+        </div>
+
+        {# Actions (Subscribe + Search + Mobile Hamburger) #}
+        <div class="header-actions">
+          {# Mobile-only hamburger for main nav #}
+          <button class="mobile-nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+            <span class="mobile-nav-hamburger__bar"></span>
+            <span class="mobile-nav-hamburger__bar"></span>
+            <span class="mobile-nav-hamburger__bar"></span>
+          </button>
+          {% if page.header_actions %}
+            {{ page.header_actions }}
+          {% endif %}
+        </div>
+
+      </div>
+    </header>
+
+    {# ===== FLOATING TOPIC ICON SIDEBAR (Dynamically rendered from block) ===== #}
+    {% if page.mobile_topics %}
+      {{ page.mobile_topics }}
+    {% endif %}
+
+    {# ===== MOBILE NAV DRAWER (separate from topics flyout) ===== #}
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-drawer" aria-label="Mobile navigation">
+      <div class="mobile-nav-drawer__header">
+        <span class="mobile-nav-drawer__title">{{ 'Navigation'|t }}</span>
+        <button class="mobile-nav-drawer__close" aria-label="Close navigation">&times;</button>
+      </div>
+
+      {% if page.mobile_nav %}
+        {{ page.primary_menu }}
+      {% endif %}
+    </nav>
+  {% endif %}
+
+  {# ===== TOP BANNER AD ===== #}
+  <div class="cpg-top-banner cpg-container" style="padding: 2rem 0; text-align: center;">
+    {{ page.top_banner }}
+  </div>
+
+  {# ===== MAIN 3-COLUMN LAYOUT ===== #}
+  <main role="main" class="cpg-layout__main cpg-container">
+    {{ page.breadcrumb }}
+
+    {% set layout_class = 'cpg-columns' %}
+    {% if page.sidebar_first and page.sidebar_second %}
+      {% set layout_class = layout_class ~ ' has-both-sidebars' %}
+    {% elseif page.sidebar_first %}
+      {% set layout_class = layout_class ~ ' has-sidebar-first' %}
+    {% elseif page.sidebar_second %}
+      {% set layout_class = layout_class ~ ' has-sidebar-second' %}
+    {% else %}
+      {% set layout_class = layout_class ~ ' no-sidebars' %}
+    {% endif %}
+
+    <div class="{{ layout_class }}">
+      
+      {# Left sidebar #}
+      <aside class="cpg-sidebar cpg-sidebar--first" role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+
+      {# Center content #}
+      <div class="cpg-content-main">
+        {{ page.content }}
+      </div>
+
+      {# Right sidebar #}
+      <aside class="cpg-sidebar cpg-sidebar--second" role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+      
+    </div>
+  </main>
+
+  {# ===== FOOTER ===== #}
+  <footer class="cpg-layout__footer" role="contentinfo">
+    <div class="cpg-container footer-columns">
+      <div class="footer-col">{{ page.footer_first }}</div>
+      <div class="footer-col">{{ page.footer_second }}</div>
+      <div class="footer-col">{{ page.footer_third }}</div>
+      <div class="footer-col">{{ page.footer_fourth }}</div>
+    </div>
+    <div class="footer-bottom">
+      <div class="cpg-container">
+        {{ page.footer_bottom }}
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+

@@ -1,0 +1,19 @@
+uuid: 1f0e884b-89af-4606-abca-395807633d51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_popular_link
+id: paragraph.cpg_sitemap_popular_link.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_sitemap_popular_link
+label: Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

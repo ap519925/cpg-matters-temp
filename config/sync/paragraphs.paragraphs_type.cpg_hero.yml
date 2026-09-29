@@ -1,0 +1,10 @@
+uuid: b5b298b8-2ad8-46cd-bd38-5adb76f50882
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_hero
+label: 'Hero Banner'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Hero Banner'
+behavior_plugins: {  }

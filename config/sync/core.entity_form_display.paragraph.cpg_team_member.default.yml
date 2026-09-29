@@ -1,0 +1,54 @@
+uuid: 47677b3d-84cf-4884-948c-c01bc6055677
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_team_member.field_p_body
+    - field.field.paragraph.cpg_team_member.field_p_icon
+    - field.field.paragraph.cpg_team_member.field_p_image
+    - field.field.paragraph.cpg_team_member.field_p_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.cpg_team_member
+  module:
+    - image
+    - text
+id: paragraph.cpg_team_member.default
+targetEntityType: paragraph
+bundle: cpg_team_member
+mode: default
+content:
+  field_p_body:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_icon:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_image:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_p_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Template for the CPG Industry Directory view.
+ *
+ * This is the main wrapper for the directory listing page.
+ * All content comes from the Drupal Views module — the directory
+ * listings, filters, hero text, and pagination are all editable
+ * via the Drupal admin dashboard.
+ *
+ * Variables:
+ * - title: The view title (e.g., "CPG Industry Directory")
+ * - header: View header area (hero description text, managed via Views UI)
+ * - exposed: Exposed filter widgets (Browse Directory dropdown, etc.)
+ * - rows: The rendered directory listing cards
+ * - pager: Pagination output
+ * - empty: Content to display when there are no results
+ * - footer: View footer area (result count, etc.)
+ * - attachment_before / attachment_after: Any view attachments
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+
+<div class="cpg-directory">
+
+  {# ===== Hero Section ===== #}
+  <div class="cpg-directory__hero">
+    {% if title %}
+      <h1 class="cpg-directory__title">{{ title }}</h1>
+    {% endif %}
+    {% if header %}
+      <div class="cpg-directory__description">
+        {{ header }}
+      </div>
+    {% endif %}
+  </div>
+
+  {# ===== Filter Bar ===== #}
+  {% if exposed %}
+    <div class="cpg-directory__filter-bar">
+      <div class="cpg-directory__filter-inner">
+        {{ exposed }}
+      </div>
+      {% if footer %}
+        <div class="cpg-directory__result-count">
+          {{ footer }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {# ===== Directory Listing Grid ===== #}
+  {% if rows %}
+    <div class="cpg-directory__grid">
+      {{ rows }}
+    </div>
+  {% elseif empty %}
+    <div class="cpg-directory__empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {# ===== Pager ===== #}
+  {% if pager %}
+    <div class="cpg-directory__pager">
+      {{ pager }}
+    </div>
+  {% endif %}
+
+</div>

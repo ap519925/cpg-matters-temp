@@ -1,0 +1,23 @@
+uuid: 03236f35-46ef-4b8b-ad50-1a53c4eb8d68
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e413e643-2e23-4613-ad93-f504e65c7b0a'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: headersearchform
+theme: cpg_theme
+region: header_actions
+weight: 10
+provider: null
+plugin: 'block_content:e413e643-2e23-4613-ad93-f504e65c7b0a'
+settings:
+  id: 'block_content:e413e643-2e23-4613-ad93-f504e65c7b0a'
+  label: ''
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

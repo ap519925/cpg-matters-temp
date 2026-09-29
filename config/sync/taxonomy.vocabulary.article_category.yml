@@ -1,0 +1,9 @@
+uuid: f4395c86-28c9-4afe-833f-ba33237edffb
+langcode: en
+status: true
+dependencies: {  }
+name: 'Article Category'
+vid: article_category
+description: 'Categories for CPG articles.'
+weight: 0
+new_revision: false

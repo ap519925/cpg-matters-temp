@@ -1,0 +1,15 @@
+cpg_register.registration_complete:
+  path: '/register/complete'
+  defaults:
+    _controller: '\Drupal\cpg_register\Controller\RegistrationCompleteController::content'
+    _title: 'Registration Complete'
+  requirements:
+    _access: 'TRUE'
+    
+cpg_register.dictionary:
+  path: '/dictionary'
+  defaults:
+    _controller: '\Drupal\cpg_register\Controller\DictionaryController::content'
+    _title: 'CPG Industry Dictionary'
+  requirements:
+    _access: 'TRUE'

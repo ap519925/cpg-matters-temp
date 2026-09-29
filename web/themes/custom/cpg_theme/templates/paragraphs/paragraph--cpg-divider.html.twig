@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Paragraph template: Section Divider (cpg_divider)
+ * No fields — just renders a styled horizontal rule.
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-divider',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    <hr class="cpg-paragraph-divider__line" />
+  </div>
+{% endblock paragraph %}

@@ -1,0 +1,10 @@
+uuid: 3bf12f43-dfac-4cc4-b4f2-188c48401c5f
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_card_grid
+label: 'Card Grid'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Card Grid'
+behavior_plugins: {  }

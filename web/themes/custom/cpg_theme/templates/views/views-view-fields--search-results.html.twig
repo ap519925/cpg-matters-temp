@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Template for individual search result fields (table row).
+ *
+ * Renders the fields for a single search result row in the SERP table.
+ * All field values are dynamically pulled from Drupal — the fields
+ * displayed here are configured in the View admin (Structure > Views).
+ *
+ * Expected fields (configured in the View):
+ * - fields.title: Article title (rendered as link)
+ * - fields.body: Article body (trimmed teaser)
+ * - fields.field_tags: Category taxonomy term
+ * - fields.uid: Author display name
+ * - fields.created: Published date
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+
+<div class="cpg-serp__row-inner">
+  <div class="cpg-serp__cell cpg-serp__cell--title">
+    {% if fields.title is defined %}
+      <div class="cpg-serp__article-title">{{ fields.title.content }}</div>
+    {% endif %}
+    {% if fields.body is defined %}
+      <div class="cpg-serp__article-excerpt">{{ fields.body.content }}</div>
+    {% endif %}
+  </div>
+
+  <div class="cpg-serp__cell cpg-serp__cell--category">
+    {% if fields.field_tags is defined %}
+      <span class="cpg-serp__category-tag">{{ fields.field_tags.content }}</span>
+    {% endif %}
+  </div>
+
+  <div class="cpg-serp__cell cpg-serp__cell--author">
+    {% if fields.uid is defined %}
+      {{ fields.uid.content }}
+    {% endif %}
+  </div>
+
+  <div class="cpg-serp__cell cpg-serp__cell--date">
+    {% if fields.created is defined %}
+      {{ fields.created.content }}
+    {% endif %}
+  </div>
+</div>

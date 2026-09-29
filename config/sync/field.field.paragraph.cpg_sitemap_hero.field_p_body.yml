@@ -1,0 +1,22 @@
+uuid: e055074e-00e0-494a-9700-332ea0b22d0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_sitemap_hero
+  module:
+    - text
+id: paragraph.cpg_sitemap_hero.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_sitemap_hero
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

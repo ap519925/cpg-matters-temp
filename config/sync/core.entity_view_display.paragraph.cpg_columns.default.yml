@@ -1,0 +1,24 @@
+uuid: ec9fb139-e465-4ba2-97c2-2b5dbe7bc728
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_columns.field_p_items
+    - paragraphs.paragraphs_type.cpg_columns
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_columns.default
+targetEntityType: paragraph
+bundle: cpg_columns
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

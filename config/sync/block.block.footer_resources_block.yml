@@ -1,0 +1,25 @@
+uuid: c8b5dbb6-9afe-4bb3-a39d-38e1aa8cd8ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-resources
+  module:
+    - system
+  theme:
+    - cpg_theme
+id: footer_resources_block
+theme: cpg_theme
+region: footer_second
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-resources'
+settings:
+  id: 'system_menu_block:footer-resources'
+  label: Resources
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

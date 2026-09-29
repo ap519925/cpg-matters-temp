@@ -1,0 +1,173 @@
+// ================================================================
+// SIDEBAR — article card overrides for compact sidebar display,
+// ad banners, and newsletter block
+// ================================================================
+@use 'variables' as *;
+
+// ── Sidebar article card overrides ──
+.cpg-sidebar {
+    .cpg-article-teaser {
+        border-radius: $radius;
+        margin-bottom: $gap-lg;
+        background: $cpg-bg-white;
+        border: 1px solid $cpg-border;
+
+        &__image {
+            aspect-ratio: 16 / 10;
+        }
+
+        &__content {
+            padding: $gap-md;
+        }
+
+        &__title {
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        &__body {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        &__meta,
+        &__readmore,
+        &__time-ago {
+            display: none;
+        }
+    }
+
+    .cpg-social-share {
+        display: none;
+    }
+
+    // ── Ad banners in sidebar ──
+    .cpg-ad-banner {
+        margin: 0 auto $gap-xl;
+    }
+
+    @media (max-width: 768px) {
+        .cpg-ad-banner {
+            max-height: 250px !important;
+            width: auto !important;
+
+            // Reduce text size for the placeholder when it scales down
+            span {
+                font-size: 0.55rem !important;
+            }
+        }
+    }
+}
+
+// ── Ad banner placeholders ──
+.cpg-ad-banner {
+    border-radius: $radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $cpg-text-secondary;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .field--name-field-ad-image, // Drupal wrapper
+    .field__item,
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+// ── Top banner ──
+.cpg-top-banner {
+    padding: $gap-lg 0;
+    text-align: center;
+}
+
+// ── Content inline ad ──
+.cpg-content-main .cpg-ad-banner {
+    margin: $gap-xl auto;
+}
+
+// ── Newsletter block — red sidebar box ──
+.cpg-newsletter-block {
+    background: $cpg-red;
+    color: $cpg-text-light;
+    padding: $gap-xl $gap-lg;
+    border-radius: $radius;
+    margin-bottom: $gap-xl;
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 1.3rem;
+        color: $cpg-text-light;
+        margin-bottom: $gap-sm;
+    }
+
+    &__desc {
+        font-size: 0.85rem;
+        margin-bottom: $gap-md;
+        opacity: 0.92;
+        line-height: 1.5;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__form,
+    .cpg-newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-sm;
+        
+        // Reset webform wrapper margins
+        .form-item, .form-actions {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__input,
+    .cpg-newsletter-input {
+        border: none;
+        border-radius: $radius;
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
+        font-family: $font-body;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__btn,
+    .cpg-newsletter-btn {
+        background: $cpg-text-light;
+        color: $cpg-red;
+        border: none;
+        border-radius: $radius;
+        padding: 0.6rem;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: opacity $transition;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}

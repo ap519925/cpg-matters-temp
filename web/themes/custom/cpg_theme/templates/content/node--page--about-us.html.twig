@@ -1,0 +1,150 @@
+{#
+/**
+ * @file
+ * Custom node template for the "About Us" page (page content type).
+ *
+ * Renders structured content via Paragraphs, applying the original
+ * cpg-about__* CSS classes for the exact same styling as before.
+ */
+#}
+
+<article{{ attributes.addClass('cpg-about') }}>
+  {% if content.field_cpg_paragraphs|render|trim %}
+    {# Render each paragraph with the original About page structure #}
+    {% for item in node.field_cpg_paragraphs %}
+      {% set p = item.entity %}
+      {% set ptype = p.bundle() %}
+
+      {% if ptype == 'cpg_hero' %}
+        {# ── Hero Section ── #}
+        <section class="cpg-about__hero">
+          <h1 class="cpg-about__title">{{ p.field_p_title.value }}</h1>
+          {% if p.field_p_subtitle.value %}
+            <p class="cpg-about__subtitle">{{ p.field_p_subtitle.value|striptags }}</p>
+          {% endif %}
+          {% if p.field_p_link.0.url %}
+            <a href="{{ p.field_p_link.0.url }}" class="cpg-about__cta-btn cpg-about__cta-btn--primary">{{ p.field_p_link.0.title }}</a>
+          {% endif %}
+        </section>
+
+      {% elseif ptype == 'cpg_text' %}
+        {# ── Text Section ── #}
+        <section class="cpg-about__section">
+          <div class="cpg-about__text">
+            {{ p.field_p_body.value|raw }}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_stats_bar' %}
+        {# ── Stats Bar ── #}
+        {% if p.field_p_title.value %}
+          <h2 class="cpg-about__section-title" style="text-align:center; margin-bottom: 1.5rem;">{{ p.field_p_title.value }}</h2>
+        {% endif %}
+        <div class="cpg-about__stats">
+          {% for stat_item in p.field_p_items %}
+            {% set stat = stat_item.entity %}
+            <div class="cpg-about__stat">
+              <div class="cpg-about__stat-number">{{ stat.field_p_icon.value }}</div>
+              <div class="cpg-about__stat-label">{{ stat.field_p_title.value }}</div>
+            </div>
+          {% endfor %}
+        </div>
+
+      {% elseif ptype == 'cpg_features' %}
+        {# ── Our Values Grid ── #}
+        <section class="cpg-about__values">
+          {% if p.field_p_title.value %}
+            <h2 class="cpg-about__section-title" style="text-align:center;">{{ p.field_p_title.value }}</h2>
+          {% endif %}
+          {% if p.field_p_subtitle.value %}
+            <p class="cpg-about__subtitle" style="text-align:center; margin-bottom: 2rem;">{{ p.field_p_subtitle.value|striptags }}</p>
+          {% endif %}
+          <div class="cpg-about__values-grid">
+            {% for feature_item in p.field_p_items %}
+              {% set feat = feature_item.entity %}
+              <div class="cpg-about__value-card">
+                {% if feat.field_p_icon.value %}
+                  <div class="cpg-about__value-icon">{{ feat.field_p_icon.value }}</div>
+                {% endif %}
+                <h3 class="cpg-about__value-title">{{ feat.field_p_title.value }}</h3>
+                {% if feat.field_p_body.value %}
+                  <p class="cpg-about__value-desc">{{ feat.field_p_body.value|striptags }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_team_grid' %}
+        {# ── Team Grid ── #}
+        <section class="cpg-about__team">
+          {% if p.field_p_title.value %}
+            <h2 class="cpg-about__team-title">{{ p.field_p_title.value }}</h2>
+          {% endif %}
+          {% if p.field_p_subtitle.value %}
+            <p class="cpg-about__team-intro">{{ p.field_p_subtitle.value|striptags }}</p>
+          {% endif %}
+          <div class="cpg-about__team-grid">
+            {% for member_item in p.field_p_items %}
+              {% set member = member_item.entity %}
+              <div class="cpg-about__team-member">
+                <div class="cpg-about__team-avatar">
+                  {{ member.field_p_title.value|first|upper }}{{ member.field_p_title.value|split(' ')|last|first|upper }}
+                </div>
+                <h3 class="cpg-about__team-name">{{ member.field_p_title.value }}</h3>
+                {% if member.field_p_icon.value %}
+                  <div class="cpg-about__team-role">{{ member.field_p_icon.value }}</div>
+                {% endif %}
+                {% if member.field_p_body.value %}
+                  <p class="cpg-about__team-bio">{{ member.field_p_body.value|striptags }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_cta' %}
+        {# ── CTA Banner ── #}
+        <section class="cpg-about__cta">
+          {% if p.field_p_title.value %}
+            <h2 class="cpg-about__cta-title">{{ p.field_p_title.value }}</h2>
+          {% endif %}
+          {% if p.field_p_body.value %}
+            <p class="cpg-about__cta-text">{{ p.field_p_body.value|striptags }}</p>
+          {% endif %}
+          <div class="cpg-about__cta-buttons">
+            {% if p.field_p_link.0.url %}
+              <a href="{{ p.field_p_link.0.url }}" class="cpg-about__cta-btn cpg-about__cta-btn--primary">{{ p.field_p_link.0.title }}</a>
+            {% endif %}
+            <a href="/contact" class="cpg-about__cta-btn cpg-about__cta-btn--secondary">CONTACT US</a>
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_quote' %}
+        {# ── Blockquote ── #}
+        <blockquote class="cpg-about__quote">
+          {{ p.field_p_body.value|raw }}
+          {% if p.field_p_title.value %}
+            <cite>— {{ p.field_p_title.value }}</cite>
+          {% endif %}
+        </blockquote>
+
+      {% else %}
+        {# Fallback: render through standard paragraph rendering #}
+        {{ content.field_cpg_paragraphs[loop.index0] }}
+      {% endif %}
+
+    {% endfor %}
+  {% endif %}
+
+  {# Fallback: render body field if no paragraphs exist yet #}
+  {% if content.body|render|trim and not content.field_cpg_paragraphs|render|trim %}
+    <div class="cpg-about__body-fallback">
+      {{ content.body }}
+    </div>
+  {% endif %}
+
+  <div class="hidden">
+    {{ content|without('field_cpg_paragraphs', 'body') }}
+  </div>
+</article>

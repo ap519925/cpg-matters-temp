@@ -1,0 +1,10 @@
+uuid: 39edf2be-116f-4273-a543-dbb2564a201e
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_quote
+label: 'Blockquote / Testimonial'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Blockquote / Testimonial'
+behavior_plugins: {  }

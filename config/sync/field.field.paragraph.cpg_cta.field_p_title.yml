@@ -1,0 +1,19 @@
+uuid: 974d0df6-1cbf-4cf0-ae61-a02be343c23e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_cta
+id: paragraph.cpg_cta.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_cta
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

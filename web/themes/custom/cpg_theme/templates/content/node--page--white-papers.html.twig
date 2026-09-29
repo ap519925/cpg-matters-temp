@@ -1,0 +1,209 @@
+{#
+/**
+ * @file
+ * Custom node template for the "White Papers & Research" page.
+ *
+ * Renders structured content via Paragraphs, applying the original
+ * cpg-whitepapers__* CSS classes for the exact same styling as before.
+ */
+#}
+
+<article{{ attributes.addClass('cpg-whitepapers') }}>
+  {% if content.field_cpg_paragraphs|render|trim %}
+    {% for item in node.field_cpg_paragraphs %}
+      {% set p = item.entity %}
+      {% set ptype = p.bundle() %}
+
+      {% if ptype == 'cpg_hero' %}
+        {# ── Hero Section ── #}
+        <section class="cpg-whitepapers__hero">
+          <h1 class="cpg-whitepapers__title">{{ p.field_p_title.value }}</h1>
+          {% if p.field_p_subtitle.value %}
+            <p class="cpg-whitepapers__subtitle">{{ p.field_p_subtitle.value|striptags }}</p>
+          {% endif %}
+        </section>
+
+      {% elseif ptype == 'cpg_text' %}
+        {# ── Text Section ── #}
+        <section class="cpg-about__section">
+          <div class="cpg-about__text">
+            {{ p.field_p_body.value|raw }}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_media_text' %}
+        {# ── Featured Research Banner ── #}
+        <section class="cpg-whitepapers__featured">
+          <div class="featured-card">
+            <div class="featured-content">
+              <span class="badge--featured">FEATURED RESEARCH</span>
+              <h2>{{ p.field_p_title.value }}</h2>
+              {% if p.field_p_body.value %}
+                {{ p.field_p_body.value|raw }}
+              {% endif %}
+              {% if p.field_p_link.0.url %}
+                <a href="{{ p.field_p_link.0.url }}" class="btn--white">{{ p.field_p_link.0.title|default('Download Free Report →') }}</a>
+              {% endif %}
+            </div>
+            <div class="featured-image">
+              {% if p.field_p_image.entity %}
+                <img src="{{ file_url(p.field_p_image.entity.fileuri) }}" alt="{{ p.field_p_image.alt|default(p.field_p_title.value) }}" />
+              {% else %}
+                <div class="image-placeholder">📊</div>
+              {% endif %}
+            </div>
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_card_grid' %}
+        {# ── Filters Bar (static, before grid) ── #}
+        <section class="cpg-whitepapers__filters">
+          <div class="filters-left">
+            <div class="filter-group">
+              <label for="wp-category">Category:</label>
+              <select id="wp-category">
+                <option>All Topics</option>
+                <option>Sustainability</option>
+                <option>E-Commerce</option>
+                <option>Supply Chain</option>
+                <option>Digital Marketing</option>
+                <option>Innovation</option>
+                <option>Market Research</option>
+                <option>Consumer Insights</option>
+                <option>AI &amp; Technology</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="wp-year">Year:</label>
+              <select id="wp-year">
+                <option>All Years</option>
+                <option>2026</option>
+                <option>2025</option>
+                <option>2024</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="wp-sort">Sort by:</label>
+              <select id="wp-sort">
+                <option>Newest First</option>
+                <option>Most Popular</option>
+                <option>Title A–Z</option>
+              </select>
+            </div>
+          </div>
+          <div class="filters-right">
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" placeholder="Search white papers..." />
+            </div>
+          </div>
+        </section>
+
+        {# ── White Papers Grid ── #}
+        <section class="cpg-whitepapers__popular">
+          {% if p.field_p_title.value %}
+            <div class="cpg-whitepapers__section-header">
+              <h2>{{ p.field_p_title.value }}</h2>
+              <a href="#" class="view-all">View All →</a>
+            </div>
+          {% endif %}
+          <div class="cpg-whitepapers__grid">
+            {% for card_item in p.field_p_items %}
+              {% set card = card_item.entity %}
+              <div class="wp-card">
+                <div class="wp-card__image">
+                  {% if card.field_p_image.entity %}
+                    <img src="{{ file_url(card.field_p_image.entity.fileuri) }}" alt="{{ card.field_p_image.alt }}" />
+                  {% else %}
+                    <span class="img-placeholder">📄</span>
+                  {% endif %}
+                  {# Badge (FREE / PREMIUM) from subtitle #}
+                  {% if card.field_p_subtitle is defined and card.field_p_subtitle.value %}
+                    {% set badge_type = 'free' %}
+                    {% if 'PREMIUM' in card.field_p_icon.value|upper %}
+                      {% set badge_type = 'premium' %}
+                    {% endif %}
+                  {% endif %}
+                  <span class="wp-card__badge badge--free">FREE</span>
+                </div>
+                <div class="wp-card__content">
+                  {% if card.field_p_icon.value %}
+                    <div class="wp-card__category">{{ card.field_p_icon.value }}</div>
+                  {% endif %}
+                  <h3 class="wp-card__title">{{ card.field_p_title.value }}</h3>
+                  {% if card.field_p_body.value %}
+                    <p class="wp-card__excerpt">{{ card.field_p_body.value|striptags }}</p>
+                  {% endif %}
+                  <div class="wp-card__footer">
+                    {% if card.field_p_subtitle is defined and card.field_p_subtitle.value %}
+                      <span class="wp-card__pages">📄 {{ card.field_p_subtitle.value|striptags }}</span>
+                    {% endif %}
+                    {% if card.field_p_link.0.url %}
+                      <a href="{{ card.field_p_link.0.url }}" class="btn--red">{{ card.field_p_link.0.title|default('Download ↓') }}</a>
+                    {% else %}
+                      <a href="#" class="btn--red">Download ↓</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_features' %}
+        {# ── Topics Grid ── #}
+        <section class="cpg-whitepapers__topics">
+          {% if p.field_p_title.value %}
+            <div class="cpg-whitepapers__section-header">
+              <h2>{{ p.field_p_title.value }}</h2>
+            </div>
+          {% endif %}
+          <div class="cpg-whitepapers__topics-grid">
+            {% for topic_item in p.field_p_items %}
+              {% set topic = topic_item.entity %}
+              <a href="#" class="cpg-wp-topic-card">
+                {% if topic.field_p_icon.value %}
+                  <span class="topic-icon">{{ topic.field_p_icon.value }}</span>
+                {% endif %}
+                <h3>{{ topic.field_p_title.value }}</h3>
+                {% if topic.field_p_body.value %}
+                  <span class="topic-count">{{ topic.field_p_body.value|striptags }}</span>
+                {% endif %}
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+
+      {% elseif ptype == 'cpg_cta' %}
+        {# ── Newsletter CTA ── #}
+        <section class="cpg-whitepapers__newsletter">
+          {% if p.field_p_title.value %}
+            <h2>{{ p.field_p_title.value }}</h2>
+          {% endif %}
+          {% if p.field_p_body.value %}
+            <p>{{ p.field_p_body.value|striptags }}</p>
+          {% endif %}
+          {% if newsletter_webform %}
+            {{ newsletter_webform }}
+          {% endif %}
+        </section>
+
+      {% else %}
+        {# Fallback: render through standard paragraph rendering #}
+        {{ content.field_cpg_paragraphs[loop.index0] }}
+      {% endif %}
+
+    {% endfor %}
+  {% endif %}
+
+  {# Fallback: render body field if no paragraphs exist yet #}
+  {% if content.body|render|trim and not content.field_cpg_paragraphs|render|trim %}
+    <div class="cpg-whitepapers__body-fallback">
+      {{ content.body }}
+    </div>
+  {% endif %}
+
+  <div class="hidden">
+    {{ content|without('field_cpg_paragraphs', 'body') }}
+  </div>
+</article>

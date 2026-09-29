@@ -1,0 +1,23 @@
+uuid: 660e1139-b112-447a-bbac-f5b28aa496aa
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:1bd537dd-577c-4da3-98f2-49a17df3c882'
+  module:
+    - block_content
+  theme:
+    - cpg_theme
+id: subscribebutton
+theme: cpg_theme
+region: header_actions
+weight: 0
+provider: null
+plugin: 'block_content:1bd537dd-577c-4da3-98f2-49a17df3c882'
+settings:
+  id: 'block_content:1bd537dd-577c-4da3-98f2-49a17df3c882'
+  label: ''
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,25 @@
+uuid: 538418d1-6941-4184-a695-0fa284b5143e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-topics
+  module:
+    - system
+  theme:
+    - cpg_theme
+id: footer_topics_block
+theme: cpg_theme
+region: footer_third
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-topics'
+settings:
+  id: 'system_menu_block:footer-topics'
+  label: Topics
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

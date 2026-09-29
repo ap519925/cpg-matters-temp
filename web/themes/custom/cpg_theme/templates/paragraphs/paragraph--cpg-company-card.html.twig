@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Paragraph template: Company Card (cpg_company_card)
+ * Fields: field_p_title, field_p_body, field_p_image, field_p_link, field_p_icon
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'cpg-paragraph-company-card',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_p_image|render|trim %}
+      <div class="cpg-paragraph-company-card__logo">
+        {{ content.field_p_image }}
+      </div>
+    {% endif %}
+    <div class="cpg-paragraph-company-card__content">
+      {% if content.field_p_icon|render|striptags|trim %}
+        <span class="cpg-paragraph-company-card__tag">{{ content.field_p_icon }}</span>
+      {% endif %}
+      {% if content.field_p_title|render|striptags|trim %}
+        <h3 class="cpg-paragraph-company-card__name">{{ content.field_p_title }}</h3>
+      {% endif %}
+      {% if content.field_p_body|render|trim %}
+        <div class="cpg-paragraph-company-card__desc">{{ content.field_p_body }}</div>
+      {% endif %}
+      {% if content.field_p_link|render|trim %}
+        <div class="cpg-paragraph-company-card__link">{{ content.field_p_link }}</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock paragraph %}

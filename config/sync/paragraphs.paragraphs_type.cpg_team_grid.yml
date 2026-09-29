@@ -1,0 +1,10 @@
+uuid: cd0e62e7-029f-4d55-9834-142035710eca
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_team_grid
+label: 'Team Grid'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Team Grid'
+behavior_plugins: {  }

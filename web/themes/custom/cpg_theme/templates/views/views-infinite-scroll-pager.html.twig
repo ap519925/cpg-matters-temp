@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * CPG Theme override for the views infinite scroll pager.
+ */
+#}
+
+{% if items.next %}
+<div class="cpg-view-more-container" style="text-align: center; margin-top: 3rem; margin-bottom: 3rem;">
+  <ul{{ attributes.addClass('pager', 'pager--infinite-scroll') }} style="list-style: none; padding: 0;">
+    <li class="pager__item">
+      <a class="button cpg-subscribe-btn" style="background-color:#C6203C!important; padding: 0.6rem 2rem!important; font-size: 0.85rem; line-height: 1.2; border-radius: 50px; display: inline-block; cursor: pointer; text-decoration: none; letter-spacing: 0.06em; font-weight: 700;" href="{{ items.next.href }}" title="{{ 'Load more items'|t }}" rel="next">{{ options.button_text }}</a>
+    </li>
+  </ul>
+</div>
+{% endif %}

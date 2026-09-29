@@ -1,0 +1,49 @@
+uuid: db2626ea-c15a-40d4-a757-17c5c79de03a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ad_banner
+    - field.field.block_content.ad_banner.field_ad_image
+    - field.field.block_content.ad_banner.field_ad_link
+    - field.field.block_content.ad_banner.field_ad_size
+  module:
+    - image
+    - link
+id: block_content.ad_banner.default
+targetEntityType: block_content
+bundle: ad_banner
+mode: default
+content:
+  field_ad_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_ad_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_ad_size:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,9 @@
+uuid: 6e24dcf0-2b59-4c88-88b8-90f5c5484f71
+langcode: en
+status: true
+dependencies: {  }
+name: 'Dictionary Category'
+vid: dictionary_category
+description: 'Categories for dictionary terms.'
+weight: 0
+new_revision: false

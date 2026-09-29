@@ -1,0 +1,19 @@
+uuid: 9f514475-a863-45f4-b1f4-1309f823f084
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_title
+    - paragraphs.paragraphs_type.cpg_card_grid
+id: paragraph.cpg_card_grid.field_p_title
+field_name: field_p_title
+entity_type: paragraph
+bundle: cpg_card_grid
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

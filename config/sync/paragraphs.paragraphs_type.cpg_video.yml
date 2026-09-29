@@ -1,0 +1,10 @@
+uuid: 686226a2-6dc6-49c2-8687-d69cdf4e9e7d
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_video
+label: 'Video Embed'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Video Embed'
+behavior_plugins: {  }

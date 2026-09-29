@@ -1,0 +1,19 @@
+uuid: 747eaf77-5307-458b-a927-bceaff5433ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icon
+    - paragraphs.paragraphs_type.cpg_sitemap_section
+id: paragraph.cpg_sitemap_section.field_p_icon
+field_name: field_p_icon
+entity_type: paragraph
+bundle: cpg_sitemap_section
+label: Emoji/Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

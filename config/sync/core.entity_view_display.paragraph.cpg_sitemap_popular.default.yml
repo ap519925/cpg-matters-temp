@@ -1,0 +1,33 @@
+uuid: 4a0a43b3-8077-43e9-9f87-cfdcd2b9d492
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_sitemap_popular.field_p_items
+    - field.field.paragraph.cpg_sitemap_popular.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_popular
+  module:
+    - entity_reference_revisions
+id: paragraph.cpg_sitemap_popular.default
+targetEntityType: paragraph
+bundle: cpg_sitemap_popular
+mode: default
+content:
+  field_p_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_p_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

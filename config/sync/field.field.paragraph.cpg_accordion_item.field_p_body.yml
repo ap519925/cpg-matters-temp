@@ -1,0 +1,22 @@
+uuid: 2a28795c-a6f9-4e3d-831c-30eb8768acf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_accordion_item
+  module:
+    - text
+id: paragraph.cpg_accordion_item.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_accordion_item
+label: Answer
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

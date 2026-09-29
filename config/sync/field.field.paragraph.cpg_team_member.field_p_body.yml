@@ -1,0 +1,22 @@
+uuid: 6033fbed-140f-44d8-a959-2709b666a1fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_body
+    - paragraphs.paragraphs_type.cpg_team_member
+  module:
+    - text
+id: paragraph.cpg_team_member.field_p_body
+field_name: field_p_body
+entity_type: paragraph
+bundle: cpg_team_member
+label: Bio
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

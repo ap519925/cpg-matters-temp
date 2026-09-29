@@ -1,0 +1,10 @@
+uuid: e1ed496f-3399-4c6e-8371-71ebb3d83f3d
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_image
+label: Image
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Image'
+behavior_plugins: {  }

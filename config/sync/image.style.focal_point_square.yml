@@ -1,0 +1,17 @@
+uuid: bd533741-53d6-4743-839b-aa114ac5474f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_square
+label: 'Square Thumb (600x600)'
+effects:
+  84744a88-c253-4ecc-bd0b-48e3b388506b:
+    uuid: 84744a88-c253-4ecc-bd0b-48e3b388506b
+    id: focal_point_scale_and_crop
+    weight: 0
+    data:
+      width: 600
+      height: 600
+      crop_type: focal_point

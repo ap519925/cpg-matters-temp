@@ -1,0 +1,439 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the CPG Matters theme.
+ */
+
+/**
+ * Implements hook_theme_suggestions_block_alter().
+ *
+ * Adds template suggestions for block_content entities based on their bundle.
+ * This enables templates like block--block-content--ad-banner.html.twig
+ */
+function cpg_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Provide block content type based suggestions.
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $block_content = $variables['elements']['content']['#block_content'];
+    $bundle = $block_content->bundle();
+
+    // Add suggestion based on block content type (bundle).
+    $suggestions[] = 'block__block_content__' . $bundle;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_node_alter().
+ *
+ * Already provided by core, but explicit for documentation.
+ */
+function cpg_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+  $view_mode = $variables['elements']['#view_mode'];
+
+  // For 'page' content type, add suggestions based on URL alias.
+  if ($node->getType() === 'page') {
+    $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+    $alias = trim($alias, '/');
+    if ($alias) {
+      $safe_alias = str_replace(['-', '/'], '_', $alias);
+      $suggestions[] = 'node__page__' . $safe_alias;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function cpg_theme_preprocess_node(array &$variables) {
+  // Make the node view mode available.
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+
+  // Make site name available to all node templates (for share links, etc).
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+
+  // For 'page' content type, check if we need to embed a webform (e.g., contact).
+  if ($variables['node']->getType() === 'page') {
+    $variables['contact_webform'] = [
+      '#type' => 'webform',
+      '#webform' => 'contact_us',
+    ];
+    $variables['newsletter_webform'] = [
+      '#type' => 'webform',
+      '#webform' => 'newsletter',
+    ];
+  }
+
+  // For article teasers and full pages, map the category tag to an icon emoji.
+  if ($variables['node']->getType() === 'article') {
+    $category_icon = '📈'; // Default icon.
+    $category_class = 'cpg-cat-default'; // Default class.
+    $category_name_raw = '';
+    $category_url = '';
+
+    // Try to get the category name from field_article_category.
+    if ($variables['node']->hasField('field_article_category') && !$variables['node']->get('field_article_category')->isEmpty()) {
+      $term = $variables['node']->get('field_article_category')->entity;
+      if ($term) {
+        $category_name_raw = $term->getName();
+        $term_name = strtolower($category_name_raw);
+        
+        // Check if term has a custom icon
+        $category_icon = '📈';
+        if ($term->hasField('field_category_icon') && !$term->get('field_category_icon')->isEmpty()) {
+          $category_icon = trim($term->get('field_category_icon')->value);
+        } else {
+          $icon_map = [
+            'sustainability' => '🌱',
+            'e-commerce' => '🛒',
+            'innovation' => '💡',
+            'supply chain' => '📦',
+            'marketing' => '📱',
+            'finance' => '💰',
+            'technology' => '🔧',
+            'leadership' => '👔',
+            'retail' => '🏪',
+            'manufacturing' => '🏭',
+          ];
+          $category_icon = $icon_map[$term_name] ?? '📈';
+        }
+        
+        // Check if term has a custom CSS class for color
+        if ($term->hasField('field_category_color') && !$term->get('field_category_color')->isEmpty()) {
+          $category_class = trim($term->get('field_category_color')->value);
+        } else {
+          // Generate a valid CSS class name from the term name
+          $safe_name = preg_replace('/[^a-z0-9\-]/', '-', $term_name);
+          $safe_name = trim(preg_replace('/-+/', '-', $safe_name), '-');
+          $category_class = 'cpg-cat-' . $safe_name;
+        }
+
+        
+        try {
+          $category_url = $term->toUrl()->toString();
+        } catch (\Exception $e) {
+          $category_url = '';
+        }
+        
+        // Check for specific custom background color
+        if ($term->hasField('field_bg_color') && !$term->get('field_bg_color')->isEmpty()) {
+          $category_bg_color = trim($term->get('field_bg_color')->value);
+        }
+      }
+    }
+    $variables['category_icon'] = $category_icon;
+    $variables['category_class'] = $category_class;
+    $variables['category_name_raw'] = $category_name_raw;
+    $variables['category_url'] = $category_url;
+    $variables['category_bg_color'] = $category_bg_color ?? '';
+  }
+
+  // Provide plain text title and URL for social share links.
+  if ($variables['node']->getType() === 'article') {
+    $variables['plain_title'] = $variables['node']->getTitle();
+    $variables['article_url'] = $variables['node']->toUrl('canonical', ['absolute' => TRUE])->toString();
+    
+    // Social share toggles from theme settings.
+    $variables['share_twitter'] = theme_get_setting('cpg_share_twitter') ?? TRUE;
+    $variables['share_facebook'] = theme_get_setting('cpg_share_facebook') ?? TRUE;
+    $variables['share_linkedin'] = theme_get_setting('cpg_share_linkedin') ?? TRUE;
+    $variables['share_email'] = theme_get_setting('cpg_share_email') ?? TRUE;
+    
+    // Custom Teaser Logic
+    if ($variables['view_mode'] === 'teaser') {
+      $custom_teaser = '';
+      if ($variables['node']->hasField('field_summary') && !$variables['node']->get('field_summary')->isEmpty()) {
+        $custom_teaser = strip_tags($variables['node']->get('field_summary')->value);
+      } else {
+        $body = '';
+        if ($variables['node']->hasField('body') && !$variables['node']->get('body')->isEmpty()) {
+          $body = $variables['node']->get('body')->value;
+        }
+        $body_text = preg_replace('/<[^>]+>/', ' ', $body);
+        $body_text = html_entity_decode($body_text, ENT_QUOTES, 'UTF-8');
+        $body_text = trim(preg_replace('/\s+/', ' ', $body_text));
+        
+        $words = explode(' ', $body_text);
+        if (count($words) > 25) {
+          $custom_teaser = implode(' ', array_slice($words, 0, 25)) . '...';
+        } else {
+          $custom_teaser = implode(' ', $words);
+        }
+      }
+      $variables['custom_teaser'] = $custom_teaser;
+    }
+
+    // Fetch related articles for full view mode
+    if ($variables['view_mode'] === 'full') {
+      $tids = [];
+      if ($variables['node']->hasField('field_tags') && !$variables['node']->get('field_tags')->isEmpty()) {
+        foreach ($variables['node']->get('field_tags') as $item) {
+          $tids[] = $item->target_id;
+        }
+      }
+
+      $query = \Drupal::entityQuery('node')
+        ->condition('type', 'article')
+        ->condition('status', 1)
+        ->condition('nid', $variables['node']->id(), '<>')
+        ->sort('created', 'DESC')
+        ->range(0, 3)
+        ->accessCheck(TRUE);
+
+      if (!empty($tids)) {
+        $query->condition('field_tags', $tids, 'IN');
+      }
+
+      $nids = $query->execute();
+      
+      // If we don't have enough matching by tag, backfill with newest articles.
+      if (count($nids) < 3) {
+        $needed = 3 - count($nids);
+        $exclude_nids = array_merge([$variables['node']->id()], $nids);
+        
+        $backfill_query = \Drupal::entityQuery('node')
+          ->condition('type', 'article')
+          ->condition('status', 1)
+          ->condition('nid', $exclude_nids, 'NOT IN')
+          ->sort('created', 'DESC')
+          ->range(0, $needed)
+          ->accessCheck(TRUE);
+          
+        $backfill_nids = $backfill_query->execute();
+        $nids = array_merge($nids, $backfill_nids);
+      }
+
+      if (!empty($nids)) {
+        $related_nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+        $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+        $variables['related_articles'] = $view_builder->viewMultiple($related_nodes, 'teaser');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Passes block_content entity data to block templates.
+ */
+function cpg_theme_preprocess_block(array &$variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $block_content = $variables['elements']['content']['#block_content'];
+    $variables['block_bundle'] = $block_content->bundle();
+
+    // Pass ad_size for ad_banner blocks.
+    if ($block_content->bundle() === 'ad_banner' && $block_content->hasField('field_ad_size')) {
+      $variables['ad_size'] = $block_content->get('field_ad_size')->value ?? '300x250';
+    }
+
+    if ($block_content->bundle() === 'newsletter') {
+      $variables['newsletter_webform'] = [
+        '#type' => 'webform',
+        '#webform' => 'newsletter',
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Hide field labels in teaser view modes.
+ * Also fixes the #title array key warning by checking for it.
+ */
+function cpg_theme_preprocess_field(array &$variables) {
+  if (isset($variables['element']['#view_mode']) && $variables['element']['#view_mode'] === 'teaser') {
+    $variables['label_hidden'] = TRUE;
+  }
+
+  // Ensure #title is set to avoid "Undefined array key" warnings.
+  if (!isset($variables['element']['#title'])) {
+    $variables['element']['#title'] = '';
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * Adds body classes for front page detection and node types.
+ * Injects CSS custom properties from theme settings for admin-editable design.
+ */
+function cpg_theme_preprocess_html(array &$variables) {
+  // Add front page class.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['attributes']['class'][] = 'is-front';
+  }
+
+  // Add node type class for targeted CSS (e.g. hiding page title on articles).
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
+  if ($node && is_object($node)) {
+    $variables['attributes']['class'][] = 'node-type-' . $node->getType();
+  }
+
+  // Inject CSS custom properties from theme settings.
+  // These allow admins to change brand colors from Appearance → Settings.
+  $brand_color = theme_get_setting('cpg_brand_color') ?: '#C41E3A';
+  $brand_dark  = theme_get_setting('cpg_brand_color_dark') ?: '#9B1730';
+  $text_color  = theme_get_setting('cpg_text_color') ?: '#1A1A1A';
+  $footer_bg   = theme_get_setting('cpg_footer_bg') ?: '#1A1A1A';
+  $header_bw   = theme_get_setting('cpg_header_border_width') ?: '4';
+  $dir_card_bg = theme_get_setting('cpg_directory_card_bg') ?: '#E8F1FC';
+  $wp_card_bg  = theme_get_setting('cpg_whitepapers_card_bg') ?: '#FFFFFF';
+
+  $css_vars = implode('; ', [
+    "--cpg-brand: {$brand_color}",
+    "--cpg-brand-dark: {$brand_dark}",
+    "--cpg-text: {$text_color}",
+    "--cpg-footer-bg: {$footer_bg}",
+    "--cpg-header-border-width: {$header_bw}px",
+    "--cpg-directory-card-bg: {$dir_card_bg}",
+    "--cpg-wp-card-bg: {$wp_card_bg}",
+  ]);
+
+  // Attach as inline style on the html element.
+  $variables['html_attributes']['style'] = $css_vars;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function cpg_theme_preprocess_page(&$variables) {
+  $variables['site_logo'] = theme_get_setting('logo.url');
+  
+  $site_config = \Drupal::config('system.site');
+  $variables['site_name'] = $site_config->get('name');
+  $variables['site_slogan'] = $site_config->get('slogan');
+
+  // Inject Social Media Theme Settings.
+  $variables['cpg_twitter_url'] = theme_get_setting('cpg_twitter_url');
+  $variables['cpg_facebook_url'] = theme_get_setting('cpg_facebook_url');
+  $variables['cpg_linkedin_url'] = theme_get_setting('cpg_linkedin_url');
+  
+  // Attach search-results library on the SERP view page.
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'view.search_results.page_1') {
+    $variables['#attached']['library'][] = 'cpg_theme/search-results';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_html_alter().
+ */
+function cpg_theme_theme_suggestions_html_alter(array &$suggestions, array $variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (in_array($route_name, ['cpg_register.step1', 'cpg_register.step2', 'cpg_register.complete'])) {
+    $suggestions[] = 'html__register';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ *
+ * Adds page template suggestions based on URL path alias.
+ * e.g. /about-us → page--about-us.html.twig
+ */
+function cpg_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (in_array($route_name, ['cpg_register.step1', 'cpg_register.step2', 'cpg_register.complete'])) {
+    $suggestions[] = 'page__register';
+  }
+
+  // Dictionary and sitemap get their own full-width page templates
+  if ($route_name === 'cpg_register.dictionary') {
+    $suggestions[] = 'page__dictionary';
+  }
+  if ($route_name === 'cpg_register.sitemap') {
+    $suggestions[] = 'page__sitemap';
+  }
+
+  $current_path = \Drupal::service('path.current')->getPath();
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+  $alias = trim($alias, '/');
+
+  // Add page template suggestion based on path alias.
+  if ($alias) {
+    $alias_parts = explode('/', $alias);
+    $suggestion = 'page__' . str_replace('-', '_', implode('__', $alias_parts));
+    $suggestions[] = $suggestion;
+  }
+}
+
+
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter().
+ *
+ * Adds template suggestions based on view ID so we can use
+ * views-view--search-results.html.twig and views-view--directory.html.twig.
+ */
+function cpg_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view'])) {
+    $suggestions[] = 'views_view__' . $variables['view']->id();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_unformatted_alter().
+ */
+function cpg_theme_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view'])) {
+    $suggestions[] = 'views_view_unformatted__' . $variables['view']->id();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_fields_alter().
+ */
+function cpg_theme_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view'])) {
+    $suggestions[] = 'views_view_fields__' . $variables['view']->id();
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ *
+ * Appends the current page title (and article category) to the breadcrumb
+ * trail so breadcrumbs show: Home > Category > Page Title.
+ */
+function cpg_theme_preprocess_breadcrumb(array &$variables) {
+  $breadcrumb = &$variables['breadcrumb'];
+
+  // Get the current route match.
+  $route_match = \Drupal::routeMatch();
+
+  // Try to get page title from the title resolver.
+  $title = \Drupal::service('title_resolver')->getTitle(
+    \Drupal::request(),
+    $route_match->getRouteObject()
+  );
+
+  // For article nodes, insert the category between Home and the title.
+  $node = $route_match->getParameter('node');
+  if ($node && is_object($node) && $node->getType() === 'article') {
+    if ($node->hasField('field_article_category') && !$node->get('field_article_category')->isEmpty()) {
+      $term = $node->get('field_article_category')->entity;
+      if ($term) {
+        $breadcrumb[] = [
+          'text' => $term->getName(),
+          'url'  => $term->toUrl()->toString(),
+        ];
+      }
+    }
+  }
+
+  // Append the current page title as the last (non-linked) crumb.
+  if ($title) {
+    $breadcrumb[] = [
+      'text' => (is_object($title) && method_exists($title, '__toString'))
+        ? (string) $title
+        : $title,
+      'url'  => '',
+    ];
+  }
+
+  // Bust breadcrumb cache per URL so it is always accurate.
+  $variables['#cache']['contexts'][] = 'url.path';
+}

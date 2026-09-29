@@ -1,0 +1,382 @@
+@use 'variables' as *;
+
+// Override default page layout bounds for contact page
+.page-contact {
+  background-color: #f4f6f8;
+  flex: 1;
+
+  .cpg-columns.no-sidebars {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .block-system-main-block {
+    max-width: unset !important;
+    padding: 0 !important;
+  }
+
+  // Hide the default page title block
+  #block-cpg-page-title {
+    display: none;
+  }
+}
+
+
+.cpg-contact-page {
+  padding: $gap-2xl 0;
+  background-color: #f4f6f8;
+}
+
+.cpg-contact-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 700px;
+  gap: 4rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: $gap-2xl clamp(1.5rem, 5vw, 4rem);
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// ── Title & Intro ──
+.cpg-contact-page__title {
+  font-family: $font-heading;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 $gap-md;
+  color: $cpg-text;
+  line-height: 1.2;
+}
+
+.cpg-contact-page__form-section {
+  min-width: 0;
+
+  .intro-text {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+    margin-bottom: $gap-xl;
+  }
+}
+
+// ── Webform Styles ──
+.cpg-contact-page__form-section .webform-submission-form {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-lg;
+
+  // Name row - two fields side by side via webform_flexbox
+  .webform-flexbox {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: $gap-lg;
+    margin: 0;
+
+    // Override webform's inline flex item styles
+    .webform-flex {
+      flex: unset !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Individual form items
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    margin-bottom: 0;
+    max-width: 100% !important;
+    width: 100% !important;
+
+    label {
+      font-family: $font-body;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $cpg-text;
+    }
+
+    .form-required::after {
+      content: ' *';
+      color: $cpg-red;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      padding: 0.85rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: $radius;
+      background: #FAFAFA;
+      font-size: 1rem;
+      font-family: $font-body;
+      color: $cpg-text;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color $transition, box-shadow $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $cpg-red;
+        box-shadow: 0 0 0 3px rgba($cpg-red, 0.08);
+      }
+
+      &::placeholder {
+        color: #9CA3AF;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    select {
+      cursor: pointer;
+      appearance: auto;
+    }
+  }
+
+  // Checkbox items
+  .form-type-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: $cpg-text-secondary;
+    cursor: pointer;
+    flex-direction: row;
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: $cpg-red;
+      flex-shrink: 0;
+    }
+
+    label {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: $cpg-text-secondary;
+    }
+
+    a {
+      color: $cpg-red;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Required fields note
+  .required-note {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: $cpg-text-secondary;
+    margin: 0;
+  }
+
+  // Submit button
+  .form-actions {
+    margin-top: $gap-sm;
+
+    .webform-button--submit {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      font-family: $font-body;
+      background: $cpg-red;
+      color: white;
+      border: none;
+      border-radius: $radius;
+      cursor: pointer;
+      transition: background-color $transition, transform $transition;
+
+      &:hover {
+        background-color: darken($cpg-red, 10%);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // Error states
+  .form-item--error {
+
+    input,
+    select,
+    textarea {
+      border-color: $cpg-red;
+    }
+  }
+
+  .form-item--error-message {
+    color: $cpg-red;
+    font-size: 0.8rem;
+    margin-top: $gap-xs;
+  }
+}
+
+// ── Sidebar: Contact Information Card ──
+.cpg-contact-page__sidebar-section {
+  align-self: start;
+}
+
+.contact-info-card {
+  background: #F8F9FA;
+  padding: $gap-2xl;
+  border-radius: $radius;
+
+  h3 {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 $gap-xl;
+    color: $cpg-text;
+  }
+}
+
+.contact-info-item {
+  display: flex;
+  gap: $gap-md;
+  margin-bottom: $gap-xl;
+
+  .icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $cpg-red;
+    color: white;
+    border-radius: 50%;
+  }
+
+  .content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: $gap-xs;
+    font-weight: 700;
+    font-size: 1rem;
+    color: $cpg-text;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: $cpg-text-secondary;
+    line-height: 1.7;
+
+    a {
+      color: $cpg-red;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.92rem;
+    color: $cpg-text-secondary;
+    margin-bottom: 0.3rem;
+
+    span:first-child {
+      font-weight: 600;
+      color: $cpg-text;
+    }
+  }
+}
+
+// Social circles
+.social-links {
+  display: flex;
+  gap: $gap-sm;
+  margin-top: $gap-sm;
+
+  .social-pill {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $cpg-text;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all $transition;
+
+    &:hover {
+      background: $cpg-red;
+      color: white;
+      border-color: $cpg-red;
+    }
+  }
+}
+
+// Divider
+.contact-divider {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: $gap-xl 0;
+}
+
+// Quick links
+.contact-quick-links {
+  strong {
+    display: block;
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: $gap-md;
+    color: $cpg-text;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: $gap-sm;
+
+      a {
+        color: $cpg-red;
+        text-decoration: none;
+        font-size: 0.92rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

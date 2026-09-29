@@ -1,0 +1,15 @@
+name: 'CPG Setup'
+type: module
+description: 'Provides block types, sample blocks, and block placements for the CPG Matters theme.'
+core_version_requirement: ^10 || ^11
+package: Custom
+version: '1.0.0'
+dependencies:
+  - drupal:block
+  - drupal:block_content
+  - drupal:node
+  - drupal:views
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:image
+  - drupal:link

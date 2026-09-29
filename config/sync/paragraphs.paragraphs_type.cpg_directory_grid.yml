@@ -1,0 +1,10 @@
+uuid: 2110443f-46bd-4429-ac92-576ef60dadb9
+langcode: en
+status: true
+dependencies: {  }
+id: cpg_directory_grid
+label: 'Directory Grid'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph type for Directory Grid'
+behavior_plugins: {  }

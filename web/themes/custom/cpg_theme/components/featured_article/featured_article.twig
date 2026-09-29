@@ -1,0 +1,28 @@
+<article class="cpg-featured-article">
+  {% if image_url %}
+  <div class="cpg-featured-article__image">
+    <img src="{{ image_url }}" alt="{{ title }}" />
+  </div>
+  {% endif %}
+  <div class="cpg-featured-article__content">
+    <span class="category-label">{{ category }}</span>
+    <h2 class="cpg-featured-article__title">
+      <a href="#" style="text-decoration: none; color: inherit;">{{ title }}</a>
+    </h2>
+    <div class="cpg-featured-article__body">
+      {{ body }}
+    </div>
+    <div class="cpg-featured-article__meta" style="margin-top: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-md);">
+      <div class="author-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: var(--cpg-primary-red); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+        {{ author|first }}
+      </div>
+      <div class="author-info" style="font-size: 0.875rem;">
+        <span class="author-label" style="display: block; font-weight: 600;">By {{ author }}</span>
+        <div class="date-read" style="color: #6B7280;">
+          <span class="date">{{ date }}</span> &middot;
+          <span class="read-time">{{ read_time }} read</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

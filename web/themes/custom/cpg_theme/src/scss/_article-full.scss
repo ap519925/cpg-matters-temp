@@ -1,0 +1,448 @@
+// ================================================================
+// ARTICLE FULL PAGE — detailed article display matching mockup
+// ================================================================
+@use 'variables' as *;
+
+// ── Main article container ──
+.cpg-article-full {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0 $gap-2xl;
+}
+
+// ── Category label ──
+.cpg-article-full__category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: $gap-md;
+
+    .cpg-category-icon {
+        font-size: 1rem;
+    }
+}
+
+.cpg-article-full__category-text {
+    a,
+    .field__item {
+        color: $cpg-red;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .field__label {
+        display: none;
+    }
+}
+
+// ── Title / Headline ──
+.cpg-article-full__title {
+    font-family: $font-heading;
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: $cpg-text;
+    margin: 0 0 $gap-lg;
+    letter-spacing: -0.01em;
+}
+
+// ── Summary / Lead text ──
+.cpg-article-full__summary {
+    font-family: $font-body;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: $gap-xl;
+
+    p {
+        margin: 0;
+    }
+
+    .field__label {
+        display: none;
+    }
+}
+
+// ── Author meta bar ──
+.cpg-article-full__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: $gap-lg 0;
+    border-top: 1px solid $cpg-border;
+    border-bottom: 1px solid $cpg-border;
+    margin-bottom: $gap-xl;
+}
+
+.cpg-article-full__meta-left {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+}
+
+.cpg-article-full__author {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $cpg-text;
+    display: block;
+}
+
+.cpg-article-full__date-read {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    display: block;
+    margin-top: 2px;
+}
+
+.cpg-article-full__meta-right {
+    .cpg-social-share {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+// ── Featured image ──
+.cpg-article-full__hero-image {
+    margin: 0 0 $gap-xl;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        display: block;
+    }
+
+    .field--type-image {
+        margin: 0;
+        padding: 0;
+    }
+
+    .field__label {
+        display: none;
+    }
+}
+
+// ── Image caption ──
+.cpg-article-full__caption {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    color: $cpg-text-secondary;
+    font-style: italic;
+    margin-top: $gap-sm;
+    padding-left: $gap-md;
+    border-left: 3px solid $cpg-red;
+    line-height: 1.5;
+}
+
+// ── Article body ──
+.cpg-article-full__body {
+    font-family: $font-body;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #2D3748;
+
+    .field__label {
+        display: none;
+    }
+
+    p {
+        margin-bottom: 1.5em;
+
+        &:first-child strong:first-child {
+            font-weight: 700;
+            color: $cpg-text;
+        }
+    }
+
+    // Subheadings
+    h2 {
+        font-family: $font-heading;
+        font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+        font-weight: 600;
+        color: $cpg-text;
+        margin: 2.5rem 0 1rem;
+        line-height: 1.25;
+    }
+
+    h3 {
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $cpg-text;
+        margin: 2rem 0 0.75rem;
+        line-height: 1.25;
+    }
+
+    // Blockquotes / Pull quotes
+    blockquote {
+        margin: 2rem 0;
+        padding: $gap-lg $gap-xl $gap-lg $gap-md;
+        border-left: 4px solid $cpg-red;
+        background: #FFF5F5;
+        border-radius: 0 $radius $radius 0;
+        font-style: italic;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #4A4A4A;
+
+        p {
+            margin-bottom: 0.5em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        cite,
+        strong:last-child {
+            font-style: normal;
+            font-weight: 600;
+            color: $cpg-text-secondary;
+            display: block;
+            margin-top: 0.5em;
+            font-size: 0.95rem;
+        }
+    }
+
+    // Centered large pull quotes (editorial style)
+    .pull-quote, 
+    .text-align-center blockquote,
+    p.text-align-center em {
+        text-align: center;
+        font-family: $font-heading;
+        font-size: 1.4rem;
+        color: $cpg-red;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    // Lists
+    ul, ol {
+        margin: 1.5em 0;
+        padding-left: 1.5em;
+
+        li {
+            margin-bottom: 0.5em;
+            line-height: 1.6;
+
+            strong {
+                color: $cpg-text;
+            }
+        }
+    }
+
+    ul li {
+        list-style: disc;
+    }
+
+    ol li {
+        list-style: decimal;
+    }
+
+    // Images within body
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        margin: 1.5em 0;
+    }
+
+    // Links
+    a {
+        color: $cpg-red;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color $transition;
+
+        &:hover {
+            color: $cpg-red-dark;
+        }
+    }
+
+    // Inline ad banners inside body
+    .cpg-ad-banner {
+        margin: 2rem auto;
+    }
+
+    // Tables
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95rem;
+
+        th, td {
+            border: 1px solid $cpg-border;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        th {
+            background: #F3F4F6;
+            font-weight: 700;
+            color: $cpg-text;
+        }
+
+        tr:nth-child(even) td {
+            background: #FAFAFA;
+        }
+    }
+}
+
+// ── Related Topics at bottom ──
+.cpg-article-full__topics {
+    margin-top: $gap-2xl;
+    padding-top: $gap-xl;
+    border-top: 2px solid $cpg-border;
+}
+
+.cpg-article-full__topics-label {
+    display: block;
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $cpg-text-secondary;
+    margin-bottom: $gap-md;
+}
+
+.cpg-article-full__topics-list {
+    // Drupal renders field_tags with no classes on wrapper divs:
+    // .topics-list > div (row) > div (item) > a
+
+    // Outer bare div: flex-wrap so tags fill rows naturally
+    > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-sm;
+
+        // Each bare div: shrink to content width
+        > div {
+            a {
+                display: inline-flex;
+                align-items: center;
+                background: transparent;
+                color: $cpg-red;
+                border: 1.5px solid $cpg-red;
+                padding: 0.4rem 0.75rem;
+                border-radius: 999px;
+                font-family: $font-body;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+                transition: all $transition;
+
+                &:hover {
+                    background: $cpg-red;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    // Fallback: standard Drupal field classes
+    .field__label { display: none; }
+    .field__items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-sm;
+    }
+    .field__item a {
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        color: $cpg-red;
+        border: 1.5px solid $cpg-red;
+        padding: 0.4rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        transition: all $transition;
+
+        &:hover {
+            background: $cpg-red;
+            color: #fff;
+        }
+    }
+}
+
+// ── Hide stray Drupal elements ──
+.cpg-article-full {
+    .node__links,
+    .links,
+    .hidden {
+        display: none !important;
+    }
+
+    .field__label {
+        display: none;
+    }
+}
+
+// ── Hide the page title block on article pages 
+// (title is rendered inside the article template) ──
+body.node-type-article #block-cpg-page-title {
+    display: none;
+}
+
+// ── Related Articles Grid ──
+.cpg-related-articles-heading {
+    font-family: var(--font-heading, "Montserrat", sans-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--cpg-text, #1a1a1a);
+    margin-bottom: 2rem;
+}
+
+.cpg-related-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Strip bottom margin to let grid spacing work smoothly
+    article.cpg-article-teaser {
+        margin-bottom: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    article.cpg-article-teaser .cpg-article-teaser__content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    // Push the footer of the card to the bottom
+    article.cpg-article-teaser .cpg-article-teaser__footer {
+        margin-top: auto;
+    }
+}
+

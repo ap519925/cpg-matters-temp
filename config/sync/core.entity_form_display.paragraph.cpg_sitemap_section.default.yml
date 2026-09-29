@@ -1,0 +1,47 @@
+uuid: 3f7c062f-6fcb-4f70-ac6c-8bc1da0ef659
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cpg_sitemap_section.field_p_icon
+    - field.field.paragraph.cpg_sitemap_section.field_p_items
+    - field.field.paragraph.cpg_sitemap_section.field_p_title
+    - paragraphs.paragraphs_type.cpg_sitemap_section
+  module:
+    - paragraphs
+id: paragraph.cpg_sitemap_section.default
+targetEntityType: paragraph
+bundle: cpg_sitemap_section
+mode: default
+content:
+  field_p_icon:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_items:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_p_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

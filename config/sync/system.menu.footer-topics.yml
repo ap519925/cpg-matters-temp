@@ -1,0 +1,8 @@
+uuid: 7b4c00eb-3699-4e8d-ab52-e79135759679
+langcode: en
+status: true
+dependencies: {  }
+id: footer-topics
+label: Topics
+description: 'Footer column: Topics links'
+locked: false

@@ -1,0 +1,21 @@
+uuid: e376c899-74cc-477d-9fda-b595cfc08d47
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - cpg_theme
+id: cpg_search_form
+theme: cpg_theme
+region: header_search
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }
